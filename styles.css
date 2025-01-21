@@ -183,6 +183,7 @@ height: 100px;
 
         .settings-button {
             position: fixed;
+	opacity: 0.3;
             bottom: 20px;
             right: 20px;
             width: 60px;
@@ -286,6 +287,7 @@ height: 100px;
 
 .info-button {
     position: fixed;
+  opacity: 0.3;
     bottom: 20px;
     left: 20px;
     width: 60px;
