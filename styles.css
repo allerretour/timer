@@ -130,7 +130,7 @@ height: 100px;
     width: 80%;
     max-width: 500px;
     gap: 5px;
-    position: fixed;
+    
     bottom: 50px; /* Positionne les boutons à 100px du bas */
     left: 50%;
     transform: translateX(-50%); /* Centre horizontalement les boutons */
