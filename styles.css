@@ -35,7 +35,7 @@
         text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
         
         text-align: center; /* Centre le texte horizontalement */
-        margin: 10 auto; /* Centrer le timer horizontalement */
+        margin: 0 auto; /* Centrer le timer horizontalement */
     }
 
 
