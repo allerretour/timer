@@ -43,6 +43,7 @@
     justify-content: space-between;
     margin-top: 20px;
     width: 80%;
+height: 100px;
     max-width: 500px;
     gap: 10px;
     position: absolute;
@@ -52,8 +53,8 @@
 }
 
 .extension-buttons-group button {
-    font-size: 40px;
-    font-weight: bold;  /* Bold text */
+    font-size: 50px;
+    
     padding: 20px 30px;
     cursor: pointer;
     border: none;
