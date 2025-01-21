@@ -246,6 +246,7 @@ height: 100px;
             background-color: #4caf50;
             color: white;
             border-radius: 8px;
+	width: 20%;
             border: none;
             transition: background-color 0.3s;
         }
