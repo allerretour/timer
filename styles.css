@@ -68,6 +68,7 @@ height: 100px;
 
 .extension-buttons-group button:disabled {
     background-color: #888;
+    opacity: 0.2;
     cursor: not-allowed;
 }
 
