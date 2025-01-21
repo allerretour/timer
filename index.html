@@ -37,15 +37,15 @@
 <div id="settingsModal" class="modal" onclick="closeSettings(event)">
     <div class="modal-content" onclick="event.stopPropagation()">
         <button class="close-button" onclick="closeSettings()">&times;</button>
-        <h3>Paramètres du Timer</h3>
+        <h3 style="text-align: center;">Paramètres du chronomètre</h3>
         <label for="initialTime">Temps après la casse :</label>
         <input type="number" id="initialTime" value="60" min="1">
         
-        <label for="addTimeValue">Temps des extensions :</label>
-        <input type="number" id="addTimeValue" value="30" min="1">
-        
         <label for="nextTimeValue">Temps par tour :</label>
         <input type="number" id="nextTimeValue" value="30" min="1">
+
+	<label for="addTimeValue">Temps des extensions :</label>
+        <input type="number" id="addTimeValue" value="30" min="1">
 
         <button onclick="saveSettings()"><i class="fas fa-save"></i></button>
     </div>
@@ -59,16 +59,16 @@
 <div id="instructionsModal" class="modal" onclick="closeInstructions(event)">
     <div class="modal-content" onclick="event.stopPropagation()">
         <button class="close-button" onclick="closeInstructions()">&times;</button>
-        <h3>Chronomètre de billard</h3>
-	<p><i class="fas fa-long-arrow-right"  style="color: orange;"></i>&nbsp;&nbsp;Coup suivant</p>        
-	<p><i class="fas fa-refresh"  style="color: red;"></i>&nbsp;&nbsp;Nouvelle partie</p>
-	<p><i class="fas fa-pause" style="color: green;"></i>&nbsp;&nbsp;&nbsp;Mettre en pause</p>
-	<p><i class="fas fa-hand-pointer" style="color: green;"></i>&nbsp;&nbsp;Extension pour joueur 1</p>
-	<p><i class="fas fa-hand-peace"  style="color: green;"></i>&nbsp;&nbsp;Extension pour joueur 2</p>
-	<p><i class="fas fa-cog"></i>&nbsp;&nbsp;Réglages des temps</p>
-	<p><i class="fas fa-info"></i>&nbsp;&nbsp;&nbsp;&nbsp;Lexique des icônes</p>
-	<p>____________________________ </p>
-	<p>Dave Dupuis - allerretour.ca</p>
+        <h3 style="text-align: center;">Chronomètre de billard</h3>
+	<p>&nbsp;&nbsp;<i class="fas fa-long-arrow-right"  style="color: orange;"></i>&nbsp;&nbsp;Coup suivant</p>        
+	<p>&nbsp;&nbsp;<i class="fas fa-refresh"  style="color: red;"></i>&nbsp;&nbsp;Nouvelle partie</p>
+	<p>&nbsp;&nbsp;<i class="fas fa-pause" style="color: green;"></i>&nbsp;&nbsp;&nbsp;Mettre en pause</p>
+	<p>&nbsp;&nbsp;<i class="fas fa-hand-pointer" style="color: green;"></i>&nbsp;&nbsp;Extension pour joueur 1</p>
+	<p>&nbsp;&nbsp;<i class="fas fa-hand-peace"  style="color: green;"></i>&nbsp;&nbsp;Extension pour joueur 2</p>
+	<p>&nbsp;&nbsp;<i class="fas fa-cog"></i>&nbsp;&nbsp;Réglages des temps</p>
+	<p>&nbsp;&nbsp;<i class="fas fa-info"></i>&nbsp;&nbsp;&nbsp;&nbsp;Lexique des icônes</p>
+	<p style="text-align: center;">____________________________ </p>
+	<p style="text-align: center;">Dave Dupuis - allerretour.ca</p>
         <!-- Add more content as needed -->
     </div>
 </div>
