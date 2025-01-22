@@ -44,9 +44,9 @@
     justify-content: space-between;
     margin-top: 20px;
     width: 80%;
-height: 100px;
+    height: 100px;
     max-width: 500px;
-    gap: 10px;
+    gap: 170px;
     position: absolute;
     top: 360px; /* Adjust this value to position the buttons as needed */
     left: 50%;
@@ -288,7 +288,7 @@ height: 100px;
 
 .info-button {
     position: fixed;
-  opacity: 0.3;
+    opacity: 0.3;
     bottom: 20px;
     left: 20px;
     width: 60px;
