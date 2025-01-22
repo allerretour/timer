@@ -48,7 +48,7 @@
     max-width: 500px;
     gap: 10px;
     position: absolute;
-    top: 390px; /* Adjust this value to position the buttons as needed */
+    top: 410px; /* Adjust this value to position the buttons as needed */
     left: 50%;
     transform: translateX(-50%); /* Center horizontally */
 }
