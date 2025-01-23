@@ -24,6 +24,16 @@
     z-index: 1000;
 }
 
+#corner-image {
+    position: absolute;
+    top: 5px; /* Adjust this value as needed */
+    right: 5px; /* Adjust this value as needed */
+    width: 120px; /* Adjust this value as needed */
+    height: auto; /* Maintain aspect ratio */
+    z-index: 1000; /* Ensure it is on top of other content */
+}
+
+
     .container {
         text-align: center;
         width: 80%;
