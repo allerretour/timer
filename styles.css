@@ -30,15 +30,49 @@
     right: 5px; /* Adjust this value as needed */
     width: 120px; /* Adjust this value as needed */
     height: auto; /* Maintain aspect ratio */
-    z-index: 1000; /* Ensure it is on top of other content */
+    
+    z-index: 1000;
 }
+
+.preset-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px; /* Optional: Add some spacing */
+}
+
+
+.preset-button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 0.8em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.preset-button:hover {
+    background-color: #45a049;
+}
+
+.preset-button:active {
+    background-color: #3e8e41;
+}
+
+/* Highlighted button */
+.active-preset {
+    border: 2px solid #ffffff;
+    background-color: blue !important;
+}
+
 
 
     .container {
         text-align: center;
         width: 80%;
         max-width: 600px;
-        background-color: rgb(255, 255, 255);
+        background-color: rgba(255, 255, 255, 0.8); /* Set the rectangle to semi-transparent */
         padding: 30px;
         border-radius: 20px;
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);

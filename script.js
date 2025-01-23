@@ -15,7 +15,22 @@ const beepSound = new Audio('beep-01.mp3');
         countdownInterval = setInterval(updateCountdown, 1000);
     }
 
+    function setPreset(initial, next, add, button) {
+    document.getElementById('initialTime').value = initial;
+    document.getElementById('nextTimeValue').value = next;
+    document.getElementById('addTimeValue').value = add;
     
+    // Remove highlight from all buttons
+    document.querySelectorAll('.preset-button').forEach(btn => {
+        btn.classList.remove('active-preset');
+    });
+
+    // Add highlight to the clicked button
+    button.classList.add('active-preset');
+}
+
+
+
 
 
 
