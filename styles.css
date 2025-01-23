@@ -11,6 +11,19 @@
         position: relative; /* Ajoutez cette ligne pour permettre l'alignement absolu des éléments enfants */
     }
 
+.small-title {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    font-size: 14px; 
+    color: hsl(0, 0%, 100%);
+    margin: 0;
+    padding: 5px;
+    background-color: #4caf50;
+    border-radius: 4px;
+    z-index: 1000;
+}
+
     .container {
         text-align: center;
         width: 80%;
