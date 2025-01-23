@@ -117,7 +117,7 @@ function updateCountdown() {
         document.getElementById('countdown').style.color = 'red';
         progressBar.style.backgroundColor = 'red';
     } else {
-        document.getElementById('countdown').style.color = '#4caf50';
+        document.getElementById('countdown').style.color = 'black';
         progressBar.style.backgroundColor = '#4caf50';
     }
 

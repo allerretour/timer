@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shotclock de billard</title>
+    <title>Chronomètre de billard</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <link rel="stylesheet" href="styles.css">
 
@@ -20,8 +20,8 @@
 </div>
 
 <div class="extension-buttons-group">
-    <button id="addButton" class="extension" onclick="addTime('addButton')"><i class="fas fa-hand-pointer"></i></button>
-    <button id="addButton2" class="extension" onclick="addTime('addButton2')"><i class="fas fa-hand-peace"></i></button>
+    <button id="addButton" class="extension" onclick="addTime('addButton')"><i class="fa-regular fa-hand-pointer"></i></button>
+    <button id="addButton2" class="extension" onclick="addTime('addButton2')"><i class="fa-regular fa-hand-peace"></i></button>
 </div>
 
 <div class="bottom-buttons">
@@ -39,13 +39,13 @@
     <div class="modal-content" onclick="event.stopPropagation()">
         <button class="close-button" onclick="closeSettings()">&times;</button>
         <h3 style="text-align: center;">Paramètres du chronomètre</h3>
-        <label for="initialTime"><i class="fas fa-refresh"  style="color: red;"></i> Temps après la casse :</label>
+        <label for="initialTime"><i class="fas fa-refresh fa-lg"  style="color: red;"></i> Temps après la casse :</label>
         <input type="number" id="initialTime" value="60" min="1">
         
-        <label for="nextTimeValue"><i class="fas fa-long-arrow-right"  style="color: orange;"></i> Temps par tour :</label>
+        <label for="nextTimeValue"><i class="fas fa-long-arrow-right fa-lg"  style="color: orange;"></i> Temps par tour :</label>
         <input type="number" id="nextTimeValue" value="30" min="1">
 
-	<label for="addTimeValue"><i class="fas fa-hand-pointer" style="color: green;"></i> Temps des extensions :</label>
+	<label for="addTimeValue"><i class="fa-regular fa-hand-pointer fa-lg" style="color: green;"></i> Temps des extensions :</label>
         <input type="number" id="addTimeValue" value="30" min="1">
 
         <button onclick="saveSettings()"><i class="fas fa-save"></i></button>
@@ -61,20 +61,18 @@
     <div class="modal-content" onclick="event.stopPropagation()">
         <button class="close-button" onclick="closeInstructions()">&times;</button>
         <h3 style="text-align: center;">Chronomètre de billard</h3>
-	<p>&nbsp;&nbsp;<i class="fas fa-long-arrow-right"  style="color: orange;"></i>&nbsp;&nbsp;Coup suivant</p>        
-	<p>&nbsp;&nbsp;<i class="fas fa-refresh"  style="color: red;"></i>&nbsp;&nbsp;Nouvelle partie</p>
-	<p>&nbsp;&nbsp;<i class="fas fa-pause" style="color: green;"></i>&nbsp;&nbsp;&nbsp;Mettre en pause</p>
-	<p>&nbsp;&nbsp;<i class="fas fa-hand-pointer" style="color: green;"></i>&nbsp;&nbsp;Extension pour joueur 1</p>
-	<p>&nbsp;&nbsp;<i class="fas fa-hand-peace"  style="color: green;"></i>&nbsp;&nbsp;Extension pour joueur 2</p>
-	<p>&nbsp;&nbsp;<i class="fas fa-cog"></i>&nbsp;&nbsp;Réglages des temps</p>
-	<p>&nbsp;&nbsp;<i class="fas fa-info"></i>&nbsp;&nbsp;&nbsp;&nbsp;Lexique des icônes</p>
+	<p>&nbsp;&nbsp;<i class="fas fa-long-arrow-right fa-lg"  style="color: orange;"></i>&nbsp;&nbsp;Coup suivant</p>        
+	<p>&nbsp;&nbsp;<i class="fas fa-refresh fa-lg"  style="color: red;"></i>&nbsp;&nbsp;Nouvelle partie</p>
+	<p>&nbsp;&nbsp;<i class="fas fa-pause fa-lg" style="color: green;"></i>&nbsp;&nbsp;&nbsp;Mettre en pause</p>
+	<p>&nbsp;&nbsp;<i class="fa-regular fa-hand-pointer fa-lg" style="color: green;"></i>&nbsp;&nbsp;Extension pour joueur 1</p>
+	<p>&nbsp;&nbsp;<i class="fa-regular fa-hand-peace fa-lg"  style="color: green;"></i>&nbsp;&nbsp;Extension pour joueur 2</p>
+	<p>&nbsp;&nbsp;<i class="fas fa-cog fa-lg"></i>&nbsp;&nbsp;Réglages des temps</p>
+	<p>&nbsp;&nbsp; <i class="fas fa-info fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;Lexique des icônes</p>
 	<p style="text-align: center;">____________________________ </p>
-	<p style="text-align: center;">Dave Dupuis - allerretour.ca</p>
+	<h3 style="text-align: center;">Dave Dupuis - allerretour.ca</h3>
         <!-- Add more content as needed -->
     </div>
 </div>
-
-
 
 <script src="script.js" defer></script>
 
