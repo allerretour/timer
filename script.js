@@ -19,6 +19,7 @@ const beepSound = new Audio('beep-01.mp3');
     document.getElementById('initialTime').value = initial;
     document.getElementById('nextTimeValue').value = next;
     document.getElementById('addTimeValue').value = add;
+
     
     // Remove highlight from all buttons
     document.querySelectorAll('.preset-button').forEach(btn => {
@@ -27,6 +28,12 @@ const beepSound = new Audio('beep-01.mp3');
 
     // Add highlight to the clicked button
     button.classList.add('active-preset');
+
+initialTime = parseInt(document.getElementById('initialTime').value);
+        addTimeValue = parseInt(document.getElementById('addTimeValue').value);
+        nextTimeValue = parseInt(document.getElementById('nextTimeValue').value);
+        resetTimer();
+    
 }
 
 
@@ -202,6 +209,17 @@ window.onload = function() {
     let pauseButton = document.getElementById('pauseButton');
     pauseButton.innerHTML = '<i class="fas fa-play"></i>';
     pauseButton.classList.add('highlight'); // Appliquer la couleur orange et l'animation de clignotement
+
+
+// Select the first preset button
+        const firstPresetButton = document.querySelector('.preset-button');
+        
+        // Call the function with the corresponding preset values
+        if (firstPresetButton) {
+            setPreset(60, 30, 30, firstPresetButton);
+        }
+    
+
 };
 
 
