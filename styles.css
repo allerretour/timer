@@ -62,7 +62,7 @@
     border-radius: 12px;
     transition: background-color 0.3s;
     width: 48%;
-    background-color: #4caf50;
+    background-color: rgb(60, 0, 255);
     color: white;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
 }
@@ -107,7 +107,7 @@
             border-radius: 12px;
             transition: background-color 0.3s;
             width: 48%;
-            background-color: #4caf50;
+            background-color: blue);
             color: white;
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
         }
