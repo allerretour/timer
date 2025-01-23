@@ -37,19 +37,22 @@
 .preset-container {
     display: flex;
     justify-content: center;
+
     margin-top: 10px; /* Optional: Add some spacing */
 }
 
 
 .preset-button {
-    background-color: #4caf50;
+    
+     background-color: #4caf50;
     color: white;
     border: none;
     border-radius: 5px;
-    padding: 5px 10px;
+    padding: 5px 8px; /* Reduced padding for a smaller width */
     font-size: 0.8em;
     cursor: pointer;
     transition: all 0.3s ease;
+    width: 30px;
 }
 
 .preset-button:hover {
@@ -291,7 +294,7 @@
             margin: 10px -10px;
             border: 1px solid #ccc;
             border-radius: 8px;
-            font-size: 16px;
+            font-size: 18px;
             transition: border-color 0.3s;
         }
 
@@ -321,7 +324,7 @@
             background: none;
             border: none;
             position: absolute;
-	        width: 20%;
+	        width: 15%;
             top: 10px;
             right: 10px;
             cursor: pointer;
