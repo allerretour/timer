@@ -7,7 +7,7 @@
 
 
 const beepSound = new Audio('beep-01.mp3');
-    const buzzSound = new Audio('beep-04.mp3');
+const buzzSound = new Audio('beep-04.mp3');
 
 	
     function startTimer() {
@@ -79,6 +79,8 @@ initialTime = parseInt(document.getElementById('initialTime').value);
     function resetToNextValue() {
     countdownTime = nextTimeValue;
     updateCountdown();
+    isPaused = false;
+    pauseTimer();
     if (!isPaused) {  // Si le timer n'est pas en pause, démarrer le timer
         startTimer();
     }
@@ -89,10 +91,8 @@ initialTime = parseInt(document.getElementById('initialTime').value);
 function resetTimer() {
     countdownTime = initialTime;  // Réinitialiser le timer à la valeur initiale
     updateCountdown();            // Mettre à jour l'affichage du timer
-    clearInterval(countdownInterval);  // Stopper le timer
-    isPaused = true;              // Mettre le timer en pause
-    document.getElementById('pauseButton').innerHTML = '<i class="fas fa-play"></i>'; // Mettre le texte en "Reprendre"
-    document.getElementById('pauseButton').classList.add('highlight'); // Ajouter l'effet de clignotement
+    isPaused = false;
+    pauseTimer()
     document.getElementById('addButton').disabled = false;  // Réactiver le bouton "X Joueur 1"
     document.getElementById('addButton2').disabled = false; // Réactiver le bouton "X Joueur 2"
 }
@@ -103,10 +103,12 @@ function pauseTimer() {
     if (isPaused) {
         clearInterval(countdownInterval);  // Arrêter le timer
         pauseButton.innerHTML = '<i class="fas fa-play"></i>';  // Changer le texte en "Reprendre"
+        countdown.classList.add('highlight');
         pauseButton.classList.add('highlight');  // Ajouter l'effet de clignotement lorsque le bouton est en mode "Reprendre"
     } else {
         startTimer();  // Démarrer le timer
         pauseButton.innerHTML = '<i class="fas fa-pause"></i>';  // Changer le texte en "Pause"
+        countdown.classList.remove('highlight');
         pauseButton.classList.remove('highlight');  // Retirer l'effet de clignotement lorsque le bouton est en mode "Pause"
 beepSound.play()
 beepSound.pause()
@@ -163,6 +165,7 @@ function updateCountdown() {
             modal.classList.add('show');
             modalContent.classList.add('show');
         }, 10);
+        
     }
 
     function closeSettings(event) {
@@ -204,13 +207,206 @@ function closeInstructions(event) {
 }
 
 
+function toggleVisibility() {
+    const bottomButtons = document.querySelector('.bottom-buttons');
+    const toggleButton = document.getElementById('toggleButtons');
+
+    if (bottomButtons.style.display === "none") {
+        bottomButtons.style.display = "flex"; // Show bottom buttons
+        toggleButton.innerHTML = '<i class="fas fa-eye-slash"></i>'; // Change icon to eye-slash
+    } else {
+        bottomButtons.style.display = "none"; // Hide bottom buttons
+        toggleButton.innerHTML = '<i class="fas fa-eye"></i>'; // Change icon to eye
+    }
+}
+
+const fullscreenButton = document.getElementById('fullscreen-btn');
+
+    // Function to check if the document is in fullscreen
+    function isFullscreen() {
+      return document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement;
+    }
+
+    // Function to toggle fullscreen
+    function toggleFullscreen() {
+      if (isFullscreen()) {
+        // Exit fullscreen
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if (document.mozCancelFullScreen) { // Firefox
+          document.mozCancelFullScreen();
+        } else if (document.webkitExitFullscreen) { // Chrome, Safari
+          document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) { // IE/Edge
+          document.msExitFullscreen();
+        }
+      } else {
+        // Enter fullscreen
+        if (document.documentElement.requestFullscreen) {
+          document.documentElement.requestFullscreen();
+        } else if (document.documentElement.mozRequestFullScreen) { // Firefox
+          document.documentElement.mozRequestFullScreen();
+        } else if (document.documentElement.webkitRequestFullscreen) { // Chrome, Safari, Opera
+          document.documentElement.webkitRequestFullscreen();
+        } else if (document.documentElement.msRequestFullscreen) { // IE/Edge
+          document.documentElement.msRequestFullscreen();
+        }
+      }
+    }
+
+    
+
+
+
+
+
+
+
+document.addEventListener("keydown", function (event) {
+    if (["1", "2", "b", "r", "p","q","z"].includes(event.key)) {
+        event.preventDefault(); // Stops default browser actions
+    }
+
+    switch (event.key) {
+        case "1":
+            addTime('addButton');
+            break;
+        case "2":
+            addTime('addButton2');
+            break;
+        case "b":
+            resetToNextValue();
+            break;
+        case "r":
+            resetTimer();
+            break;
+        case "p":
+            pauseTimer();
+            break;
+        case "q":
+            toggleFullscreen();
+            break;    
+        case "z":
+            toggleVisibility();
+            break;
+    }
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    let p1Score = 0; // Initial score for Player 1
+    let p2Score = 0; // Initial score for Player 2
+
+    const p1scr = document.getElementById("p1scr");
+    const p1plus = document.getElementById("p1plus");
+    const p1moins = document.getElementById("p1moins");
+
+    const p2scr = document.getElementById("p2scr");
+    const p2plus = document.getElementById("p2plus");
+    const p2moins = document.getElementById("p2moins");
+
+    // Initialize score display
+    p1scr.innerHTML = p1Score;
+    p2scr.innerHTML = p2Score;
+
+    // Player 1 controls
+    p1plus.addEventListener("click", function () {
+        p1Score++;
+        p1scr.innerHTML = p1Score;
+    });
+
+    p1moins.addEventListener("click", function () {
+        if (p1Score > 0) {
+            p1Score--;
+        }
+        p1scr.innerHTML = p1Score;
+    });
+
+    // Player 2 controls
+    p2plus.addEventListener("click", function () {
+        p2Score++;
+        p2scr.innerHTML = p2Score;
+    });
+
+    p2moins.addEventListener("click", function () {
+        if (p2Score > 0) {
+            p2Score--;
+        }
+        p2scr.innerHTML = p2Score;
+    });
+});
+
+
+
+function adjustUI() {
+    const container = document.querySelector('.container');
+    const countdown = document.querySelector('.countdown');
+    const extensionGroup = document.querySelector('.extension-buttons-group');
+    const extensionButtons = document.querySelectorAll('.extension-buttons-group button');
+    const bottomButtons = document.querySelector('.bottom-buttons');
+    const textVariableSection = document.querySelector('.text-variable-section');
+
+    // Check if bottom buttons are visible
+    const isVisible = bottomButtons.getBoundingClientRect().height > 0;
+
+    // Adjust container width
+    container.style.maxWidth = isVisible ? "800px" : "1000px";
+
+    // Adjust countdown font size
+    countdown.style.fontSize = isVisible ? "clamp(100px, 20vw, 220px)" : "clamp(120px, 25vw, 320px)";
+
+    // Keep the extension buttons group centered and sized correctly
+    extensionGroup.style.maxWidth = isVisible ? "800px" : "1000px";
+    extensionGroup.style.position = "absolute";
+    extensionGroup.style.bottom = isVisible ? "170px" : "100px"; 
+    extensionGroup.style.left = "50%";
+    extensionGroup.style.transform = "translateX(-50%)";
+
+    // Apply the same adjustments to .text-variable-section
+    textVariableSection.style.maxWidth = isVisible ? "800px" : "1000px";
+    textVariableSection.style.position = "absolute";
+    textVariableSection.style.bottom = isVisible ? "320px" : "250px"; // Adjusted for spacing
+    textVariableSection.style.left = "50%";
+    textVariableSection.style.transform = "translateX(-50%)";
+    textVariableSection.style.textAlign = "center"; // Center text if needed
+    textVariableSection.style.fontSize = isVisible ? "32px" : "40px"; // Adjust text size
+
+    // Adjust extension buttons size
+    extensionButtons.forEach(button => {
+        button.style.fontSize = isVisible ? "40px" : "70px"; 
+        button.style.padding = isVisible ? "10px 15px" : "10px 15px";
+        button.style.width = isVisible ? "30%" : "50%";
+        button.style.height = isVisible ? "100px" : "150px";
+        button.style.borderRadius = isVisible ? "10px" : "15px";
+    });
+}
+
+
+
+
+
+
+// Observe changes in bottom-buttons visibility
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        adjustUI();
+    });
+}, { threshold: 0 });
+
+const bottomButtons = document.querySelector('.bottom-buttons');
+observer.observe(bottomButtons);
+
+// Run on page load and resize
+window.addEventListener('load', adjustUI);
+window.addEventListener('resize', adjustUI);
+
+
+
     
 window.onload = function() {
     updateCountdown(); // Juste mettre à jour l'affichage
-    isPaused = true; // Le timer reste en pause
-    let pauseButton = document.getElementById('pauseButton');
-    pauseButton.innerHTML = '<i class="fas fa-play"></i>';
-    pauseButton.classList.add('highlight'); // Appliquer la couleur orange et l'animation de clignotement
+    isPaused = true;
+    pauseTimer();
 
 
 // Select the first preset button

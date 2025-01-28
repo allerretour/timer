@@ -10,9 +10,7 @@
 
 </head>
 
-<body>
-
-<h1 class="small-title">Chronomètre de billard</h1>
+<h1 class="small-title">Chronoshot</h1>
 
 <div class="container">
     <div class="countdown" id="countdown"></div>
@@ -20,23 +18,54 @@
         <div class="progress" id="progress"></div>
     </div>
 
-
 </div>
+
+<!-- New Section -->
+<div class="text-variable-section">
+    <span id="textVariable1">Joueur 1</span>
+    <span id="textVariable2">Joueur 2</span>
+</div>
+
+
+
 
 <div class="extension-buttons-group">
-    <button id="addButton" class="extension" onclick="addTime('addButton')"><i class="fa-regular fa-hand-pointer"></i></button>
-    <button id="addButton2" class="extension" onclick="addTime('addButton2')"><i class="fa-regular fa-hand-peace"></i></button>
+    
+    <button id="addButton" class="extension" onclick="addTime('addButton')"><i class="fa-regular fa-clock"></i></button>  
+    <button id="p1scr" ><i class="fa-regular fa-9"></i></button>
+
+<h1>Chronoshot</h1>
+
+    <button id="p2scr" ><i class="fa-regular fa-9"></i></button>
+    <button id="addButton2" class="extension" onclick="addTime('addButton2')"><i class="fa-regular fa-clock"></i></button>
+    
 </div>
 
+
+
+
+
 <div class="bottom-buttons">
-    <button id="nextButton" onclick="resetToNextValue()"><i class="fas fa-long-arrow-right"></i></button>    
-    <button onclick="resetTimer()"><i class="fas fa-refresh"></i></button>
+    <button id="p1plus" onclick=""><i class="fa-solid fa-plus"></i></button>
+    <button id="p1moins" onclick=""><i class="fa-solid fa-minus"></i></button>
+    <button id="nextButton" onclick="resetToNextValue()"><i class="fa-solid fa-stop"></i></button>    
     <button id="pauseButton" onclick="pauseTimer()"><i class="fas fa-pause"></i></button>
+    <button onclick="resetTimer()"><i class="fas fa-refresh"></i></button>
+    <button id="p2plus" onclick=""><i class="fa-solid fa-plus"></i></button>
+    <button id="p2moins" onclick=""><i class="fa-solid fa-minus"></i></button>
 </div>
 
 <button class="settings-button" onclick="openSettings()">
     <i class="fas fa-cog"></i>
 </button>
+
+<button class="toggleButtons" onclick="toggleVisibility()">
+    <i class="fas fa-eye-slash"></i>
+</button>
+
+<body>
+    
+    
 
 <!-- Fenêtre de paramètres -->
 <div id="settingsModal" class="modal" onclick="closeSettings(event)">
@@ -46,18 +75,18 @@
         <label for="initialTime"><i class="fas fa-refresh fa-lg"  style="color: red;"></i> Temps après la casse :</label>
         <input type="number" id="initialTime" value="60" min="1">
         
-        <label for="nextTimeValue"><i class="fas fa-long-arrow-right fa-lg"  style="color: orange;"></i> Temps par tour :</label>
+        <label for="nextTimeValue"><i class="fa-solid fa-stop fa-lg"  style="color: orange;"></i> Temps par coup :</label>
         <input type="number" id="nextTimeValue" value="30" min="1">
 
-	<label for="addTimeValue"><i class="fa-regular fa-hand-pointer fa-lg" style="color: blue;"></i><i class="fa-regular fa-hand-peace fa-lg" style="color: blue;"></i> Temps des extensions :</label>
+	<label for="addTimeValue"><i class="fa-regular fa-clock fa-lg" style="color: blue;"></i> / <i class="fa-regular fa-clock fa-lg" style="color: blue;"></i> Temps des extensions :</label>
         <input type="number" id="addTimeValue" value="30" min="1">
 
 
 <!-- Inside the modal section -->
 <div class="presets-container">
-    <button class="preset-button" onclick="setPreset(60, 30, 30, this)">P1</button>
-    <button class="preset-button" onclick="setPreset(70, 35, 35, this)">P2</button>
-    <button class="preset-button" onclick="setPreset(80, 40, 40, this)">P3</button>
+    <button class="preset-button" onclick="setPreset(60, 30, 30, this)">30s</button>
+    <button class="preset-button" onclick="setPreset(70, 35, 35, this)">35s</button>
+    <button class="preset-button" onclick="setPreset(80, 40, 40, this)">40s</button>
 </div>
 
 
@@ -66,6 +95,10 @@
         <button onclick="saveSettings()"><i class="fas fa-save"></i></button>
     </div>
 </div>
+
+<button class="fullscreen-btn" onclick="toggleFullscreen()">
+    <i class="fa-solid fa-maximize"></i>
+</button>
 
 
 <button class="info-button" onclick="openInstructions()">
@@ -76,12 +109,14 @@
     <div class="modal-content" onclick="event.stopPropagation()">
         <button class="close-button" onclick="closeInstructions()">&times;</button>
         <h3 style="text-align: center;">Chronomètre de billard</h3>
-	<p>  <i class="fas fa-long-arrow-right fa-lg" style="color: orange;"></i>&nbsp;&nbsp;Coup suivant</p>        
-	<p>  <i class="fas fa-refresh fa-lg" style="color: red;"></i>&nbsp;&nbsp;Nouvelle partie</p>
-	<p>  <i class="fas fa-pause fa-lg" style="color: green;"></i>&nbsp;&nbsp;&nbsp;Mettre en pause</p>
-	<p>  <i class="fa-regular fa-hand-pointer fa-lg" style="color: rgb(0, 0, 255);"></i>&nbsp;&nbsp;Extension pour joueur 1</p>
-	<p>  <i class="fa-regular fa-hand-peace fa-lg" style="color: blue;"></i>&nbsp;&nbsp;Extension pour joueur 2</p>
-	<p>  <i class="fas fa-cog fa-lg"></i>&nbsp;&nbsp;Réglages des temps</p>
+	<p>  <i class="fa-solid fa-stop fa-lg" style="color: orange;"></i>&nbsp;&nbsp;Coup terminé <strong style="color:orange">(b)</strong></p>        
+	<p>  <i class="fas fa-pause fa-lg" style="color: green;"></i> / <i class="fas fa-play fa-lg" style="color: grey;"></i>&nbsp;&nbsp;&nbsp;Mettre en pause / débuter <strong style="color:green">(p)</strong></p>
+    <p>  <i class="fas fa-refresh fa-lg" style="color: red;"></i>&nbsp;&nbsp;Nouvelle partie <strong style="color:red">(r)</strong></p>
+	<p>  <i class="fa-regular fa-clock fa-lg" style="color: rgb(0, 0, 255);"></i>&nbsp;&nbsp;Extension pour joueur 1 <strong style="color:blue">(1)</strong></p>
+	<p>  <i class="fa-regular fa-clock fa-lg" style="color: blue;"></i>&nbsp;&nbsp;Extension pour joueur 2 <strong style="color:blue">(2)</strong></p>
+	<p>  <i class="fas fa-eye-slash fa-lg"></i>&nbsp;&nbsp;Cacher les contrôles <strong style="color:blue">(z)</strong></p>
+    <p>  <i class="fa-solid fa-maximize fa-lg"></i>&nbsp;&nbsp;Plein écran <strong style="color:grey">(q)</strong></p>
+    <p>  <i class="fas fa-cog fa-lg"></i>&nbsp;&nbsp;Réglages des temps</p>
 	<p>&nbsp;&nbsp;<i class="fas fa-info fa-lg"></i>&nbsp;&nbsp;&nbsp;Lexique des icônes</p>
 	<p style="text-align: center;">____________________________ </p>
 	<h3 style="text-align: center;">Dave Dupuis - allerretour.ca</h3>
