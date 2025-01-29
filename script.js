@@ -71,11 +71,6 @@ initialTime = parseInt(document.getElementById('initialTime').value);
     }
 }
 
-    
-
-
-
-
     function resetToNextValue() {
     countdownTime = nextTimeValue;
     updateCountdown();
@@ -255,42 +250,50 @@ const fullscreenButton = document.getElementById('fullscreen-btn');
     }
 
     
-
-
-
-
-
-
-
-document.addEventListener("keydown", function (event) {
-    if (["1", "2", "b", "r", "p","q","z"].includes(event.key)) {
-        event.preventDefault(); // Stops default browser actions
+    function updateTextVariable(elementId, value) {
+        document.getElementById(elementId).textContent = value;
     }
 
-    switch (event.key) {
-        case "1":
-            addTime('addButton');
-            break;
-        case "2":
-            addTime('addButton2');
-            break;
-        case "b":
-            resetToNextValue();
-            break;
-        case "r":
-            resetTimer();
-            break;
-        case "p":
-            pauseTimer();
-            break;
-        case "q":
-            toggleFullscreen();
-            break;    
-        case "z":
-            toggleVisibility();
-            break;
-    }
-});
+
+
+    document.addEventListener("keydown", function (event) {
+        // Check if the modal is open (assuming it's shown via a class like "active")
+        const isModalOpen = document.getElementById('settingsModal').classList.contains('active');
+    
+        // If modal is open and it's not focused on an input field, allow the key actions
+        if (isModalOpen && !document.activeElement.matches('input, textarea')) {
+            if (["1", "2", "b", "r", "p", "q", "z"].includes(event.key)) {
+                event.preventDefault(); // Stops default browser actions
+            }
+    
+            switch (event.key) {
+                case "1":
+                    addTime('addButton');
+                    break;
+                case "2":
+                    addTime('addButton2');
+                    break;
+                case "b":
+                    resetToNextValue();
+                    break;
+                case "r":
+                    resetTimer();
+                    break;
+                case "p":
+                    pauseTimer();
+                    break;
+                case "q":
+                    toggleFullscreen();
+                    break;
+                case "z":
+                    toggleVisibility();
+                    break;
+            }
+        }
+    });
+    
+
+
 
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -369,7 +372,7 @@ function adjustUI() {
     textVariableSection.style.left = "50%";
     textVariableSection.style.transform = "translateX(-50%)";
     textVariableSection.style.textAlign = "center"; // Center text if needed
-    textVariableSection.style.fontSize = isVisible ? "32px" : "40px"; // Adjust text size
+    textVariableSection.style.fontSize = isVisible ? "36px" : "46px"; // Adjust text size
 
     // Adjust extension buttons size
     extensionButtons.forEach(button => {
@@ -407,7 +410,7 @@ window.onload = function() {
     updateCountdown(); // Juste mettre à jour l'affichage
     isPaused = true;
     pauseTimer();
-
+    openSettings()
 
 // Select the first preset button
         const firstPresetButton = document.querySelector('.preset-button');

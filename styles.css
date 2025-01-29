@@ -35,6 +35,14 @@
     z-index: 1000;
 }
 
+#middle-image {
+    
+    width: auto; /* Adjust this value as needed */
+    height: auto; /* Maintain aspect ratio */
+    padding: 10px 15px;
+    z-index: 1000;
+}
+
 .preset-container {
     display: flex;
     justify-content: center;
@@ -121,7 +129,7 @@
     width: 90%;
     height: 150px;
     max-width: 800px;
-    gap: 10px;
+    gap: 5px;
     position: fixed;
     bottom: 100px; 
     left: 50%;
