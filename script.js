@@ -243,6 +243,7 @@ const fullscreenButton = document.getElementById('fullscreen-btn');
           document.documentElement.mozRequestFullScreen();
         } else if (document.documentElement.webkitRequestFullscreen) { // Chrome, Safari, Opera
           document.documentElement.webkitRequestFullscreen();
+          document.documentElement.focus();
         } else if (document.documentElement.msRequestFullscreen) { // IE/Edge
           document.documentElement.msRequestFullscreen();
         }
