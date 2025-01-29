@@ -257,15 +257,17 @@ const fullscreenButton = document.getElementById('fullscreen-btn');
 
 
     document.addEventListener("keydown", function (event) {
-        // Check if the modal is open (assuming it's shown via a class like "active")
-        const isModalOpen = document.getElementById('settingsModal').classList.contains('active');
-    
-        // If modal is open and it's not focused on an input field, allow the key actions
-        if (isModalOpen && !document.activeElement.matches('input, textarea')) {
-            if (["1", "2", "b", "r", "p", "q", "z"].includes(event.key)) {
-                event.preventDefault(); // Stops default browser actions
+        // Check if the key is one of the specified keys
+        if (["1", "2", "b", "r", "p", "q", "z"].includes(event.key)) {
+            // Prevent default action if inside an input or textarea
+            if (document.activeElement.matches('input, textarea')) {
+                return;  // Allow input in fields
             }
     
+            // Prevent default browser behavior for these keys
+            event.preventDefault();
+    
+            // Perform actions based on keypress
             switch (event.key) {
                 case "1":
                     addTime('addButton');
@@ -291,6 +293,8 @@ const fullscreenButton = document.getElementById('fullscreen-btn');
             }
         }
     });
+    
+    
     
 
 
