@@ -89,8 +89,8 @@ height: 50px;
         padding: 20px;
         border-radius: 20px;
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        position: fixed;
-        top: 40px; /* Laisser un espace du haut de la page */
+        position: absolute;
+        top: 400px; /* Move the container down to give space */
         left: 50%; /* Centrer horizontalement */
         transform: translateX(-50%); /* Centrer parfaitement */
     }
@@ -112,14 +112,14 @@ height: 50px;
     .text-variable-section {
         display: flex;
         justify-content: space-between;
-        background-color: rgb(255, 255, 255);
+        
         border-radius: 12px;
         max-width: 800px;
         width: 90%;
-        
-        position: fixed;
-        bottom: 320px;
-        padding: 10px 20px; /* Adjust spacing */
+        height: 50px;
+        position: absolute; /* Fix them to the top */
+        top: 40px; /* Distance from the top of the page */
+        padding: 5px 20px; /* Adjust spacing */
         font-size: 30px;
         font-weight: bold;
     }
@@ -131,11 +131,11 @@ height: 50px;
     justify-content: space-between;
     margin-top: 30px;
     width: 90%;
-    height: 150px;
+    height: 100px;
     max-width: 800px;
     gap: 5px;
-    position: fixed;
-    bottom: 100px; 
+    position: absolute; /* Fix them to the top */
+    top: 100px; /* Distance from the top (below .text-variable-section) */
     left: 50%;
     transform: translateX(-50%); /* Center horizontally */
 }
@@ -211,8 +211,8 @@ height: 50px;
     width: 90%;
     max-width: 800px;
     gap: 5px;
-    position: fixed;
-    bottom: 30px; /* Positionne les boutons à 100px du bas */
+    position: absolute;
+    top: 650px; /* Move the bottom buttons further down */
     left: 50%;
     transform: translateX(-50%); /* Centre horizontalement les boutons */
 }
@@ -299,11 +299,11 @@ height: 50px;
 }
 #toggleButtons {
     top: 10px;
-    right: 90px;
+    right: 20px;
 }
 
 #fullscreen-btn {
-    top: 10px;
+    top: 80px;
     right: 20px;
 }
 #settings-button {

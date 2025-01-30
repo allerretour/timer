@@ -204,18 +204,29 @@ function closeInstructions(event) {
 function toggleVisibility() {
     const bottomButtons = document.querySelector('.bottom-buttons');
     const toggleButton = document.getElementById('toggleButtons');
-    
+    const boutonsRonds = document.querySelectorAll('#p1plus, #p1moins, #p2plus, #p2moins, #fullscreen-btn, #settings-button, #info-button');
 
-    if (bottomButtons.style.display === "none") {
-        bottomButtons.style.display = "flex"; // Show bottom buttons
-        
-        toggleButton.innerHTML = '<i class="fas fa-eye-slash"></i>'; // Change icon to eye-slash
+    // Check if the buttons are currently hidden
+    const isHidden = bottomButtons.style.display === "none" || getComputedStyle(bottomButtons).display === "none";
+
+    if (isHidden) {
+        bottomButtons.style.display = "flex";  // Show the bottom buttons
+        boutonsRonds.forEach(button => {
+            button.style.opacity = "0.2";  // Make them visible
+            button.disabled = false;  // Enable them
+        });
+        toggleButton.innerHTML = '<i class="fas fa-eye-slash"></i>';
     } else {
-        bottomButtons.style.display = "none"; // Hide bottom buttons
-        
-        toggleButton.innerHTML = '<i class="fas fa-eye"></i>'; // Change icon to eye
+        bottomButtons.style.display = "none";  // Hide the bottom buttons
+        boutonsRonds.forEach(button => {
+            button.style.opacity = "0";  // Hide them
+            button.disabled = true;  // Disable them
+        });
+        toggleButton.innerHTML = '<i class="fas fa-eye"></i>';
     }
 }
+
+
 
 
 
@@ -394,7 +405,11 @@ function adjustUI() {
 }
 
 
-
+function adjustPositions() {
+    const container = document.querySelector('.container');
+    const bottomButtons = document.querySelector('.bottom-buttons');
+    bottomButtons.style.top = `${container.offsetHeight + container.offsetTop + 20}px`;
+}
 
 
 
@@ -419,6 +434,7 @@ window.onload = function() {
     updateCountdown(); // Juste mettre à jour l'affichage
     isPaused = true;
     pauseTimer();
+    adjustPositions();
     openSettings()
 
 // Select the first preset button
@@ -431,5 +447,4 @@ window.onload = function() {
     
 
 };
-
-
+window.onresize = adjustPositions;
