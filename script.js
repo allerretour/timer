@@ -201,19 +201,23 @@ function closeInstructions(event) {
     }, 300);
 }
 
-
 function toggleVisibility() {
     const bottomButtons = document.querySelector('.bottom-buttons');
     const toggleButton = document.getElementById('toggleButtons');
+    
 
     if (bottomButtons.style.display === "none") {
         bottomButtons.style.display = "flex"; // Show bottom buttons
+        
         toggleButton.innerHTML = '<i class="fas fa-eye-slash"></i>'; // Change icon to eye-slash
     } else {
         bottomButtons.style.display = "none"; // Hide bottom buttons
+        
         toggleButton.innerHTML = '<i class="fas fa-eye"></i>'; // Change icon to eye
     }
 }
+
+
 
 const fullscreenButton = document.getElementById('fullscreen-btn');
 
@@ -377,11 +381,11 @@ function adjustUI() {
     textVariableSection.style.left = "50%";
     textVariableSection.style.transform = "translateX(-50%)";
     textVariableSection.style.textAlign = "center"; // Center text if needed
-    textVariableSection.style.fontSize = isVisible ? "36px" : "46px"; // Adjust text size
+    textVariableSection.style.fontSize = isVisible ? "38px" : "50px"; // Adjust text size
 
     // Adjust extension buttons size
     extensionButtons.forEach(button => {
-        button.style.fontSize = isVisible ? "40px" : "70px"; 
+        button.style.fontSize = isVisible ? "60px" : "90px"; 
         button.style.padding = isVisible ? "10px 15px" : "10px 15px";
         button.style.width = isVisible ? "30%" : "50%";
         button.style.height = isVisible ? "100px" : "150px";
