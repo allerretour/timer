@@ -12,7 +12,7 @@
     }
 
 .small-title {
-    position: absolute;
+    position: fixed;
     top: 5px;
     left: 50%; /* Centrer horizontalement */
     transform: translateX(-50%); /* Centrer parfaitement */
@@ -37,8 +37,8 @@
 
 #middle-image {
     
-    width: auto; /* Adjust this value as needed */
-    height: auto; /* Maintain aspect ratio */
+    width: 100px; /* Adjust this value as needed */
+    height: 100px; /* Maintain aspect ratio */
     padding: 10px 15px;
     z-index: 1000;
 }
@@ -46,26 +46,27 @@
 .preset-container {
     display: flex;
     justify-content: center;
-
+height: 50px;
     margin-top: 10px; /* Optional: Add some spacing */
 }
 
 
 .preset-button {
     
-    background-color: rgb(76, 174, 79);
+    background-color: rgb(118, 118, 118);
     color: white;
     border: none;
     border-radius: 5px;
     padding: 5px 8px; /* Reduced padding for a smaller width */
-    font-size: 0.8em;
+    font-size: 18px;
+    height: 50px;
     cursor: pointer;
     transition: all 0.3s ease;
     width: 40px;
 }
 
 .preset-button:hover {
-    background-color: #45a049;
+    background-color: #606060;
 }
 
 .preset-button:active {
@@ -111,8 +112,11 @@
     .text-variable-section {
         display: flex;
         justify-content: space-between;
+        background-color: rgb(255, 255, 255);
+        border-radius: 12px;
         max-width: 800px;
         width: 90%;
+        
         position: fixed;
         bottom: 320px;
         padding: 10px 20px; /* Adjust spacing */
@@ -173,11 +177,7 @@
         height: 100%;
         width: 100%;
         transition: width 2s ease;
-    }
-
-
-
-        
+    } 
 
         button {
             font-size: 50px;
@@ -360,13 +360,15 @@
         }
 
         .modal-content button {
-            margin-top: 10px;
+            margin-top: 5px;
             padding: 8px 12px;
-            background-color: #4caf50;
+            background-color: #999999;
             color: white;
             border-radius: 8px;
 	        width: 15%;
+            font-size: 20px;
             border: none;
+            height: 50px;
             transition: background-color 0.3s;
         }
 
@@ -375,7 +377,7 @@
         }
 
         .modal-content .close-button {
-            font-size: 24px;
+            font-size: 20px;
             color: #aaa;
             background: none;
             border: none;
