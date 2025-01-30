@@ -257,7 +257,7 @@
     animation: blink 1s infinite; /* Animation de clignotement */
 }
 
-#addButton, #p1plus, #p1moins, #p1scr,#p1moins {
+#addButton, #p1scr,#p1moins {
     background-color: hsl(259, 39%, 49%);
     transition: background-color 0.3s;
 }
@@ -271,15 +271,13 @@
     transition: background-color 0.3s;
 }
 
-.toggleButtons {
+#p1plus, #p1moins,#p2plus, #p2moins,.toggleButtons,.fullscreen-btn,.settings-button,.info-button {
     position: fixed;
-    opacity: 0.3;
-    top: 80px;
-    right: 20px;
+    opacity: 0.2;
     width: 60px;
     height: 60px;
     background-color: #555;
-    color: white;
+    color: rgb(255, 255, 255);
     border: none;
     border-radius: 50%;
     display: flex;
@@ -289,39 +287,44 @@
     font-size: 30px;
 }
 
+#p1plus {
+    top: 220px;
+    left: 20px;
+    
+}
+#p1moins {
+    top: 310px;
+    left: 20px;
+    
+}
+
+#p2plus {
+    top: 220px;
+    right: 20px;
+    
+}
+#p2moins {
+    top: 310px;
+    right: 20px;
+}
+
+.toggleButtons {
+    top: 10px;
+    right: 90px;
+}
+
 .fullscreen-btn {
-    position: fixed;
-    opacity: 0.3;
     top: 10px;
     right: 20px;
-    width: 60px;
-    height: 60px;
-    background-color: #555;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    font-size: 30px;
 }
 .settings-button {
-           position: fixed;
-	       opacity: 0.3;
            bottom: 10px;
            right: 20px;
-           width: 60px;
-           height: 60px;
-           background-color: #555;
-           color: white;
-           border: none;
-           border-radius: 50%;
-           display: flex;
-           justify-content: center;
-           align-items: center;
-           cursor: pointer;
-           font-size: 30px;
+        }
+
+        .info-button {
+            bottom: 10px;
+            left: 20px;
         }
 
         .modal {
@@ -410,23 +413,7 @@
             transform: scale(1);
         }
 
-.info-button {
-    position: fixed;
-    opacity: 0.3;
-    bottom: 10px;
-    left: 20px;
-    width: 60px;
-    height: 60px;
-    background-color: #555;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    font-size: 30px;
-}
+
 
 /* Reuse existing styles for modal and modal-content */
 
