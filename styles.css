@@ -89,7 +89,7 @@ height: 50px;
         border-radius: 20px;
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         position: absolute;
-        top: 260px; /* Move the container down to give space */
+        top: 240px; /* Move the container down to give space */
         left: 50%; /* Centrer horizontalement */
         transform: translateX(-50%); /* Centrer parfaitement */
     }
@@ -198,7 +198,8 @@ height: 50px;
     max-width: 800px;
     gap: 5px;
     position: absolute;
-    top: 620px; /* Move the bottom buttons further down */
+    top: 610px; /* Move the bottom buttons further down */
+    
     left: 50%;
     transform: translateX(-50%); /* Centre horizontalement les boutons */
 }

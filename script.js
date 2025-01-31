@@ -105,10 +105,10 @@ function pauseTimer() {
         pauseButton.innerHTML = '<i class="fas fa-pause"></i>';  // Changer le texte en "Pause"
         countdown.classList.remove('highlight');
         pauseButton.classList.remove('highlight');  // Retirer l'effet de clignotement lorsque le bouton est en mode "Pause"
-beepSound.play()
-beepSound.pause()
-buzzSound.play()
-buzzSound.pause()
+beepSound.play();
+beepSound.pause();
+buzzSound.play();
+buzzSound.pause();
     }
 }
 
@@ -399,7 +399,7 @@ function adjustUI() {
         button.style.fontSize = isVisible ? "60px" : "90px"; 
         button.style.padding = isVisible ? "10px 15px" : "10px 15px";
         button.style.width = isVisible ? "30%" : "50%";
-        button.style.height = isVisible ? "100px" : "150px";
+        button.style.height = isVisible ? "90px" : "130px";
         button.style.borderRadius = isVisible ? "10px" : "15px";
     });
 }
@@ -408,7 +408,7 @@ function adjustUI() {
 function adjustPositions() {
     const container = document.querySelector('.container');
     const bottomButtons = document.querySelector('.bottom-buttons');
-    bottomButtons.style.top = `${container.offsetHeight + container.offsetTop + 20}px`;
+    bottomButtons.style.top = `${container.offsetHeight + container.offsetTop + 10}px`;
 }
 
 
