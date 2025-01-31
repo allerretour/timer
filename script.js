@@ -392,7 +392,7 @@ function adjustUI() {
     textVariableSection.style.left = "50%";
     textVariableSection.style.transform = "translateX(-50%)";
     textVariableSection.style.textAlign = "center"; // Center text if needed
-    textVariableSection.style.fontSize = isVisible ? "38px" : "50px"; // Adjust text size
+    textVariableSection.style.fontSize = isVisible ? "40px" : "50px"; // Adjust text size
 
     // Adjust extension buttons size
     extensionButtons.forEach(button => {
