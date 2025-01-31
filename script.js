@@ -105,10 +105,14 @@ function pauseTimer() {
         pauseButton.innerHTML = '<i class="fas fa-pause"></i>';  // Changer le texte en "Pause"
         countdown.classList.remove('highlight');
         pauseButton.classList.remove('highlight');  // Retirer l'effet de clignotement lorsque le bouton est en mode "Pause"
+beepSound.muted = true;
+buzzSound.muted = true;
 beepSound.play();
 beepSound.pause();
 buzzSound.play();
 buzzSound.pause();
+beepSound.muted = false;
+buzzSound.muted = false;
     }
 }
 
