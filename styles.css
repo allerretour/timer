@@ -90,7 +90,7 @@ height: 50px;
         border-radius: 20px;
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         position: absolute;
-        top: 400px; /* Move the container down to give space */
+        top: 300px; /* Move the container down to give space */
         left: 50%; /* Centrer horizontalement */
         transform: translateX(-50%); /* Centrer parfaitement */
     }
@@ -118,7 +118,7 @@ height: 50px;
         width: 90%;
         height: 50px;
         position: absolute; /* Fix them to the top */
-        top: 40px; /* Distance from the top of the page */
+        top: 50px; /* Distance from the top of the page */
         padding: 5px 20px; /* Adjust spacing */
         font-size: 30px;
         font-weight: bold;
