@@ -105,14 +105,10 @@ function pauseTimer() {
         pauseButton.innerHTML = '<i class="fas fa-pause"></i>';  // Changer le texte en "Pause"
         countdown.classList.remove('highlight');
         pauseButton.classList.remove('highlight');  // Retirer l'effet de clignotement lorsque le bouton est en mode "Pause"
-beepSound.muted = true;
-buzzSound.muted = true;
 beepSound.play();
 beepSound.pause();
 buzzSound.play();
 buzzSound.pause();
-beepSound.muted = false;
-buzzSound.muted = false;
     }
 }
 
@@ -384,15 +380,9 @@ function adjustUI() {
 
     // Keep the extension buttons group centered and sized correctly
     extensionGroup.style.maxWidth = isVisible ? "800px" : "1000px";
-    extensionGroup.style.position = "absolute";
-    extensionGroup.style.bottom = isVisible ? "170px" : "100px"; 
-    extensionGroup.style.left = "50%";
-    extensionGroup.style.transform = "translateX(-50%)";
 
     // Apply the same adjustments to .text-variable-section
     textVariableSection.style.maxWidth = isVisible ? "800px" : "1000px";
-    textVariableSection.style.position = "absolute";
-    textVariableSection.style.bottom = isVisible ? "320px" : "250px"; // Adjusted for spacing
     textVariableSection.style.left = "50%";
     textVariableSection.style.transform = "translateX(-50%)";
     textVariableSection.style.textAlign = "center"; // Center text if needed
@@ -414,8 +404,6 @@ function adjustPositions() {
     const bottomButtons = document.querySelector('.bottom-buttons');
     bottomButtons.style.top = `${container.offsetHeight + container.offsetTop + 10}px`;
 }
-
-
 
 // Observe changes in bottom-buttons visibility
 const observer = new IntersectionObserver((entries) => {

@@ -32,7 +32,7 @@
 .preset-container {
     display: flex;
     justify-content: center;
-height: 50px;
+    height: 50px;
     margin-top: 10px; /* Optional: Add some spacing */
 }
 
@@ -74,7 +74,7 @@ height: 50px;
     width: 90%;
     height: 20px;
     position: absolute; /* Fix them to the top */
-    top: 30px; /* Distance from the top of the page */
+    top: 25px; /* Distance from the top of the page */
     padding: 5px 20px; /* Adjust spacing */
     font-size: 30px;
     font-weight: bold;
@@ -139,7 +139,6 @@ height: 50px;
     color: rgb(255, 255, 255);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
 }
-
 
 
 .extension-buttons-group button:disabled {
