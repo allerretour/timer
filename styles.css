@@ -89,7 +89,7 @@
         border-radius: 20px;
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         position: absolute;
-        top: 240px; /* Move the container down to give space */
+        top: 250px; /* Move the container down to give space */
         left: 50%; /* Centrer horizontalement */
         transform: translateX(-50%); /* Centrer parfaitement */
     }
@@ -238,11 +238,17 @@
     animation: blink 1s infinite; /* Animation de clignotement */
 }
 
-#addButton, #p1scr,#p1moins {
+#p1scr {
     background-color: hsl(259, 39%, 49%);
     transition: background-color 0.3s;
 }
-#addButton2,#p2plus,#p2moins, #p2scr {
+
+#addButton, #addButton2 {
+    background-color: hsl(125, 82%, 38%);
+    transition: background-color 0.3s;
+}
+
+#p2scr {
     background-color: hwb(47 0% 1%);
     transition: background-color 0.3s;
 }

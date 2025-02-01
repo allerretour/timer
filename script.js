@@ -105,10 +105,7 @@ function pauseTimer() {
         pauseButton.innerHTML = '<i class="fas fa-pause"></i>';  // Changer le texte en "Pause"
         countdown.classList.remove('highlight');
         pauseButton.classList.remove('highlight');  // Retirer l'effet de clignotement lorsque le bouton est en mode "Pause"
-beepSound.play();
-beepSound.pause();
-buzzSound.play();
-buzzSound.pause();
+
     }
 }
 
@@ -171,6 +168,11 @@ function updateCountdown() {
         setTimeout(() => {
             modal.style.display = 'none';
         }, 300);
+
+beepSound.play();
+beepSound.pause();
+buzzSound.play();
+buzzSound.pause();
     }
 
     function saveSettings() {
@@ -310,7 +312,75 @@ const fullscreenButton = document.getElementById('fullscreen-btn');
         }
     });
     
+    let gamepadIndex = null;
+let gamepadButtonsPressed = new Set(); // Track pressed buttons to prevent spamming
+
+// Detect gamepad connection
+window.addEventListener("gamepadconnected", (event) => {
+    gamepadIndex = event.gamepad.index;
+    console.log("Gamepad connected:", event.gamepad.id);
+    pollGamepad();
+});
+
+// Poll gamepad inputs continuously
+function pollGamepad() {
+    if (gamepadIndex === null) return;
     
+    const gamepad = navigator.getGamepads()[gamepadIndex];
+    if (!gamepad) return;
+
+    // Mapping gamepad buttons to key actions
+    const buttonMapping = {
+        2: "1",   // A button → "1" (Add Time Player 1)
+        1: "2",   // B button → "2" (Add Time Player 2)
+        0: "b",   // X button → "b" (Reset to Next Value)
+        3: "r",   // Y button → "r" (Reset Timer)
+        9: "p",   // Start button → "p" (Pause)
+        12: "q",   // Select button → "q" (Fullscreen)
+        13: "z"   // D-Pad Down → "z" (Toggle UI)
+    };
+
+    // Loop through all buttons to detect presses
+    gamepad.buttons.forEach((button, index) => {
+        if (button.pressed && !gamepadButtonsPressed.has(index)) {
+            gamepadButtonsPressed.add(index); // Prevent repeated triggers
+            handleGamepadInput(buttonMapping[index]);
+        } else if (!button.pressed) {
+            gamepadButtonsPressed.delete(index); // Allow button press again
+        }
+    });
+
+    requestAnimationFrame(pollGamepad); // Keep checking for input
+}
+
+// Execute the same functions as keydown events
+function handleGamepadInput(key) {
+    if (!key) return;
+
+    switch (key) {
+        case "1":
+            addTime('addButton');
+            break;
+        case "2":
+            addTime('addButton2');
+            break;
+        case "b":
+            resetToNextValue();
+            break;
+        case "r":
+            resetTimer();
+            break;
+        case "p":
+            pauseTimer();
+            break;
+        case "q":
+            toggleFullscreen();
+            break;
+        case "z":
+            toggleVisibility();
+            break;
+    }
+}
     
 
 
@@ -376,7 +446,7 @@ function adjustUI() {
     container.style.maxWidth = isVisible ? "800px" : "1000px";
 
     // Adjust countdown font size
-    countdown.style.fontSize = isVisible ? "clamp(100px, 20vw, 220px)" : "clamp(120px, 25vw, 320px)";
+    countdown.style.fontSize = isVisible ? "clamp(100px, 20vw, 220px)" : "clamp(120px, 25vw, 300px)";
 
     // Keep the extension buttons group centered and sized correctly
     extensionGroup.style.maxWidth = isVisible ? "800px" : "1000px";
@@ -386,14 +456,14 @@ function adjustUI() {
     textVariableSection.style.left = "50%";
     textVariableSection.style.transform = "translateX(-50%)";
     textVariableSection.style.textAlign = "center"; // Center text if needed
-    textVariableSection.style.fontSize = isVisible ? "40px" : "50px"; // Adjust text size
+    textVariableSection.style.fontSize = isVisible ? "40px" : "60px"; // Adjust text size
 
     // Adjust extension buttons size
     extensionButtons.forEach(button => {
         button.style.fontSize = isVisible ? "60px" : "90px"; 
         button.style.padding = isVisible ? "10px 15px" : "10px 15px";
         button.style.width = isVisible ? "30%" : "50%";
-        button.style.height = isVisible ? "90px" : "130px";
+        button.style.height = isVisible ? "100px" : "150px";
         button.style.borderRadius = isVisible ? "10px" : "15px";
     });
 }
@@ -426,6 +496,7 @@ window.onload = function() {
     updateCountdown(); // Juste mettre à jour l'affichage
     isPaused = true;
     pauseTimer();
+    requestAnimationFrame(pollGamepad); // Start listening for gamepad input
     adjustPositions();
     openSettings()
 
