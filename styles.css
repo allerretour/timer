@@ -23,8 +23,8 @@
 
 #middle-image {
     
-    width: 100px; /* Adjust this value as needed */
-    height: 100px; /* Maintain aspect ratio */
+    width: 50px; /* Adjust this value as needed */
+    height: 50px; /* Maintain aspect ratio */
     padding: 5px 10px;
     z-index: 1000;
 }

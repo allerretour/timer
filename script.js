@@ -215,14 +215,14 @@ function toggleVisibility() {
         bottomButtons.style.display = "flex";  // Show the bottom buttons
         boutonsRonds.forEach(button => {
             button.style.opacity = "0.2";  // Make them visible
-            button.disabled = false;  // Enable them
+            
         });
         toggleButton.innerHTML = '<i class="fas fa-eye-slash"></i>';
     } else {
         bottomButtons.style.display = "none";  // Hide the bottom buttons
         boutonsRonds.forEach(button => {
             button.style.opacity = "0";  // Hide them
-            button.disabled = true;  // Disable them
+            
         });
         toggleButton.innerHTML = '<i class="fas fa-eye"></i>';
     }
@@ -241,32 +241,24 @@ const fullscreenButton = document.getElementById('fullscreen-btn');
 
     // Function to toggle fullscreen
     function toggleFullscreen() {
-      if (isFullscreen()) {
-        // Exit fullscreen
-        if (document.exitFullscreen) {
-          document.exitFullscreen();
-        } else if (document.mozCancelFullScreen) { // Firefox
-          document.mozCancelFullScreen();
-        } else if (document.webkitExitFullscreen) { // Chrome, Safari
-          document.webkitExitFullscreen();
-        } else if (document.msExitFullscreen) { // IE/Edge
-          document.msExitFullscreen();
-        }
-      } else {
-        // Enter fullscreen
-        if (document.documentElement.requestFullscreen) {
-          document.documentElement.requestFullscreen();
-        } else if (document.documentElement.mozRequestFullScreen) { // Firefox
-          document.documentElement.mozRequestFullScreen();
-        } else if (document.documentElement.webkitRequestFullscreen) { // Chrome, Safari, Opera
-          document.documentElement.webkitRequestFullscreen();
-          document.documentElement.focus();
-        } else if (document.documentElement.msRequestFullscreen) { // IE/Edge
-          document.documentElement.msRequestFullscreen();
-        }
-      }
-    }
+        const elem = document.documentElement;
+        
+        if (isFullscreen()) {
 
+            document.exitFullscreen?.() ||
+            document.mozCancelFullScreen?.() ||
+            document.webkitExitFullscreen?.() ||
+            document.msExitFullscreen?.();
+        } else {
+
+            elem.requestFullscreen?.() ||
+            elem.mozRequestFullScreen?.() ||
+            elem.webkitRequestFullscreen?.() ||
+            elem.msRequestFullscreen?.();
+            
+            elem.focus(); // Ensure focus is maintained
+        }
+    }
     
     function updateTextVariable(elementId, value) {
         document.getElementById(elementId).textContent = value;
@@ -276,7 +268,7 @@ const fullscreenButton = document.getElementById('fullscreen-btn');
 
     document.addEventListener("keydown", function (event) {
         // Check if the key is one of the specified keys
-        if (["1", "2", "b", "r", "p", "q", "z"].includes(event.key)) {
+        if (["1", "2","s", "x", "c", "d", "b", "r", "p", "q", "z"].includes(event.key)) {
             // Prevent default action if inside an input or textarea
             if (document.activeElement.matches('input, textarea')) {
                 return;  // Allow input in fields
@@ -308,6 +300,18 @@ const fullscreenButton = document.getElementById('fullscreen-btn');
                 case "z":
                     toggleVisibility();
                     break;
+                case "s":
+                    document.getElementById("p1plus").click();
+                    break;
+                case "x":
+                    document.getElementById("p1moins").click();
+                    break;
+                case "d":
+                    document.getElementById("p2plus").click();
+                    break;
+                case "c":
+                    document.getElementById("p2moins").click();
+                    break;
             }
         }
     });
@@ -337,7 +341,12 @@ function pollGamepad() {
         3: "r",   // Y button → "r" (Reset Timer)
         9: "p",   // Start button → "p" (Pause)
         12: "q",   // Select button → "q" (Fullscreen)
-        13: "z"   // D-Pad Down → "z" (Toggle UI)
+        13: "z",   // D-Pad Down → "z" (Toggle UI)
+        4: "s",
+        6: "x",
+        5: "d",
+        7: "c"
+
     };
 
     // Loop through all buttons to detect presses
@@ -379,10 +388,22 @@ function handleGamepadInput(key) {
         case "z":
             toggleVisibility();
             break;
+        case "s":
+            document.getElementById("p1plus").click();
+            break;
+        case "x":
+            document.getElementById("p1moins").click();
+            break;
+        case "d":
+            document.getElementById("p2plus").click();
+            break;
+        case "c":
+            document.getElementById("p2moins").click();
+            break;
+        
     }
-}
     
-
+}
 
 
 
