@@ -21,14 +21,6 @@
     z-index: 1000;
 }
 
-#middle-image {
-    
-    width: 50px; /* Adjust this value as needed */
-    height: 50px; /* Maintain aspect ratio */
-    padding: 5px 10px;
-    z-index: 1000;
-}
-
 .preset-container {
     display: flex;
     justify-content: center;
@@ -254,7 +246,7 @@
 }
 
 #p1scr {
-    background-color: hsl(259, 39%, 49%);
+    background-color: hsl(259, 100%, 50%);
     transition: background-color 0.3s;
 }
 
@@ -265,7 +257,7 @@
 }
 
 #p2scr {
-    background-color: hwb(47 0% 1%);
+    background-color: hwb(0 0% 0%);
     transition: background-color 0.3s;
 }
 

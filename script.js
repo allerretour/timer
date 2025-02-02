@@ -5,6 +5,8 @@
     let countdownInterval;
     let isPaused = false;
 
+document.getElementById("countdown").addEventListener("click", pauseTimer);
+
 
 const beepSound = new Audio('beep-01.mp3');
 const buzzSound = new Audio('beep-04.mp3');
@@ -463,9 +465,9 @@ function adjustUI() {
     // Check if bottom buttons are visible
     const isVisible = bottomButtons.getBoundingClientRect().height > 0;
 
-    // Adjust container width
+    // Adjust container
     container.style.maxWidth = isVisible ? "800px" : "1000px";
-    container.style.top = isVisible ? "200px" : "250px";
+    container.style.top = isVisible ? "200px" : "300px";
 
     // Adjust countdown font size
     countdown.style.fontSize = isVisible ? "clamp(100px, 20vw, 220px)" : "clamp(120px, 25vw, 300px)";
@@ -479,13 +481,14 @@ function adjustUI() {
     textVariableSection.style.transform = "translateX(-50%)";
     textVariableSection.style.textAlign = "center"; // Center text if needed
     textVariableSection.style.fontSize = isVisible ? "40px" : "60px"; // Adjust text size
-
+    textVariableSection.style.top = isVisible ? "25px" : "20px";
+    
     // Adjust extension buttons size
     extensionButtons.forEach(button => {
-        button.style.fontSize = isVisible ? "70px" : "110px"; 
+        button.style.fontSize = isVisible ? "70px" : "140px"; 
         button.style.padding = isVisible ? "10px 15px" : "15px 20px";
         button.style.width = isVisible ? "50%" : "50%";
-        button.style.height = isVisible ? "100px" : "150px";
+        button.style.height = isVisible ? "100px" : "200px";
         button.style.borderRadius = isVisible ? "10px" : "15px";
     });
 }
