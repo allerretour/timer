@@ -128,20 +128,35 @@
 
 .extension-buttons-group button {
     font-size: 100px;
+    height: 100%;
+    width: 49%;
     
+    cursor: pointer;
+    border: none;
+    border-radius: 12px;
+    transition: background-color 0.3s;
+    
+    
+    color: rgb(255, 255, 255);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+.container button {
+    
+    font-size: 60px;
+    height: 100%;
+    width: 49%;
     padding: 5px 5px;
     cursor: pointer;
     border: none;
     border-radius: 12px;
     transition: background-color 0.3s;
-    width: 48%;
+    
     
     color: rgb(255, 255, 255);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
 }
 
-
-.extension-buttons-group button:disabled {
+.container button:disabled {
     background-color: #888;
     opacity: 0.2;
     cursor: not-allowed;
@@ -246,6 +261,7 @@
 #addButton, #addButton2 {
     background-color: hsl(125, 82%, 38%);
     transition: background-color 0.3s;
+    margin-bottom: 10px;
 }
 
 #p2scr {

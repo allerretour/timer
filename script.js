@@ -465,6 +465,7 @@ function adjustUI() {
 
     // Adjust container width
     container.style.maxWidth = isVisible ? "800px" : "1000px";
+    container.style.top = isVisible ? "200px" : "250px";
 
     // Adjust countdown font size
     countdown.style.fontSize = isVisible ? "clamp(100px, 20vw, 220px)" : "clamp(120px, 25vw, 300px)";
@@ -481,9 +482,9 @@ function adjustUI() {
 
     // Adjust extension buttons size
     extensionButtons.forEach(button => {
-        button.style.fontSize = isVisible ? "60px" : "90px"; 
-        button.style.padding = isVisible ? "10px 15px" : "10px 15px";
-        button.style.width = isVisible ? "30%" : "50%";
+        button.style.fontSize = isVisible ? "70px" : "110px"; 
+        button.style.padding = isVisible ? "10px 15px" : "15px 20px";
+        button.style.width = isVisible ? "50%" : "50%";
         button.style.height = isVisible ? "100px" : "150px";
         button.style.borderRadius = isVisible ? "10px" : "15px";
     });
