@@ -195,35 +195,34 @@
         }
 
            
-
-    .bottom-buttons {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-    width: 90%;
-    max-width: 800px;
-    gap: 5px;
-    position: absolute;
-    top: 610px; /* Move the bottom buttons further down */
+        .bottom-buttons {
+            display: flex;
+            justify-content: center; /* Center the buttons horizontally */
+            position: fixed; /* Keep them fixed at the bottom */
+            bottom: 20px; /* Adjust the bottom spacing */
+            left: 50%;
+            transform: translateX(-50%); /* Perfectly center */
+            width: 90%; /* Adjust width if necessary */
+            max-width: 800px;
+            gap: 10px; /* Space between buttons */
+        }
+        
+        .bottom-buttons button {
+            font-size: 60px;
+            padding: 10px 20px;
+            border-radius: 12px;
+            background-color: #f44336;
+            color: white;
+            width: 30%;
+            height: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
     
-    left: 50%;
-    transform: translateX(-50%); /* Centre horizontalement les boutons */
-}
-
-.bottom-buttons button {
-    font-size: 60px;
-    padding: 5px 10px;
-    border-radius: 12px;
-    background-color: #f44336;
-    color: white;
-    width: 30%;
-    height: 80px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
 
 
 
@@ -266,9 +265,9 @@
     transition: background-color 0.3s;
 }
 
-#p1plus, #p1moins,#p2plus, #p2moins,#toggleButtons,#fullscreen-btn,#settings-button,#info-button {
+#p1plus, #p1moins,#p2plus, #p2moins,#toggleButtons,#fullscreen-btn,#settings-button,#info-button,#btncoup,#btnpause,#btnpartie {
     position: fixed;
-    opacity: 0.2;
+    opacity: 0.1;
     width: 60px;
     height: 60px;
     background-color: #555;
@@ -315,6 +314,20 @@
     bottom: 10px;
     left: 20px;
 }
+#btncoup {
+    bottom: 10px;
+    left: 160px;
+}
+#btnpause {
+    bottom: 10px;
+    align-items: center;
+}
+#btnpartie {
+    bottom: 10px;
+    right: 160px;
+}
+
+
 
         .modal {
             display: none;
@@ -405,6 +418,11 @@
         }
 
 
-
+        .hidden {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        
 /* Reuse existing styles for modal and modal-content */
 

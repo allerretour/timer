@@ -100,11 +100,13 @@ function pauseTimer() {
     if (isPaused) {
         clearInterval(countdownInterval);  // Arrêter le timer
         pauseButton.innerHTML = '<i class="fas fa-play"></i>';  // Changer le texte en "Reprendre"
+        btnpause.innerHTML = '<i class="fas fa-play"></i>';
         countdown.classList.add('highlight');
         pauseButton.classList.add('highlight');  // Ajouter l'effet de clignotement lorsque le bouton est en mode "Reprendre"
     } else {
         startTimer();  // Démarrer le timer
         pauseButton.innerHTML = '<i class="fas fa-pause"></i>';  // Changer le texte en "Pause"
+        btnpause.innerHTML = '<i class="fas fa-pause"></i>';
         countdown.classList.remove('highlight');
         pauseButton.classList.remove('highlight');  // Retirer l'effet de clignotement lorsque le bouton est en mode "Pause"
 
@@ -208,20 +210,23 @@ function closeInstructions(event) {
 function toggleVisibility() {
     const bottomButtons = document.querySelector('.bottom-buttons');
     const toggleButton = document.getElementById('toggleButtons');
-    const boutonsRonds = document.querySelectorAll('#p1plus, #p1moins, #p2plus, #p2moins, #fullscreen-btn, #settings-button, #info-button');
+    
+    const boutonsRonds = document.querySelectorAll('#btncoup,#btnpause,#btnpartie,#fullscreen-btn, #settings-button, #info-button');
 
     // Check if the buttons are currently hidden
     const isHidden = bottomButtons.style.display === "none" || getComputedStyle(bottomButtons).display === "none";
 
     if (isHidden) {
         bottomButtons.style.display = "flex";  // Show the bottom buttons
+        
         boutonsRonds.forEach(button => {
-            button.style.opacity = "0.2";  // Make them visible
+            button.style.opacity = "0.1";  // Make them visible
             
         });
         toggleButton.innerHTML = '<i class="fas fa-eye-slash"></i>';
     } else {
         bottomButtons.style.display = "none";  // Hide the bottom buttons
+        
         boutonsRonds.forEach(button => {
             button.style.opacity = "0";  // Hide them
             
@@ -494,12 +499,6 @@ function adjustUI() {
 }
 
 
-function adjustPositions() {
-    const container = document.querySelector('.container');
-    const bottomButtons = document.querySelector('.bottom-buttons');
-    bottomButtons.style.top = `${container.offsetHeight + container.offsetTop + 10}px`;
-}
-
 // Observe changes in bottom-buttons visibility
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -522,7 +521,7 @@ window.onload = function() {
     isPaused = true;
     pauseTimer();
     requestAnimationFrame(pollGamepad); // Start listening for gamepad input
-    adjustPositions();
+    
     openSettings()
 
 // Select the first preset button
@@ -535,4 +534,3 @@ window.onload = function() {
     
 
 };
-window.onresize = adjustPositions;
