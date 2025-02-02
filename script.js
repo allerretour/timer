@@ -467,7 +467,7 @@ function adjustUI() {
 
     // Adjust container
     container.style.maxWidth = isVisible ? "800px" : "1000px";
-    container.style.top = isVisible ? "200px" : "300px";
+    container.style.top = isVisible ? "200px" : "290px";
 
     // Adjust countdown font size
     countdown.style.fontSize = isVisible ? "clamp(100px, 20vw, 220px)" : "clamp(120px, 25vw, 300px)";
@@ -481,7 +481,7 @@ function adjustUI() {
     textVariableSection.style.transform = "translateX(-50%)";
     textVariableSection.style.textAlign = "center"; // Center text if needed
     textVariableSection.style.fontSize = isVisible ? "40px" : "60px"; // Adjust text size
-    textVariableSection.style.top = isVisible ? "25px" : "20px";
+    textVariableSection.style.top = isVisible ? "25px" : "15px";
     
     // Adjust extension buttons size
     extensionButtons.forEach(button => {

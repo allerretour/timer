@@ -113,7 +113,7 @@
     max-width: 800px;
     gap: 5px;
     position: absolute; /* Fix them to the top */
-    top: 60px; /* Distance from the top (below .text-variable-section) */
+    top: 55px; /* Distance from the top (below .text-variable-section) */
     left: 50%;
     transform: translateX(-50%); /* Center horizontally */
 }
