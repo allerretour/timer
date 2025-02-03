@@ -207,6 +207,7 @@ function toggleVisibility() {
     const toggleButton = document.getElementById('toggleButtons');
     const container = document.querySelector('.container');
     const boutonsRonds = document.querySelectorAll('#fullscreen-btn, #settings-button, #info-button');
+    const btnscore = document.querySelectorAll('#p1scr, #p2scr');
 
     // Check if the buttons are currently hidden
     const isHidden = bottomButtons.style.display === "none" || getComputedStyle(bottomButtons).display === "none";
@@ -214,6 +215,12 @@ function toggleVisibility() {
     if (isHidden) {
         bottomButtons.style.display = "flex";  // Show the bottom buttons
         container.classList.remove('hidden');
+
+btnscore.forEach(button => {
+        button.style.height = "200px"; 
+        button.style.fontSize = "120px"; 
+        });
+
         boutonsRonds.forEach(button => {
         button.style.opacity = "0.1";  // Make them visible
             
@@ -222,6 +229,12 @@ function toggleVisibility() {
     } else {
         bottomButtons.style.display = "none";  // Hide the bottom buttons
         container.classList.add('hidden');
+
+    btnscore.forEach(button => {
+        button.style.height = "500px"; 
+        button.style.fontSize = "300px"; 
+        });  
+
         boutonsRonds.forEach(button => {
         button.style.opacity = "0";  // Hide them
             
@@ -455,6 +468,7 @@ document.addEventListener("DOMContentLoaded", function () {
     
 window.onload = function() {
 
+
     updateCountdown(); // Juste mettre à jour l'affichage
     isPaused = true;
     pauseTimer();
@@ -468,6 +482,6 @@ window.onload = function() {
         if (firstPresetButton) {
             setPreset(60, 30, 30, firstPresetButton);
         }
-    
+  toggleVisibility();  
 
 };
