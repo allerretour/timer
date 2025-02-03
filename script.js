@@ -210,6 +210,8 @@ function toggleVisibility() {
     const boutonsRonds = document.querySelectorAll('#fullscreen-btn, #settings-button, #info-button');
     const secbtnscore = document.querySelector('.extension-buttons-group');
     const btnscore = document.querySelectorAll('#p1scr, #p2scr');
+    const nomjoueurs = document.querySelector('.text-variable-section');
+    
 
     // Check if the buttons are currently hidden
     const isHidden = bottomButtons.style.display === "none" || getComputedStyle(bottomButtons).display === "none";
@@ -217,7 +219,8 @@ function toggleVisibility() {
     if (isHidden) {
         bottomButtons.style.display = "flex";  // Show the bottom buttons
         container.classList.remove('hidden');
-
+        nomjoueurs.style.top = "15px";
+        nomjoueurs.style.fontSize = "50px";
         secbtnscore.style.top = "55px"; 
         btnscore.forEach(button => {
         button.style.height = "200px"; 
@@ -230,7 +233,8 @@ function toggleVisibility() {
  else {
         bottomButtons.style.display = "none";  // Hide the bottom buttons
         container.classList.add('hidden');
-
+        nomjoueurs.style.top = "30px";
+        nomjoueurs.style.fontSize = "80px";
         secbtnscore.style.top = "120px";
         btnscore.forEach(button => {
         button.style.height = "500px"; 
