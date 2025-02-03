@@ -204,7 +204,7 @@
             transform: translateX(-50%); /* Perfectly center */
             width: 90%; /* Adjust width if necessary */
             max-width: 800px;
-            gap: 10px; /* Space between buttons */
+            gap: 30px; /* Space between buttons */
         }
         
         .bottom-buttons button {
