@@ -208,6 +208,7 @@ function toggleVisibility() {
     const toggleButton = document.getElementById('toggleButtons');
     const container = document.querySelector('.container');
     const boutonsRonds = document.querySelectorAll('#fullscreen-btn, #settings-button, #info-button');
+    const secbtnscore = document.querySelector('.extension-buttons-group');
     const btnscore = document.querySelectorAll('#p1scr, #p2scr');
 
     // Check if the buttons are currently hidden
@@ -217,9 +218,10 @@ function toggleVisibility() {
         bottomButtons.style.display = "flex";  // Show the bottom buttons
         container.classList.remove('hidden');
 
+        secbtnscore.style.top = "55px"; 
         btnscore.forEach(button => {
         button.style.height = "200px"; 
-        button.style.fontSize = "120px"; 
+        button.style.fontSize = "140px"; 
         });
 
         
@@ -229,9 +231,10 @@ function toggleVisibility() {
         bottomButtons.style.display = "none";  // Hide the bottom buttons
         container.classList.add('hidden');
 
+        secbtnscore.style.top = "120px";
         btnscore.forEach(button => {
         button.style.height = "500px"; 
-        button.style.fontSize = "300px"; 
+        button.style.fontSize = "320px"; 
         });  
 
         
