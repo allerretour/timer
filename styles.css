@@ -61,34 +61,36 @@
 .text-variable-section {
     display: flex;
     justify-content: space-between;
-    
+    text-align: center;
+    left: 50%; /* Centrer horizontalement */
+    transform: translateX(-50%); /* Centrer parfaitement */
     border-radius: 12px;
-    max-width: 800px;
+    max-width: 1000px;
     width: 90%;
     height: 20px;
     position: absolute; /* Fix them to the top */
-    top: 25px; /* Distance from the top of the page */
+    top: 15px; /* Distance from the top of the page */
     padding: 5px 20px; /* Adjust spacing */
-    font-size: 30px;
+    font-size: 60px;
     font-weight: bold;
 }
 
     .container {
         text-align: center;
         width: 90%;
-        max-width: 800px;
+        max-width: 1000px;
         background-color: rgba(255, 255, 255, 0.8); /* Set the rectangle to semi-transparent */
         padding: 20px;
         border-radius: 20px;
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         position: absolute;
-        top: 250px; /* Move the container down to give space */
+        top: 290px; /* Move the container down to give space */
         left: 50%; /* Centrer horizontalement */
         transform: translateX(-50%); /* Centrer parfaitement */
     }
 
     .countdown {
-        font-size: clamp(90px, 25vw, 260px);
+        font-size: clamp(120px, 25vw, 300px);
         border-radius: 20px;
         font-weight: bold;
         transition: color 0.3s ease;
@@ -107,7 +109,7 @@
     margin-top: 30px;
     width: 90%;
     height: 100px;
-    max-width: 800px;
+    max-width: 1000px;
     gap: 5px;
     position: absolute; /* Fix them to the top */
     top: 55px; /* Distance from the top (below .text-variable-section) */
@@ -116,13 +118,13 @@
 }
 
 .extension-buttons-group button {
-    font-size: 100px;
-    height: 100%;
-    width: 49%;
-    
+    font-size: 140px;
+    height: 200px;
+    width: 50%;
+    padding: 15px 20px;
     cursor: pointer;
     border: none;
-    border-radius: 12px;
+    border-radius: 15px;
     transition: background-color 0.3s;
     
     

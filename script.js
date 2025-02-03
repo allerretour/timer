@@ -40,11 +40,6 @@ initialTime = parseInt(document.getElementById('initialTime').value);
     
 }
 
-
-
-
-
-
     function addTime(buttonId) {
     if (buttonId === 'addButton' && !document.getElementById('addButton').disabled) {
         countdownTime += addTimeValue +1;
@@ -456,64 +451,6 @@ document.addEventListener("DOMContentLoaded", function () {
         p2scr.innerHTML = p2Score;
     });
 });
-
-
-
-function adjustUI() {
-    const container = document.querySelector('.container');
-    const countdown = document.querySelector('.countdown');
-    const extensionGroup = document.querySelector('.extension-buttons-group');
-    const extensionButtons = document.querySelectorAll('.extension-buttons-group button');
-    const bottomButtons = document.querySelector('.bottom-buttons');
-    const textVariableSection = document.querySelector('.text-variable-section');
-
-    // Check if bottom buttons are visible
-    const isVisible = bottomButtons.getBoundingClientRect().height > 0;
-
-    // Adjust container
-    container.style.maxWidth = isVisible ? "800px" : "1000px";
-    container.style.top = isVisible ? "200px" : "290px";
-
-    // Adjust countdown font size
-    countdown.style.fontSize = isVisible ? "clamp(100px, 20vw, 220px)" : "clamp(120px, 25vw, 300px)";
-
-    // Keep the extension buttons group centered and sized correctly
-    extensionGroup.style.maxWidth = isVisible ? "800px" : "1000px";
-
-    // Apply the same adjustments to .text-variable-section
-    textVariableSection.style.maxWidth = isVisible ? "800px" : "1000px";
-    textVariableSection.style.left = "50%";
-    textVariableSection.style.transform = "translateX(-50%)";
-    textVariableSection.style.textAlign = "center"; // Center text if needed
-    textVariableSection.style.fontSize = isVisible ? "40px" : "60px"; // Adjust text size
-    textVariableSection.style.top = isVisible ? "25px" : "15px";
-    
-    // Adjust extension buttons size
-    extensionButtons.forEach(button => {
-        button.style.fontSize = isVisible ? "70px" : "140px"; 
-        button.style.padding = isVisible ? "10px 15px" : "15px 20px";
-        button.style.width = isVisible ? "50%" : "50%";
-        button.style.height = isVisible ? "100px" : "200px";
-        button.style.borderRadius = isVisible ? "10px" : "15px";
-    });
-}
-
-
-// Observe changes in bottom-buttons visibility
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        adjustUI();
-    });
-}, { threshold: 0 });
-
-const bottomButtons = document.querySelector('.bottom-buttons');
-observer.observe(bottomButtons);
-
-// Run on page load and resize
-window.addEventListener('load', adjustUI);
-window.addEventListener('resize', adjustUI);
-
-
 
     
 window.onload = function() {
