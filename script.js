@@ -205,7 +205,7 @@ function closeInstructions(event) {
 function toggleVisibility() {
     const bottomButtons = document.querySelector('.bottom-buttons');
     const toggleButton = document.getElementById('toggleButtons');
-    
+    const container = document.querySelector('.container');
     const boutonsRonds = document.querySelectorAll('#fullscreen-btn, #settings-button, #info-button');
 
     // Check if the buttons are currently hidden
@@ -213,17 +213,17 @@ function toggleVisibility() {
 
     if (isHidden) {
         bottomButtons.style.display = "flex";  // Show the bottom buttons
-        
+        container.classList.remove('hidden');
         boutonsRonds.forEach(button => {
-            button.style.opacity = "0.1";  // Make them visible
+        button.style.opacity = "0.1";  // Make them visible
             
         });
         toggleButton.innerHTML = '<i class="fas fa-eye-slash"></i>';
     } else {
         bottomButtons.style.display = "none";  // Hide the bottom buttons
-        
+        container.classList.add('hidden');
         boutonsRonds.forEach(button => {
-            button.style.opacity = "0";  // Hide them
+        button.style.opacity = "0";  // Hide them
             
         });
         toggleButton.innerHTML = '<i class="fas fa-eye"></i>';
