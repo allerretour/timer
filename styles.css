@@ -218,8 +218,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            opacity: 0.1;
             
-            text-align: center;
         }
         
     
