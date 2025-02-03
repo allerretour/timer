@@ -100,13 +100,13 @@ function pauseTimer() {
     if (isPaused) {
         clearInterval(countdownInterval);  // Arrêter le timer
         pauseButton.innerHTML = '<i class="fas fa-play"></i>';  // Changer le texte en "Reprendre"
-        btnpause.innerHTML = '<i class="fas fa-play"></i>';
+        
         countdown.classList.add('highlight');
         pauseButton.classList.add('highlight');  // Ajouter l'effet de clignotement lorsque le bouton est en mode "Reprendre"
     } else {
         startTimer();  // Démarrer le timer
         pauseButton.innerHTML = '<i class="fas fa-pause"></i>';  // Changer le texte en "Pause"
-        btnpause.innerHTML = '<i class="fas fa-pause"></i>';
+        
         countdown.classList.remove('highlight');
         pauseButton.classList.remove('highlight');  // Retirer l'effet de clignotement lorsque le bouton est en mode "Pause"
 
@@ -211,7 +211,7 @@ function toggleVisibility() {
     const bottomButtons = document.querySelector('.bottom-buttons');
     const toggleButton = document.getElementById('toggleButtons');
     
-    const boutonsRonds = document.querySelectorAll('#btncoup,#btnpause,#btnpartie,#fullscreen-btn, #settings-button, #info-button');
+    const boutonsRonds = document.querySelectorAll('#fullscreen-btn, #settings-button, #info-button');
 
     // Check if the buttons are currently hidden
     const isHidden = bottomButtons.style.display === "none" || getComputedStyle(bottomButtons).display === "none";
@@ -517,11 +517,11 @@ window.addEventListener('resize', adjustUI);
 
     
 window.onload = function() {
+
     updateCountdown(); // Juste mettre à jour l'affichage
     isPaused = true;
     pauseTimer();
     requestAnimationFrame(pollGamepad); // Start listening for gamepad input
-    
     openSettings()
 
 // Select the first preset button

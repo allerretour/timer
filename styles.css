@@ -38,6 +38,7 @@
     padding: 5px 8px; /* Reduced padding for a smaller width */
     font-size: 18px;
     height: 50px;
+
     cursor: pointer;
     transition: all 0.3s ease;
     width: 40px;
@@ -98,10 +99,6 @@
         text-align: center; /* Centre le texte horizontalement */
         margin: 5 auto; /* Centrer le timer horizontalement */
     }
-
-    
-    
-
 
 .extension-buttons-group {
     display: flex;
@@ -265,7 +262,7 @@
     transition: background-color 0.3s;
 }
 
-#p1plus, #p1moins,#p2plus, #p2moins,#toggleButtons,#fullscreen-btn,#settings-button,#info-button,#btncoup,#btnpause,#btnpartie {
+#p1plus, #p1moins,#p2plus, #p2moins,#toggleButtons,#fullscreen-btn,#settings-button,#info-button {
     position: fixed;
     opacity: 0.1;
     width: 60px;
@@ -309,25 +306,10 @@
     bottom: 10px;
     right: 20px;
 }
-
 #info-button {
     bottom: 10px;
     left: 20px;
 }
-#btncoup {
-    bottom: 10px;
-    left: 160px;
-}
-#btnpause {
-    bottom: 10px;
-    align-items: center;
-}
-#btnpartie {
-    bottom: 10px;
-    right: 160px;
-}
-
-
 
         .modal {
             display: none;
