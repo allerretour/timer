@@ -172,6 +172,7 @@ beepSound.play();
 beepSound.pause();
 buzzSound.play();
 buzzSound.pause();
+
     }
 
     function saveSettings() {
@@ -216,29 +217,24 @@ function toggleVisibility() {
         bottomButtons.style.display = "flex";  // Show the bottom buttons
         container.classList.remove('hidden');
 
-btnscore.forEach(button => {
+        btnscore.forEach(button => {
         button.style.height = "200px"; 
         button.style.fontSize = "120px"; 
         });
 
-        boutonsRonds.forEach(button => {
-        button.style.opacity = "0.1";  // Make them visible
-            
-        });
+        
         toggleButton.innerHTML = '<i class="fas fa-eye-slash"></i>';
-    } else {
+    }
+ else {
         bottomButtons.style.display = "none";  // Hide the bottom buttons
         container.classList.add('hidden');
 
-    btnscore.forEach(button => {
+        btnscore.forEach(button => {
         button.style.height = "500px"; 
         button.style.fontSize = "300px"; 
         });  
 
-        boutonsRonds.forEach(button => {
-        button.style.opacity = "0";  // Hide them
-            
-        });
+        
         toggleButton.innerHTML = '<i class="fas fa-eye"></i>';
     }
 }
