@@ -199,7 +199,7 @@
             display: flex;
             justify-content: center; /* Center the buttons horizontally */
             position: fixed; /* Keep them fixed at the bottom */
-            bottom: 20px; /* Adjust the bottom spacing */
+            bottom: 10px; /* Adjust the bottom spacing */
             left: 50%;
             transform: translateX(-50%); /* Perfectly center */
             width: 90%; /* Adjust width if necessary */
@@ -218,7 +218,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            opacity: 0.1;
+            opacity: 0.2;
             
         }
         
