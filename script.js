@@ -40,6 +40,26 @@ initialTime = parseInt(document.getElementById('initialTime').value);
     
 }
 
+let scale = 1;
+
+    function zoomIn() {
+        scale = Math.min(scale + 0.1, 2); // Max zoom level 2x
+        document.body.style.transform = `scale(${scale})`;
+        document.body.style.transformOrigin = "center top";
+    }
+
+    function zoomOut() {
+        scale = Math.max(scale - 0.1, 0.5); // Min zoom level 0.5x
+        document.body.style.transform = `scale(${scale})`;
+        document.body.style.transformOrigin = "center top";
+    }
+
+
+
+
+
+
+
     function addTime(buttonId) {
     if (buttonId === 'addButton' && !document.getElementById('addButton').disabled) {
         countdownTime += addTimeValue +1;
@@ -286,7 +306,7 @@ const fullscreenButton = document.getElementById('fullscreen-btn');
 
     document.addEventListener("keydown", function (event) {
         // Check if the key is one of the specified keys
-        if (["1", "2","s", "x", "c", "d", "b", "r", "p", "q", "z"].includes(event.key)) {
+        if (["1", "2","3","4","s", "x", "c", "d", "b", "r", "p", "q", "z"].includes(event.key)) {
             // Prevent default action if inside an input or textarea
             if (document.activeElement.matches('input, textarea')) {
                 return;  // Allow input in fields
@@ -302,6 +322,12 @@ const fullscreenButton = document.getElementById('fullscreen-btn');
                     break;
                 case "2":
                     addTime('addButton2');
+                    break;
+                case "3":
+                    zoomOut();
+                    break;
+                case "4":
+                    zoomIn();
                     break;
                 case "b":
                     resetToNextValue();
@@ -363,6 +389,8 @@ function pollGamepad() {
         4: "s",
         6: "x",
         5: "d",
+        14: "4",
+        15: "3",
         7: "c"
 
     };
@@ -390,6 +418,12 @@ function handleGamepadInput(key) {
             break;
         case "2":
             addTime('addButton2');
+            break;
+        case "3":
+            zoomOut();
+            break;
+        case "4":
+            zoomIn();
             break;
         case "b":
             resetToNextValue();
