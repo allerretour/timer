@@ -269,10 +269,6 @@ function toggleVisibility() {
     }
 }
 
-
-
-
-
 const fullscreenButton = document.getElementById('fullscreen-btn');
 
     // Function to check if the document is in fullscreen
