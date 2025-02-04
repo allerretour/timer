@@ -230,6 +230,7 @@ function toggleVisibility() {
     const boutonsRonds = document.querySelectorAll('#fullscreen-btn, #settings-button, #info-button');
     const secbtnscore = document.querySelector('.extension-buttons-group');
     const btnscore = document.querySelectorAll('#p1scr, #p2scr');
+    const logoimg = document.querySelector('#middle-image');
     const nomjoueurs = document.querySelector('.text-variable-section');
     
 
@@ -239,6 +240,7 @@ function toggleVisibility() {
     if (isHidden) {
         bottomButtons.style.display = "flex";  // Show the bottom buttons
         container.classList.remove('hidden');
+        logoimg.style.height = "0px";
         nomjoueurs.style.top = "15px";
         nomjoueurs.style.fontSize = "50px";
         secbtnscore.style.top = "55px"; 
@@ -253,6 +255,7 @@ function toggleVisibility() {
  else {
         bottomButtons.style.display = "none";  // Hide the bottom buttons
         container.classList.add('hidden');
+        logoimg.style.height = "120px";
         nomjoueurs.style.top = "30px";
         nomjoueurs.style.fontSize = "80px";
         secbtnscore.style.top = "120px";

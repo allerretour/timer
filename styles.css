@@ -11,12 +11,13 @@
         position: relative; /* Ajoutez cette ligne pour permettre l'alignement absolu des éléments enfants */
     }
 
-#corner-image {
-    position: absolute;
-    top: 5px; /* Adjust this value as needed */
-    right: 5px; /* Adjust this value as needed */
-    width: 120px; /* Adjust this value as needed */
-    height: auto; /* Maintain aspect ratio */
+#middle-image {
+    position: fixed;
+    bottom: 100px; /* Adjust this value as needed */
+    left: 50%; /* Centrer horizontalement */
+    transform: translateX(-50%); /* Centrer parfaitement */
+    width: auto; /* Adjust this value as needed */
+    height: 120px; /* Maintain aspect ratio */
     
     z-index: 1000;
 }
@@ -264,7 +265,7 @@
     transition: background-color 0.3s;
 }
 
-#zplus, #zmoins, #p1plus, #p1moins,#p2plus,#p2moins,#toggleButtons,#fullscreen-btn,#settings-button,#info-button {
+#p1plus, #p1moins,#p2plus,#p2moins,#toggleButtons,#fullscreen-btn,#settings-button,#info-button {
     position: fixed;
     opacity: 0.1;
     width: 60px;
@@ -287,14 +288,8 @@
     top: 400px;
     left: 20px;
 }
-#zplus {
-    top: 80px;
-    left: 20px;
-}
-#zmoins {
-    top: 170px;
-    left: 20px;
-}
+
+
 #p2plus {
     top: 310px;
     right: 20px;  
