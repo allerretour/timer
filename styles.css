@@ -13,7 +13,7 @@
 
 #middle-image {
     position: fixed;
-    bottom: 100px; /* Adjust this value as needed */
+    bottom: 45px; /* Adjust this value as needed */
     left: 50%; /* Centrer horizontalement */
     transform: translateX(-50%); /* Centrer parfaitement */
     width: auto; /* Adjust this value as needed */
