@@ -281,21 +281,21 @@
     font-size: 30px;
 }
 #p1plus {
-    top: 310px;
+    top: 200px;
     left: 20px;
 }
 #p1moins {
-    top: 400px;
+    top: 290px;
     left: 20px;
 }
 
 
 #p2plus {
-    top: 310px;
+    top: 200px;
     right: 20px;  
 }
 #p2moins {
-    top: 400px;
+    top: 290px;
     right: 20px;
 }
 
