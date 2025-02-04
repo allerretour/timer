@@ -255,7 +255,7 @@ function toggleVisibility() {
  else {
         bottomButtons.style.display = "none";  // Hide the bottom buttons
         container.classList.add('hidden');
-        logoimg.style.height = "120px";
+        logoimg.style.height = "100px";
         nomjoueurs.style.top = "30px";
         nomjoueurs.style.fontSize = "80px";
         secbtnscore.style.top = "120px";

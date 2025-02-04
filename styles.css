@@ -17,7 +17,7 @@
     left: 50%; /* Centrer horizontalement */
     transform: translateX(-50%); /* Centrer parfaitement */
     width: auto; /* Adjust this value as needed */
-    height: 120px; /* Maintain aspect ratio */
+    height: 100px; /* Maintain aspect ratio */
     
     z-index: 1000;
 }
