@@ -222,8 +222,6 @@
             
         }
         
-    
-
 
 
 @keyframes blink {
@@ -265,7 +263,11 @@
     transition: background-color 0.3s;
 }
 
-#p1plus, #p1moins,#p2plus,#p2moins,#toggleButtons,#fullscreen-btn,#settings-button,#info-button {
+.boutonsronds {
+    display: none; /* Ensure it starts hidden */
+}
+
+#touchbtn, #p1plus, #p1moins,#p2plus,#p2moins,#toggleButtons,#fullscreen-btn,#settings-button,#info-button {
     position: fixed;
     opacity: 0.1;
     width: 60px;
@@ -280,6 +282,11 @@
     cursor: pointer;
     font-size: 30px;
 }
+#touchbtn {
+    top: 80px;
+    left: 20px;
+}
+
 #p1plus {
     top: 200px;
     left: 20px;

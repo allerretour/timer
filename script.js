@@ -55,7 +55,12 @@ let scale = 1;
     }
 
 
-
+    function toggleBoutonsRonds() {
+        const boutons = document.querySelector('.boutonsronds');
+        const currentDisplay = window.getComputedStyle(boutons).display;
+        
+        boutons.style.display = (currentDisplay === 'none') ? 'block' : 'none';
+    }
 
 
 
@@ -192,6 +197,7 @@ beepSound.play();
 beepSound.pause();
 buzzSound.play();
 buzzSound.pause();
+
 
     }
 
@@ -519,5 +525,6 @@ window.onload = function() {
             setPreset(60, 30, 30, firstPresetButton);
         }
   toggleVisibility();  
+  
 
 };
