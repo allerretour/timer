@@ -252,7 +252,7 @@ function toggleVisibility() {
     const isHidden = toggleButton.innerHTML === '<i class="fas fa-eye"></i>';
 
     if (isHidden) {
-        // bottomButtons.style.display = "flex";  // Show the bottom buttons
+        bottomButtons.style.opacity  = "0.3";;  // Show the bottom buttons
         container.classList.remove('hidden');
         logoimg.style.height = "0px";
         nomjoueurs.style.top = "15px";
@@ -267,7 +267,7 @@ function toggleVisibility() {
         toggleButton.innerHTML = '<i class="fas fa-eye-slash"></i>';
     }
  else {
-        // bottomButtons.style.display = "none";  // Hide the bottom buttons
+        bottomButtons.style.opacity  = "0";  // Hide the bottom buttons
         container.classList.add('hidden');
         logoimg.style.height = "100px";
         nomjoueurs.style.top = "30px";
