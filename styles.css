@@ -196,7 +196,7 @@
 
            
         .bottom-buttons {
-            display: flex;
+            display: none;
             justify-content: center; /* Center the buttons horizontally */
             position: fixed; /* Keep them fixed at the bottom */
             bottom: 10px; /* Adjust the bottom spacing */
