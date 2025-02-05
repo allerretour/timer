@@ -55,12 +55,20 @@ let scale = 1;
     }
 
 
-    function toggleBoutonsRonds() {
-        const boutons = document.querySelector('.boutonsronds');
-        const currentDisplay = window.getComputedStyle(boutons).display;
-        
-        boutons.style.display = (currentDisplay === 'none') ? 'block' : 'none';
-    }
+  function toggleBoutonsRonds() {
+    // Targeting the .boutonsronds and .bottom-buttons elements
+    const boutons = document.querySelector('.boutonsronds');
+    const bottomButtons = document.querySelector('.bottom-buttons');
+
+    // Get the current display of .boutonsronds and .bottom-buttons
+    const currentDisplayBoutons = window.getComputedStyle(boutons).display;
+    const currentDisplayBottomButtons = window.getComputedStyle(bottomButtons).display;
+
+    // Toggle display of both elements
+    boutons.style.display = (currentDisplayBoutons === 'none') ? 'block' : 'none';
+    bottomButtons.style.display = (currentDisplayBottomButtons === 'none') ? 'none' : 'flex';
+}
+
 
 
 
@@ -241,10 +249,10 @@ function toggleVisibility() {
     
 
     // Check if the buttons are currently hidden
-    const isHidden = bottomButtons.style.display === "none" || getComputedStyle(bottomButtons).display === "none";
+    const isHidden = toggleButton.innerHTML === '<i class="fas fa-eye"></i>';
 
     if (isHidden) {
-        bottomButtons.style.display = "flex";  // Show the bottom buttons
+        // bottomButtons.style.display = "flex";  // Show the bottom buttons
         container.classList.remove('hidden');
         logoimg.style.height = "0px";
         nomjoueurs.style.top = "15px";
@@ -259,7 +267,7 @@ function toggleVisibility() {
         toggleButton.innerHTML = '<i class="fas fa-eye-slash"></i>';
     }
  else {
-        bottomButtons.style.display = "none";  // Hide the bottom buttons
+        // bottomButtons.style.display = "none";  // Hide the bottom buttons
         container.classList.add('hidden');
         logoimg.style.height = "100px";
         nomjoueurs.style.top = "30px";
