@@ -267,7 +267,7 @@
     display: none; /* Ensure it starts hidden */
 }
 
-#touchbtn, #p1plus, #p1moins,#p2plus,#p2moins,#toggleButtons,#fullscreen-btn,#settings-button,#info-button {
+#touchbtn, #p1plus, #p1moins,#p2plus,#p2moins,#toggleButtons,#fullscreen-btn,#settings-button {
     position: fixed;
     opacity: 0.1;
     width: 60px;
@@ -319,11 +319,6 @@
     bottom: 10px;
     right: 20px;
 }
-#info-button {
-    bottom: 10px;
-    left: 20px;
-}
-
         .modal {
             display: none;
             position: fixed;

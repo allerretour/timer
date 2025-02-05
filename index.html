@@ -53,7 +53,6 @@
 <button id="p2plus" onclick=""><i class="fa-solid fa-plus"></i></button>
 <button id="p2moins" onclick=""><i class="fa-solid fa-minus"></i></button>
 <button id="fullscreen-btn" onclick="toggleFullscreen()"><i class="fa-solid fa-maximize"></i></button>
-<button id="info-button" onclick="openInstructions()"><i class="fas fa-info"></i></button>
 
 </div>
 
@@ -69,8 +68,10 @@
 <div id="settingsModal" class="modal" onclick="closeSettings(event)">
     <div class="modal-content" onclick="event.stopPropagation()"> <!-- Prevents closing the modal when clicking inside -->
         <button class="close-button" onclick="closeSettings()">×</button>
-        <h3 style="text-align: center;">Paramètres du chronomètre</h3>
-        
+
+       <button id="btninfo" onclick="openInstructions()"><i class="fas fa-info"></i>
+       </button> <h3 style="text-align: center;">Paramètres du chronomètre</h3>
+
         <label for="textVariable1Input">Nom du joueur gauche :</label>
         <input type="text" id="textVariable1Input" value="Joueur 1" oninput="updateTextVariable('textVariable1', this.value)">
         
@@ -87,20 +88,16 @@
         <input type="number" id="addTimeValue" value="30" min="1">
         
         <div class="presets-container">
-<button onclick="saveSettings()"><i class="fas fa-save fa-lg"></i></button>            
+            <button onclick="saveSettings()"><i class="fas fa-save fa-lg"></i></button>            
            <button class="preset-button" onclick="setPreset(60, 30, 30, this)">30s</button>
             <button class="preset-button" onclick="setPreset(70, 35, 35, this)">35s</button>
             <button class="preset-button" onclick="setPreset(80, 40, 40, this)">40s</button>
+            
         </div>
         
         
     </div>
 </div>
-
-
-
-
-
 
 <div id="instructionsModal" class="modal" onclick="closeInstructions(event)">
     <div class="modal-content" onclick="event.stopPropagation()">
@@ -120,11 +117,6 @@
         <!-- Add more content as needed -->
     </div>
 </div>
-
-
-
-<! pour insérer un logo a gauche en haut :  <img src="logo.jpg" id="corner-image" alt="logo">
-
 
 
 <script src="script.js" defer></script>
