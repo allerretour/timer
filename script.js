@@ -66,7 +66,7 @@ let scale = 1;
 
     // Toggle display of both elements
     boutons.style.display = (currentDisplayBoutons === 'none') ? 'block' : 'none';
-    bottomButtons.style.display = (currentDisplayBottomButtons === 'none') ? 'none' : 'flex';
+    bottomButtons.style.display = (currentDisplayBottomButtons === 'none') ? 'flex' : 'none';
 }
 
 
@@ -532,7 +532,7 @@ window.onload = function() {
         if (firstPresetButton) {
             setPreset(60, 30, 30, firstPresetButton);
         }
-  toggleVisibility();  
+ toggleVisibility();  
   
 
 };
