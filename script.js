@@ -11,7 +11,7 @@ const beepSound = new Audio('beep-01.mp3');
 const buzzSound = new Audio('beep-04.mp3');
 
 function checkScreenSize() {
-    if (window.innerWidth < 1000) {
+    if (window.innerWidth > 1000) {
       document.getElementById("block-overlay").style.display = "none";
     } else {
       document.getElementById("block-overlay").style.display = "flex";
