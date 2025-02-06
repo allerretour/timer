@@ -10,12 +10,10 @@ document.getElementById("countdown").addEventListener("click", pauseTimer);
 const beepSound = new Audio('beep-01.mp3');
 const buzzSound = new Audio('beep-04.mp3');
 
-function checkScreenSize() {
-    if (window.innerWidth > 1000) {
-      document.getElementById("block-overlay").style.display = "none";
-    } else {
-      document.getElementById("block-overlay").style.display = "flex";
-    }
+if (window.innerWidth < 1000) {
+    document.documentElement.innerHTML = ""; // Clear page content
+    document.write("<h2 style='text-align:center;margin-top:20%;'>Screen too small. Please use a larger display.</h2>");
+    throw new Error("Screen too small, page blocked.");
   }
 
 	
@@ -524,9 +522,6 @@ document.addEventListener("DOMContentLoaded", function () {
         p2scr.innerHTML = p2Score;
     });
 });
-
-checkScreenSize();
-window.addEventListener("resize", checkScreenSize);
     
 window.onload = function() {
 
