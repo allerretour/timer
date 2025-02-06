@@ -11,6 +11,21 @@
         position: relative; /* Ajoutez cette ligne pour permettre l'alignement absolu des éléments enfants */
     }
 
+    #block-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: black;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        z-index: 9999;
+      }
+
 #middle-image {
     position: fixed;
     bottom: 45px; /* Adjust this value as needed */

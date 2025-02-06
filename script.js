@@ -7,9 +7,16 @@
 
 document.getElementById("countdown").addEventListener("click", pauseTimer);
 
-
 const beepSound = new Audio('beep-01.mp3');
 const buzzSound = new Audio('beep-04.mp3');
+
+function checkScreenSize() {
+    if (window.innerWidth < 1000) {
+      document.getElementById("block-overlay").style.display = "none";
+    } else {
+      document.getElementById("block-overlay").style.display = "flex";
+    }
+  }
 
 	
     function startTimer() {
@@ -319,7 +326,7 @@ const fullscreenButton = document.getElementById('fullscreen-btn');
 
     document.addEventListener("keydown", function (event) {
         // Check if the key is one of the specified keys
-        if (["1", "2","3","4","s", "x", "c", "d", "b", "r", "p", "q", "z"].includes(event.key)) {
+        if (["1", "2","3","4","s", "x", "c", "d", "b", "r", "p", "q","t", "z"].includes(event.key)) {
             // Prevent default action if inside an input or textarea
             if (document.activeElement.matches('input, textarea')) {
                 return;  // Allow input in fields
@@ -347,6 +354,9 @@ const fullscreenButton = document.getElementById('fullscreen-btn');
                     break;
                 case "r":
                     resetTimer();
+                    break;
+                case "t":
+                    toggleBoutonsRonds();
                     break;
                 case "p":
                     pauseTimer();
@@ -515,10 +525,12 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+checkScreenSize();
+window.addEventListener("resize", checkScreenSize);
     
 window.onload = function() {
 
-
+    
     updateCountdown(); // Juste mettre à jour l'affichage
     isPaused = true;
     pauseTimer();
@@ -532,7 +544,8 @@ window.onload = function() {
         if (firstPresetButton) {
             setPreset(60, 30, 30, firstPresetButton);
         }
- toggleVisibility();  
-  
+ 
+    toggleVisibility();  
+    
 
 };
