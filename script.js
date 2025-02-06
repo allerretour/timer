@@ -11,14 +11,14 @@ const beepSound = new Audio('beep-01.mp3');
 const buzzSound = new Audio('beep-04.mp3');
 
 function checkViewport() {
-    if (window.innerWidth < 1000) {
+    if (window.innerWidth < 960) {
       // Save in session that the page was blocked
       sessionStorage.setItem("blocked", "true");
 
       // Replace the page content
       document.body.innerHTML = `
         <div style="display: flex; height: 100vh; justify-content: center; align-items: center; text-align: center; font-family: Arial, sans-serif; font-size: 1.5rem;">
-          <h2>Écran trop petit, utiliser une tablette ou ordinateur.</h2>
+          <p>Écran trop petit, utiliser une tablette ou un ordinateur.</p>
         </div>
       `;
     } else {
