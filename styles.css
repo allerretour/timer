@@ -37,7 +37,7 @@
     border: none;
     border-radius: 5px;
     padding: 5px 8px; /* Reduced padding for a smaller width */
-    font-size: 18px;
+    font-size: 16px;
     height: 50px;
 
     cursor: pointer;
@@ -91,7 +91,7 @@
     }
 
     .countdown {
-        font-size: clamp(120px, 25vw, 300px);
+        font-size: clamp(120px, 25vw, 280px);
         border-radius: 20px;
         font-weight: bold;
         transition: color 0.3s ease;
@@ -204,7 +204,7 @@
             transform: translateX(-50%); /* Perfectly center */
             width: 90%; /* Adjust width if necessary */
             max-width: 800px;
-            gap: 30px; /* Space between buttons */
+            gap: 45px; /* Space between buttons */
         }
         
         .bottom-buttons button {
@@ -283,7 +283,7 @@
     font-size: 30px;
 }
 #touchbtn {
-    top: 80px;
+    bottom: 10px;
     left: 20px;
 }
 
