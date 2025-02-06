@@ -312,6 +312,8 @@ function toggleVisibility() {
     }
 }
 
+
+
 const fullscreenButton = document.getElementById('fullscreen-btn');
 
     // Function to check if the document is in fullscreen
@@ -340,6 +342,13 @@ const fullscreenButton = document.getElementById('fullscreen-btn');
         }
     }
     
+
+    
+    
+
+
+
+
     function updateTextVariable(elementId, value) {
         document.getElementById(elementId).textContent = value;
     }

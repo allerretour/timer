@@ -66,15 +66,20 @@
     text-align: center;
     left: 50%; /* Centrer horizontalement */
     transform: translateX(-50%); /* Centrer parfaitement */
-    border-radius: 12px;
+    
     max-width: 1000px;
     width: 90%;
     height: 20px;
     position: absolute; /* Fix them to the top */
     top: 15px; /* Distance from the top of the page */
-    padding: 5px 20px; /* Adjust spacing */
+    
     font-size: 60px;
     font-weight: bold;
+    color: #fff; /* White text */
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.7); /* Strong shadow */
+    
+    padding: 5px;
+    border-radius: 8px;
 }
 
     .container {
@@ -101,7 +106,7 @@
         text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
         
         text-align: center; /* Centre le texte horizontalement */
-        margin: 5 auto; /* Centrer le timer horizontalement */
+        margin: 5px auto; /* Centrer le timer horizontalement */
     }
 
 .extension-buttons-group {
@@ -128,13 +133,10 @@
     border: none;
     border-radius: 15px;
     transition: background-color 0.3s;
-    
-    
     color: rgb(255, 255, 255);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
 }
 .container button {
-    
     font-size: 60px;
     height: 100%;
     width: 49%;
@@ -143,8 +145,6 @@
     border: none;
     border-radius: 12px;
     transition: background-color 0.3s;
-    
-    
     color: rgb(255, 255, 255);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
 }
@@ -181,7 +181,7 @@
             border-radius: 12px;
             transition: background-color 0.3s;
             width: 48%;
-            background-color: blue);
+            background-color: blue;
             color: white;
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
         }
@@ -225,17 +225,10 @@
         
 
 
-@keyframes blink {
-    0% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0.5;
-    }
-    100% {
-        opacity: 1;
-    }
-}
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
 
 .highlight {
     background-color: hsl(0, 0%, 48%) !important;
@@ -326,7 +319,8 @@
             background-color: hsla(0, 0%, 0%, 0.5);
             justify-content: center;
             align-items: center;
-            transition: opacity 0.3s ease, visibility 0s 0.3s;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            transform: scale(0.95);
             z-index: 1000;
         }
 
@@ -396,7 +390,8 @@
         .modal.show {
             display: flex;
             opacity: 1;
-            visibility: visible;
+            transform: scale(1);
+            
         }
 
         .modal-content.show {
@@ -410,6 +405,27 @@
             visibility: hidden;
             transition: opacity 0.3s ease, visibility 0.3s ease;
         }
+        
+        .form-group {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .form-group label {
+            width: 600px; /* Adjust to align all labels */
+            text-align: left;
+            font-size: 18px;
+            margin-right: 10px;
+        }
+        
+        .form-group input {
+            flex-grow: 1;
+            padding: 5px;
+            font-size: 16px;
+        }
+        
         
 /* Reuse existing styles for modal and modal-content */
 
