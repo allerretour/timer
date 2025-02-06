@@ -10,14 +10,34 @@ document.getElementById("countdown").addEventListener("click", pauseTimer);
 const beepSound = new Audio('beep-01.mp3');
 const buzzSound = new Audio('beep-04.mp3');
 
-if (window.innerWidth < 1000) {
-    document.body.innerHTML = `
-      <div style="display: flex; height: 100vh; justify-content: center; align-items: center; text-align: center;">
-        <h2>Screen too small. Please use a larger display.</h2>
-      </div>
-    `;
-    throw new Error("Screen too small, page blocked.");
+function blockSmallScreens() {
+    if (window.innerWidth < 1000) {
+      document.documentElement.innerHTML = `
+        <head>
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Screen Too Small</title>
+          <style>
+            body {
+              display: flex;
+              height: 100vh;
+              justify-content: center;
+              align-items: center;
+              text-align: center;
+              font-family: Arial, sans-serif;
+              font-size: 1.5rem;
+            }
+          </style>
+        </head>
+        <body>
+          <h2>Screen too small. Please use a larger display.</h2>
+        </body>
+      `;
+      throw new Error("Screen too small, page blocked.");
+    }
   }
+
+  window.addEventListener("DOMContentLoaded", blockSmallScreens);
+  window.addEventListener("resize", blockSmallScreens);
 
 	
     function startTimer() {
