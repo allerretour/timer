@@ -85,7 +85,7 @@
         border-radius: 20px;
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         position: absolute;
-        top: 290px; /* Move the container down to give space */
+        top: 270px; /* Move the container down to give space */
         left: 50%; /* Centrer horizontalement */
         transform: translateX(-50%); /* Centrer parfaitement */
     }

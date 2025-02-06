@@ -259,8 +259,8 @@ function toggleVisibility() {
         nomjoueurs.style.fontSize = "50px";
         secbtnscore.style.top = "55px"; 
         btnscore.forEach(button => {
-        button.style.height = "200px"; 
-        button.style.fontSize = "140px"; 
+        button.style.height = "180px"; 
+        button.style.fontSize = "120px"; 
         });
 
         
