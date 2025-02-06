@@ -11,8 +11,11 @@ const beepSound = new Audio('beep-01.mp3');
 const buzzSound = new Audio('beep-04.mp3');
 
 if (window.innerWidth < 1000) {
-    document.documentElement.innerHTML = ""; // Clear page content
-    document.write("<h2 style='text-align:center;margin-top:20%;'>Screen too small. Please use a larger display.</h2>");
+    document.body.innerHTML = `
+      <div style="display: flex; height: 100vh; justify-content: center; align-items: center; text-align: center;">
+        <h2>Screen too small. Please use a larger display.</h2>
+      </div>
+    `;
     throw new Error("Screen too small, page blocked.");
   }
 
