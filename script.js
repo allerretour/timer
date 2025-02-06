@@ -345,163 +345,77 @@ const fullscreenButton = document.getElementById('fullscreen-btn');
     }
 
 
-
-    document.addEventListener("keydown", function (event) {
-        // Check if the key is one of the specified keys
-        if (["1", "2","3","4","s", "x", "c", "d", "b", "r", "p", "q","t", "z"].includes(event.key)) {
-            // Prevent default action if inside an input or textarea
-            if (document.activeElement.matches('input, textarea')) {
-                return;  // Allow input in fields
-            }
+    const keyActions = {
+        "1": () => addTime('addButton'),
+        "2": () => addTime('addButton2'),
+        "3": zoomOut,
+        "4": zoomIn,
+        "b": resetToNextValue,
+        "r": resetTimer,
+        "t": toggleBoutonsRonds,
+        "p": pauseTimer,
+        "q": toggleFullscreen,
+        "z": toggleVisibility,
+        "s": () => document.getElementById("p1plus").click(),
+        "x": () => document.getElementById("p1moins").click(),
+        "d": () => document.getElementById("p2plus").click(),
+        "c": () => document.getElementById("p2moins").click()
+    };
     
-            // Prevent default browser behavior for these keys
+    // Keydown Event Listener
+    document.addEventListener("keydown", (event) => {
+        if (keyActions[event.key] && !document.activeElement.matches('input, textarea')) {
             event.preventDefault();
-    
-            // Perform actions based on keypress
-            switch (event.key) {
-                case "1":
-                    addTime('addButton');
-                    break;
-                case "2":
-                    addTime('addButton2');
-                    break;
-                case "3":
-                    zoomOut();
-                    break;
-                case "4":
-                    zoomIn();
-                    break;
-                case "b":
-                    resetToNextValue();
-                    break;
-                case "r":
-                    resetTimer();
-                    break;
-                case "t":
-                    toggleBoutonsRonds();
-                    break;
-                case "p":
-                    pauseTimer();
-                    break;
-                case "q":
-                    toggleFullscreen();
-                    break;
-                case "z":
-                    toggleVisibility();
-                    break;
-                case "s":
-                    document.getElementById("p1plus").click();
-                    break;
-                case "x":
-                    document.getElementById("p1moins").click();
-                    break;
-                case "d":
-                    document.getElementById("p2plus").click();
-                    break;
-                case "c":
-                    document.getElementById("p2moins").click();
-                    break;
-            }
+            keyActions[event.key]();
         }
     });
     
+    // Gamepad Setup
     let gamepadIndex = null;
-let gamepadButtonsPressed = new Set(); // Track pressed buttons to prevent spamming
-
-// Detect gamepad connection
-window.addEventListener("gamepadconnected", (event) => {
-    gamepadIndex = event.gamepad.index;
-    console.log("Gamepad connected:", event.gamepad.id);
-    pollGamepad();
-});
-
-// Poll gamepad inputs continuously
-function pollGamepad() {
-    if (gamepadIndex === null) return;
+    let gamepadButtonsPressed = new Set();
     
-    const gamepad = navigator.getGamepads()[gamepadIndex];
-    if (!gamepad) return;
-
-    // Mapping gamepad buttons to key actions
-    const buttonMapping = {
-        2: "1",   // A button → "1" (Add Time Player 1)
-        1: "2",   // B button → "2" (Add Time Player 2)
-        0: "b",   // X button → "b" (Reset to Next Value)
-        3: "r",   // Y button → "r" (Reset Timer)
-        9: "p",   // Start button → "p" (Pause)
-        12: "q",   // Select button → "q" (Fullscreen)
-        13: "z",   // D-Pad Down → "z" (Toggle UI)
+    const gamepadMapping = {
+        2: "1",   // A button → Add Time Player 1
+        1: "2",   // B button → Add Time Player 2
+        0: "b",   // X button → Reset to Next Value
+        3: "r",   // Y button → Reset Timer
+        9: "p",   // Start button → Pause
+        12: "q",  // Select button → Fullscreen
+        13: "z",  // D-Pad Down → Toggle UI
         4: "s",
         6: "x",
         5: "d",
         14: "4",
         15: "3",
         7: "c"
-
     };
-
-    // Loop through all buttons to detect presses
-    gamepad.buttons.forEach((button, index) => {
-        if (button.pressed && !gamepadButtonsPressed.has(index)) {
-            gamepadButtonsPressed.add(index); // Prevent repeated triggers
-            handleGamepadInput(buttonMapping[index]);
-        } else if (!button.pressed) {
-            gamepadButtonsPressed.delete(index); // Allow button press again
-        }
+    
+    window.addEventListener("gamepadconnected", (event) => {
+        gamepadIndex = event.gamepad.index;
+        console.log("Gamepad connected:", event.gamepad.id);
+        requestAnimationFrame(pollGamepad);
     });
-
-    requestAnimationFrame(pollGamepad); // Keep checking for input
-}
-
-// Execute the same functions as keydown events
-function handleGamepadInput(key) {
-    if (!key) return;
-
-    switch (key) {
-        case "1":
-            addTime('addButton');
-            break;
-        case "2":
-            addTime('addButton2');
-            break;
-        case "3":
-            zoomOut();
-            break;
-        case "4":
-            zoomIn();
-            break;
-        case "b":
-            resetToNextValue();
-            break;
-        case "r":
-            resetTimer();
-            break;
-        case "p":
-            pauseTimer();
-            break;
-        case "q":
-            toggleFullscreen();
-            break;
-        case "z":
-            toggleVisibility();
-            break;
-        case "s":
-            document.getElementById("p1plus").click();
-            break;
-        case "x":
-            document.getElementById("p1moins").click();
-            break;
-        case "d":
-            document.getElementById("p2plus").click();
-            break;
-        case "c":
-            document.getElementById("p2moins").click();
-            break;
-        
+    
+    function pollGamepad() {
+        if (gamepadIndex === null) return;
+        const gamepad = navigator.getGamepads()[gamepadIndex];
+        if (!gamepad) return;
+    
+        gamepad.buttons.forEach((button, index) => {
+            if (button.pressed && !gamepadButtonsPressed.has(index)) {
+                gamepadButtonsPressed.add(index);
+                if (gamepadMapping[index]) {
+                    keyActions[gamepadMapping[index]]?.();
+                }
+            } else if (!button.pressed) {
+                gamepadButtonsPressed.delete(index);
+            }
+        });
+    
+        requestAnimationFrame(pollGamepad);
     }
     
-}
-
+    
 
 
 document.addEventListener("DOMContentLoaded", function () {
