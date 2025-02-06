@@ -36,6 +36,10 @@ function checkViewport() {
   // Listen for resize events to trigger the check
   window.addEventListener("resize", checkViewport);
 
+
+
+
+
 	
     function startTimer() {
         clearInterval(countdownInterval);
@@ -546,6 +550,7 @@ document.addEventListener("DOMContentLoaded", function () {
 window.onload = function() {
 
     
+
     updateCountdown(); // Juste mettre à jour l'affichage
     isPaused = true;
     pauseTimer();

@@ -268,7 +268,7 @@
     display: none; /* Ensure it starts hidden */
 }
 
-#touchbtn, #p1plus, #p1moins,#p2plus,#p2moins,#toggleButtons,#fullscreen-btn,#settings-button {
+#touchbtn, #p1plus, #p1moins,#p2plus,#p2moins,#toggleButtons,#settings-button {
     position: fixed;
     opacity: 0.1;
     width: 60px;
@@ -312,10 +312,6 @@
     right: 20px;
 }
 
-#fullscreen-btn {
-    top: 80px;
-    right: 20px;
-}
 #settings-button {
     bottom: 10px;
     right: 20px;
