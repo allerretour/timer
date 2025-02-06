@@ -10,34 +10,31 @@ document.getElementById("countdown").addEventListener("click", pauseTimer);
 const beepSound = new Audio('beep-01.mp3');
 const buzzSound = new Audio('beep-04.mp3');
 
-function blockSmallScreens() {
+function checkViewport() {
     if (window.innerWidth < 1000) {
-      document.documentElement.innerHTML = `
-        <head>
-          <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <title>Screen Too Small</title>
-          <style>
-            body {
-              display: flex;
-              height: 100vh;
-              justify-content: center;
-              align-items: center;
-              text-align: center;
-              font-family: Arial, sans-serif;
-              font-size: 1.5rem;
-            }
-          </style>
-        </head>
-        <body>
-          <h2>Screen too small. Please use a larger display.</h2>
-        </body>
+      // Save in session that the page was blocked
+      sessionStorage.setItem("blocked", "true");
+
+      // Replace the page content
+      document.body.innerHTML = `
+        <div style="display: flex; height: 100vh; justify-content: center; align-items: center; text-align: center; font-family: Arial, sans-serif; font-size: 1.5rem;">
+          <h2>Écran trop petit, utiliser une tablette ou ordinateur.</h2>
+        </div>
       `;
-      throw new Error("Screen too small, page blocked.");
+    } else {
+      // If the page was previously blocked, force a reload
+      if (sessionStorage.getItem("blocked") === "true") {
+        sessionStorage.removeItem("blocked"); // Clear block state
+        location.reload(); // Reload when moving to a larger screen
+      }
     }
   }
 
-  window.addEventListener("DOMContentLoaded", blockSmallScreens);
-  window.addEventListener("resize", blockSmallScreens);
+  // Run the check on page load
+  checkViewport();
+
+  // Listen for resize events to trigger the check
+  window.addEventListener("resize", checkViewport);
 
 	
     function startTimer() {
