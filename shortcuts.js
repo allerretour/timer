@@ -8,9 +8,9 @@ const keyActions = {
     "b": resetToNextValue,
     "r": resetTimer,
     "t": toggleBoutonsRonds,
-"o": reloadPage,
-"w": resetScores,
-"v": resetTextVariables,
+    "o": reloadPage,
+    "w": resetScores,
+    "v": resetTextVariables,
     "p": pauseTimer,
     "q": toggleFullscreen,
     "z": toggleVisibility,
@@ -32,6 +32,7 @@ document.addEventListener("keydown", (event) => {
 let gamepadIndex = null;
 let gamepadButtonsPressed = new Set();
 
+// Button mappings
 const gamepadMapping = {
     2: "1",   // A button → Add Time Player 1
     1: "2",   // B button → Add Time Player 2
@@ -48,16 +49,30 @@ const gamepadMapping = {
     7: "c"    // Right Stick Button → Reset Scores
 };
 
-// Add joystick mappings
-const joystickSensitivity = 0.5;  // 0.0 → No movement at all.  1.0 → Full movement based on input.
-const joystickDeadzone = 0.8;     // 0.0 → No deadzone (detects even the smallest movements).  0.2 - 0.3 → Common values to filter out joystick drift.
+// Joystick settings
+const joystickDeadzone = 0.3;  // Ignore small movements
+const joystickThreshold = 0.8; // Movement beyond this is considered a "press"
 
+// Track previous joystick state to avoid repeated triggers
+let joystickPressed = {
+    left: false,
+    right: false,
+    up: false,
+    down: false,
+    r_left: false,
+    r_right: false,
+    r_up: false,
+    r_down: false
+};
+
+// Gamepad connection event
 window.addEventListener("gamepadconnected", (event) => {
     gamepadIndex = event.gamepad.index;
     console.log("Gamepad connected:", event.gamepad.id);
     requestAnimationFrame(pollGamepad);
 });
 
+// Gamepad polling function
 function pollGamepad() {
     if (gamepadIndex === null) return;
     const gamepad = navigator.getGamepads()[gamepadIndex];
@@ -75,56 +90,58 @@ function pollGamepad() {
         }
     });
 
-    // Handle joystick movement
+    // Handle joystick movement (Left Stick)
     const leftStickX = gamepad.axes[0];  // Left Stick Horizontal
     const leftStickY = gamepad.axes[1];  // Left Stick Vertical
     const rightStickX = gamepad.axes[2]; // Right Stick Horizontal
     const rightStickY = gamepad.axes[3]; // Right Stick Vertical
 
-    // Left Stick Mapping Example (Move player, scroll, etc.)
-    if (Math.abs(leftStickX) > joystickDeadzone) {
-        if (leftStickX > joystickSensitivity) {
-            console.log("Move Right");
-            // stick GAUCHE à droite
-            pauseTimer();
-        } else if (leftStickX < -joystickSensitivity) {
-            console.log("Move Left");
-            // stick GAUCHE à gauche
-            toggleVisibility();
-        }
+    // LEFT STICK → Main actions
+    if (leftStickX < -joystickThreshold && !joystickPressed.left) {
+        joystickPressed.left = true;
+        toggleVisibility(); // Left action
+    } else if (leftStickX > joystickThreshold && !joystickPressed.right) {
+        joystickPressed.right = true;
+        pauseTimer(); // Right action
+    } else if (leftStickY < -joystickThreshold && !joystickPressed.up) {
+        joystickPressed.up = true;
+        resetTimer(); // Up action
+    } else if (leftStickY > joystickThreshold && !joystickPressed.down) {
+        joystickPressed.down = true;
+        resetToNextValue(); // Down action
     }
 
-    if (Math.abs(leftStickY) > joystickDeadzone) {
-        if (leftStickY > joystickSensitivity) {
-            console.log("Move Down");
-           // stick GAUCHE en bas
-        } else if (leftStickY < -joystickSensitivity) {
-            console.log("Move Up");
-            // stick GAUCHE en haut
-        }
+    // RIGHT STICK → Zoom controls
+    if (rightStickX < -joystickThreshold && !joystickPressed.r_left) {
+        joystickPressed.r_left = true;
+        zoomOut(); // Right Stick Left
+    } else if (rightStickX > joystickThreshold && !joystickPressed.r_right) {
+        joystickPressed.r_right = true;
+        zoomIn(); // Right Stick Right
+    } else if (rightStickY < -joystickThreshold && !joystickPressed.r_up) {
+        joystickPressed.r_up = true;
+        console.log("Right Stick Up - Custom Action");
+    } else if (rightStickY > joystickThreshold && !joystickPressed.r_down) {
+        joystickPressed.r_down = true;
+        console.log("Right Stick Down - Custom Action");
     }
 
-    // Right Stick Mapping Example (Camera movement, zoom, etc.)
-    if (Math.abs(rightStickX) > joystickDeadzone) {
-        if (rightStickX > joystickSensitivity) {
-            console.log("Zoom In");
-            // stick DROITE à droite
-            zoomIn();
-        } else if (rightStickX < -joystickSensitivity) {
-            console.log("Zoom Out");
-            // stick DROITE à gauche
-            zoomOut();
-        }
+    // Reset joystick state when returning to the deadzone
+    if (Math.abs(leftStickX) < joystickDeadzone) {
+        joystickPressed.left = false;
+        joystickPressed.right = false;
     }
-
-    if (Math.abs(rightStickY) > joystickDeadzone) {
-        if (rightStickY > joystickSensitivity) {
-            console.log("Adjust Down");
-            // stick DROITE en bas
-        } else if (rightStickY < -joystickSensitivity) {
-            console.log("Adjust Up");
-            // stick DROITE en haut
-        }
+    if (Math.abs(leftStickY) < joystickDeadzone) {
+        joystickPressed.up = false;
+        joystickPressed.down = false;
+    }
+    if (Math.abs(rightStickX) < joystickDeadzone) {
+        joystickPressed.r_left = false;
+        joystickPressed.r_right = false;
+    }
+    if (Math.abs(rightStickY) < joystickDeadzone) {
+        joystickPressed.r_up = false;
+        joystickPressed.r_down = false;
     }
 
     requestAnimationFrame(pollGamepad);
