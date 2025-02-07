@@ -30,6 +30,11 @@ function checkViewport() {
     }
   }
 
+// Function to reload the page
+        function reloadPage() {
+            location.reload();  // This reloads the current page
+        }
+
   // Run the check on page load
   checkViewport();
 
