@@ -60,6 +60,13 @@ function closeImage(event) {
 }
 
 
+
+function resetTextVariables() {
+    document.getElementById("textVariable1").textContent = "Joueur 1";
+    document.getElementById("textVariable2").textContent = "Joueur 2";
+}
+
+
 	
     function startTimer() {
         clearInterval(countdownInterval);
