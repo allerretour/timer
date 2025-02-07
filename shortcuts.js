@@ -85,11 +85,11 @@ function pollGamepad() {
     if (Math.abs(leftStickX) > joystickDeadzone) {
         if (leftStickX > joystickSensitivity) {
             console.log("Move Right");
-            // Add action for right movement, for example:
+            // stick GAUCHE à droite
             // keyActions['rightMovement']();
         } else if (leftStickX < -joystickSensitivity) {
             console.log("Move Left");
-            // Add action for left movement, for example:
+            // stick GAUCHE à gauche
             // keyActions['leftMovement']();
         }
     }
@@ -97,10 +97,10 @@ function pollGamepad() {
     if (Math.abs(leftStickY) > joystickDeadzone) {
         if (leftStickY > joystickSensitivity) {
             console.log("Move Down");
-            // Add action for down movement
+           // stick GAUCHE en bas
         } else if (leftStickY < -joystickSensitivity) {
             console.log("Move Up");
-            // Add action for up movement
+            // stick GAUCHE en haut
         }
     }
 
@@ -108,11 +108,11 @@ function pollGamepad() {
     if (Math.abs(rightStickX) > joystickDeadzone) {
         if (rightStickX > joystickSensitivity) {
             console.log("Zoom In");
-            // Trigger zoom in or similar
+            // stick DROITE à droite
             keyActions["zoomIn"]();
         } else if (rightStickX < -joystickSensitivity) {
             console.log("Zoom Out");
-            // Trigger zoom out or similar
+            // stick DROITE à gauche
             keyActions["zoomOut"]();
         }
     }
@@ -120,10 +120,10 @@ function pollGamepad() {
     if (Math.abs(rightStickY) > joystickDeadzone) {
         if (rightStickY > joystickSensitivity) {
             console.log("Adjust Down");
-            // Handle downward adjustment action
+            // stick DROITE en bas
         } else if (rightStickY < -joystickSensitivity) {
             console.log("Adjust Up");
-            // Handle upward adjustment action
+            // stick DROITE en haut
         }
     }
 
