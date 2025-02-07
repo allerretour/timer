@@ -12,6 +12,29 @@
     }
 
 
+/* Center and fix the image on the screen */
+#image-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    z-index: 9999; /* Ensures the image is above other content */
+}
+
+#instruction-image {
+    max-width: 90%; /* Limit image size */
+    max-height: 90%; /* Limit image size */
+    object-fit: contain; /* Ensure the image maintains its aspect ratio */
+}
+
+
+
+
 #middle-image {
     position: fixed;
     bottom: 45px; /* Adjust this value as needed */

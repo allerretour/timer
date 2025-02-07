@@ -38,6 +38,21 @@ function checkViewport() {
 
 
 
+// Function to open the image when any button is clicked
+function openImage(imageSrc) {
+    var imageContainer = document.getElementById("image-container");
+    var instructionImage = document.getElementById("instruction-image");
+
+    instructionImage.src = imageSrc; // Set the image source
+    imageContainer.style.display = "flex"; // Show the image container
+}
+
+// Function to close the image when the image itself is clicked
+function closeImage(event) {
+    event.stopPropagation(); // Prevent the click from propagating to the container
+    var imageContainer = document.getElementById("image-container");
+    imageContainer.style.display = "none"; // Hide the image container
+}
 
 
 	

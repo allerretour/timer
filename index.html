@@ -114,10 +114,22 @@
     </div>
 </div>
 
+<!-- Container for the image, initially hidden -->
+<div id="image-container" style="display: none;">
+    <img id="instruction-image" src="" alt="Instruction Image" onclick="closeImage(event)">
+</div>
+
+
+
 <div id="instructionsModal" class="modal" onclick="closeInstructions(event)">
     <div class="modal-content" onclick="event.stopPropagation()">
         <button class="close-button" onclick="closeInstructions()">&times;</button>
         <h3 style="text-align: center;">Chronomètre de billard</h3>
+
+<button id="ps4inst" onclick="openImage('logo.jpg')"><i class="fa-solid fa-gamepad"></i></button> 
+<button id="kbdinst" onclick="openImage('logo.jpg')"><i class="fa-regular fa-keyboard"></i></button>
+<button id="tscinst" onclick="openImage('logo.jpg')"><i class="fa-regular fa-hand-point-up"></i></button>
+
 	<p>  <i class="fa-solid fa-stop fa-lg" style="color: orange;"></i>&nbsp;&nbsp;Coup terminé <strong style="color:orange">(b)</strong></p>        
 	<p>  <i class="fas fa-pause fa-lg" style="color: green;"></i> / <i class="fas fa-play fa-lg" style="color: grey;"></i>&nbsp;&nbsp;&nbsp;Mettre en pause / débuter <strong style="color:green">(p)</strong></p>
     <p>  <i class="fas fa-refresh fa-lg" style="color: red;"></i>&nbsp;&nbsp;Nouvelle partie <strong style="color:red">(r)</strong></p>
@@ -132,7 +144,6 @@
         <!-- Add more content as needed -->
     </div>
 </div>
-
 
 <script src="script.js" defer></script>
 <script src="shortcuts.js" defer></script>
