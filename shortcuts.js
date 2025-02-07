@@ -39,13 +39,17 @@ const gamepadMapping = {
     9: "p",   // Start button → Pause
     12: "q",  // Select button → Fullscreen
     13: "z",  // D-Pad Down → Toggle UI
-    4: "s",
-    6: "x",
-    5: "d",
-    14: "4",
-    15: "3",
-    7: "c"
+    4: "s",   // D-Pad Left → Player 1 Plus
+    6: "x",   // D-Pad Right → Player 1 Minus
+    5: "d",   // D-Pad Up → Player 2 Plus
+    14: "4",  // Left Shoulder → Zoom Out
+    15: "3",  // Right Shoulder → Zoom In
+    7: "c"    // Right Stick Button → Reset Scores
 };
+
+// Add joystick mappings
+const joystickSensitivity = 0.5;  // Adjust the threshold for joystick sensitivity
+const joystickDeadzone = 0.2;     // Minimum threshold before detecting movement
 
 window.addEventListener("gamepadconnected", (event) => {
     gamepadIndex = event.gamepad.index;
@@ -58,6 +62,7 @@ function pollGamepad() {
     const gamepad = navigator.getGamepads()[gamepadIndex];
     if (!gamepad) return;
 
+    // Handle button presses
     gamepad.buttons.forEach((button, index) => {
         if (button.pressed && !gamepadButtonsPressed.has(index)) {
             gamepadButtonsPressed.add(index);
@@ -68,6 +73,58 @@ function pollGamepad() {
             gamepadButtonsPressed.delete(index);
         }
     });
+
+    // Handle joystick movement
+    const leftStickX = gamepad.axes[0];  // Left Stick Horizontal
+    const leftStickY = gamepad.axes[1];  // Left Stick Vertical
+    const rightStickX = gamepad.axes[2]; // Right Stick Horizontal
+    const rightStickY = gamepad.axes[3]; // Right Stick Vertical
+
+    // Left Stick Mapping Example (Move player, scroll, etc.)
+    if (Math.abs(leftStickX) > joystickDeadzone) {
+        if (leftStickX > joystickSensitivity) {
+            console.log("Move Right");
+            // Add action for right movement, for example:
+            // keyActions['rightMovement']();
+        } else if (leftStickX < -joystickSensitivity) {
+            console.log("Move Left");
+            // Add action for left movement, for example:
+            // keyActions['leftMovement']();
+        }
+    }
+
+    if (Math.abs(leftStickY) > joystickDeadzone) {
+        if (leftStickY > joystickSensitivity) {
+            console.log("Move Down");
+            // Add action for down movement
+        } else if (leftStickY < -joystickSensitivity) {
+            console.log("Move Up");
+            // Add action for up movement
+        }
+    }
+
+    // Right Stick Mapping Example (Camera movement, zoom, etc.)
+    if (Math.abs(rightStickX) > joystickDeadzone) {
+        if (rightStickX > joystickSensitivity) {
+            console.log("Zoom In");
+            // Trigger zoom in or similar
+            keyActions["zoomIn"]();
+        } else if (rightStickX < -joystickSensitivity) {
+            console.log("Zoom Out");
+            // Trigger zoom out or similar
+            keyActions["zoomOut"]();
+        }
+    }
+
+    if (Math.abs(rightStickY) > joystickDeadzone) {
+        if (rightStickY > joystickSensitivity) {
+            console.log("Adjust Down");
+            // Handle downward adjustment action
+        } else if (rightStickY < -joystickSensitivity) {
+            console.log("Adjust Up");
+            // Handle upward adjustment action
+        }
+    }
 
     requestAnimationFrame(pollGamepad);
 }
