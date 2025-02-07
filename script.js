@@ -374,12 +374,11 @@ const fullscreenButton = document.getElementById('fullscreen-btn');
     }
     
     
-
+let p1Score = 0; // Initial score for Player 1
+let p2Score = 0; // Initial score for Player 2
 
 document.addEventListener("DOMContentLoaded", function () {
-    let p1Score = 0; // Initial score for Player 1
-    let p2Score = 0; // Initial score for Player 2
-
+    
     const p1scr = document.getElementById("p1scr");
     const p1plus = document.getElementById("p1plus");
     const p1moins = document.getElementById("p1moins");
@@ -418,6 +417,24 @@ document.addEventListener("DOMContentLoaded", function () {
         p2scr.innerHTML = p2Score;
     });
 });
+
+
+// Function to reset scores
+function resetScores() {
+    // Reset both player scores to 0
+    p1Score = 0;
+    p2Score = 0;
+    
+    // Update the score displays in the DOM
+    const p1scr = document.getElementById("p1scr");
+    const p2scr = document.getElementById("p2scr");
+    
+    p1scr.innerHTML = p1Score;
+    p2scr.innerHTML = p2Score;
+}
+
+
+
     
 window.onload = function() {
 

@@ -9,6 +9,7 @@ const keyActions = {
     "r": resetTimer,
     "t": toggleBoutonsRonds,
 "o": reloadPage,
+"w": resetScores,
     "p": pauseTimer,
     "q": toggleFullscreen,
     "z": toggleVisibility,
