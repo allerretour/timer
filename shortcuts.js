@@ -1,35 +1,6 @@
-// shortcuts.js
-
-const keyActions = {
-    "1": () => addTime('addButton'),
-    "2": () => addTime('addButton2'),
-    "3": zoomOut,
-    "4": zoomIn,
-    "b": resetToNextValue,
-    "r": resetTimer,
-    "t": toggleBoutonsRonds,
-    "o": reloadPage,
-    "w": resetScores,
-    "v": resetTextVariables,
-    "p": pauseTimer,
-    "q": toggleFullscreen,
-    "z": toggleVisibility,
-    "s": () => document.getElementById("p1plus").click(),
-    "x": () => document.getElementById("p1moins").click(),
-    "d": () => document.getElementById("p2plus").click(),
-    "c": () => document.getElementById("p2moins").click()
-};
-
-// Keydown Event Listener
-document.addEventListener("keydown", (event) => {
-    if (keyActions[event.key] && !document.activeElement.matches('input, textarea')) {
-        event.preventDefault();
-        keyActions[event.key]();
-    }
-});
-
 // Gamepad Setup
-
+let gamepadIndex = null;
+let gamepadButtonsPressed = new Set();
 
 // Button mappings
 const gamepadMapping = {
@@ -49,10 +20,10 @@ const gamepadMapping = {
 };
 
 // Joystick settings
-const joystickDeadzone = 0.3;  // Ignore small movements
-const joystickThreshold = 0.8; // Movement beyond this is considered a "press"
+const joystickDeadzone = 0.3;
+const joystickThreshold = 0.8;
 
-// Track previous joystick state to avoid repeated triggers
+// Track previous joystick state
 let joystickPressed = {
     left: false,
     right: false,
@@ -64,7 +35,38 @@ let joystickPressed = {
     r_down: false
 };
 
-    // Handle joystick movement (Left Stick)
+// Detect gamepad connection
+window.addEventListener("gamepadconnected", (event) => {
+    gamepadIndex = event.gamepad.index;
+    console.log("Gamepad connected:", event.gamepad.id);
+    requestAnimationFrame(pollGamepad);
+});
+
+// Detect gamepad disconnection
+window.addEventListener("gamepaddisconnected", () => {
+    console.log("Gamepad disconnected");
+    gamepadIndex = null;
+});
+
+// Polling function
+function pollGamepad() {
+    if (gamepadIndex === null) return;
+    const gamepad = navigator.getGamepads()[gamepadIndex];
+    if (!gamepad) return;
+
+    // Handle button presses
+    gamepad.buttons.forEach((button, index) => {
+        if (button.pressed && !gamepadButtonsPressed.has(index)) {
+            gamepadButtonsPressed.add(index);
+            if (gamepadMapping[index]) {
+                keyActions[gamepadMapping[index]]?.();
+            }
+        } else if (!button.pressed) {
+            gamepadButtonsPressed.delete(index);
+        }
+    });
+
+    // Handle joystick movement
     const leftStickX = gamepad.axes[0];  // Left Stick Horizontal
     const leftStickY = gamepad.axes[1];  // Left Stick Vertical
     const rightStickX = gamepad.axes[2]; // Right Stick Horizontal
@@ -117,60 +119,6 @@ let joystickPressed = {
         joystickPressed.r_up = false;
         joystickPressed.r_down = false;
     }
-// Gamepad Setup
-let gamepadIndex = null;
-let gamepadButtonsPressed = new Set();
-
-// Start polling for gamepads immediately on page load
-window.addEventListener("load", () => {
-    requestAnimationFrame(scanForGamepads);
-});
-
-// Detect gamepad connection
-window.addEventListener("gamepadconnected", (event) => {
-    gamepadIndex = event.gamepad.index;
-    console.log("Gamepad connected:", event.gamepad.id);
-    requestAnimationFrame(pollGamepad);
-});
-
-// Detect gamepad disconnection
-window.addEventListener("gamepaddisconnected", () => {
-    console.log("Gamepad disconnected");
-    gamepadIndex = null;
-});
-
-// Function to scan for gamepads (in case browser doesn't trigger "gamepadconnected" event)
-function scanForGamepads() {
-    const gamepads = navigator.getGamepads();
-    for (let i = 0; i < gamepads.length; i++) {
-        if (gamepads[i]) {
-            gamepadIndex = i;
-            console.log("Gamepad detected:", gamepads[i].id);
-            requestAnimationFrame(pollGamepad);
-            return;
-        }
-    }
-    requestAnimationFrame(scanForGamepads); // Keep checking until a gamepad is detected
-}
-
-// Main gamepad polling function
-function pollGamepad() {
-    if (gamepadIndex === null) return;
-    const gamepad = navigator.getGamepads()[gamepadIndex];
-    if (!gamepad) return;
-
-    // Handle button presses
-    gamepad.buttons.forEach((button, index) => {
-        if (button.pressed && !gamepadButtonsPressed.has(index)) {
-            gamepadButtonsPressed.add(index);
-            if (gamepadMapping[index]) {
-                keyActions[gamepadMapping[index]]?.();
-            }
-        } else if (!button.pressed) {
-            gamepadButtonsPressed.delete(index);
-        }
-    });
 
     requestAnimationFrame(pollGamepad);
 }
-
