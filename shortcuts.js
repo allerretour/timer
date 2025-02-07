@@ -29,8 +29,7 @@ document.addEventListener("keydown", (event) => {
 });
 
 // Gamepad Setup
-let gamepadIndex = null;
-let gamepadButtonsPressed = new Set();
+
 
 // Button mappings
 const gamepadMapping = {
@@ -64,31 +63,6 @@ let joystickPressed = {
     r_up: false,
     r_down: false
 };
-
-// Gamepad connection event
-window.addEventListener("gamepadconnected", (event) => {
-    gamepadIndex = event.gamepad.index;
-    console.log("Gamepad connected:", event.gamepad.id);
-    requestAnimationFrame(pollGamepad);
-});
-
-// Gamepad polling function
-function pollGamepad() {
-    if (gamepadIndex === null) return;
-    const gamepad = navigator.getGamepads()[gamepadIndex];
-    if (!gamepad) return;
-
-    // Handle button presses
-    gamepad.buttons.forEach((button, index) => {
-        if (button.pressed && !gamepadButtonsPressed.has(index)) {
-            gamepadButtonsPressed.add(index);
-            if (gamepadMapping[index]) {
-                keyActions[gamepadMapping[index]]?.();
-            }
-        } else if (!button.pressed) {
-            gamepadButtonsPressed.delete(index);
-        }
-    });
 
     // Handle joystick movement (Left Stick)
     const leftStickX = gamepad.axes[0];  // Left Stick Horizontal
@@ -143,6 +117,60 @@ function pollGamepad() {
         joystickPressed.r_up = false;
         joystickPressed.r_down = false;
     }
+// Gamepad Setup
+let gamepadIndex = null;
+let gamepadButtonsPressed = new Set();
+
+// Start polling for gamepads immediately on page load
+window.addEventListener("load", () => {
+    requestAnimationFrame(scanForGamepads);
+});
+
+// Detect gamepad connection
+window.addEventListener("gamepadconnected", (event) => {
+    gamepadIndex = event.gamepad.index;
+    console.log("Gamepad connected:", event.gamepad.id);
+    requestAnimationFrame(pollGamepad);
+});
+
+// Detect gamepad disconnection
+window.addEventListener("gamepaddisconnected", () => {
+    console.log("Gamepad disconnected");
+    gamepadIndex = null;
+});
+
+// Function to scan for gamepads (in case browser doesn't trigger "gamepadconnected" event)
+function scanForGamepads() {
+    const gamepads = navigator.getGamepads();
+    for (let i = 0; i < gamepads.length; i++) {
+        if (gamepads[i]) {
+            gamepadIndex = i;
+            console.log("Gamepad detected:", gamepads[i].id);
+            requestAnimationFrame(pollGamepad);
+            return;
+        }
+    }
+    requestAnimationFrame(scanForGamepads); // Keep checking until a gamepad is detected
+}
+
+// Main gamepad polling function
+function pollGamepad() {
+    if (gamepadIndex === null) return;
+    const gamepad = navigator.getGamepads()[gamepadIndex];
+    if (!gamepad) return;
+
+    // Handle button presses
+    gamepad.buttons.forEach((button, index) => {
+        if (button.pressed && !gamepadButtonsPressed.has(index)) {
+            gamepadButtonsPressed.add(index);
+            if (gamepadMapping[index]) {
+                keyActions[gamepadMapping[index]]?.();
+            }
+        } else if (!button.pressed) {
+            gamepadButtonsPressed.delete(index);
+        }
+    });
 
     requestAnimationFrame(pollGamepad);
 }
+
