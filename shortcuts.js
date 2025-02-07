@@ -49,7 +49,7 @@ const gamepadMapping = {
 };
 
 // Add joystick mappings
-const joystickSensitivity = 0.4;  // 0.0 → No movement at all.  1.0 → Full movement based on input.
+const joystickSensitivity = 0.5;  // 0.0 → No movement at all.  1.0 → Full movement based on input.
 const joystickDeadzone = 0.3;     // 0.0 → No deadzone (detects even the smallest movements).  0.2 - 0.3 → Common values to filter out joystick drift.
 
 window.addEventListener("gamepadconnected", (event) => {
