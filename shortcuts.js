@@ -86,11 +86,11 @@ function pollGamepad() {
         if (leftStickX > joystickSensitivity) {
             console.log("Move Right");
             // stick GAUCHE à droite
-            // keyActions['rightMovement']();
+            pauseTimer();
         } else if (leftStickX < -joystickSensitivity) {
             console.log("Move Left");
             // stick GAUCHE à gauche
-            // keyActions['leftMovement']();
+            toggleVisibility();
         }
     }
 
@@ -109,11 +109,11 @@ function pollGamepad() {
         if (rightStickX > joystickSensitivity) {
             console.log("Zoom In");
             // stick DROITE à droite
-            keyActions["zoomIn"]();
+            zoomIn();
         } else if (rightStickX < -joystickSensitivity) {
             console.log("Zoom Out");
             // stick DROITE à gauche
-            keyActions["zoomOut"]();
+            zoomOut();
         }
     }
 
