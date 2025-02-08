@@ -3,6 +3,7 @@ const keyActions = {
     "2": () => addTime('addButton2'),
     "3": zoomOut,
     "4": zoomIn,
+    "6": openSettings,
     "b": resetToNextValue,
     "r": resetTimer,
     "t": toggleBoutonsRonds,

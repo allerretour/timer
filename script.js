@@ -237,16 +237,25 @@ function updateCountdown() {
 
 
 
-    function openSettings() {
-        const modal = document.getElementById('settingsModal');
-        const modalContent = document.querySelector('.modal-content');
+function openSettings() {
+    const modal = document.getElementById('settingsModal');
+    const modalContent = document.querySelector('.modal-content');
+
+    // Check if the modal is already open
+    if (modal.classList.contains('show')) {
+        // If it's open, close it
+        modal.classList.remove('show');
+        modalContent.classList.remove('show');
+        modal.style.display = 'none';
+    } else {
+        // Otherwise, open it
         modal.style.display = 'flex';
         setTimeout(() => {
             modal.classList.add('show');
             modalContent.classList.add('show');
         }, 10);
-        
     }
+}
 
     function closeSettings(event) {
         const modal = document.getElementById('settingsModal');
@@ -441,12 +450,9 @@ function resetScores() {
 }
 
 
-
-    
 window.onload = function() {
 
     
-
     updateCountdown(); // Juste mettre à jour l'affichage
     isPaused = true;
     pauseTimer();
