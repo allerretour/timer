@@ -48,22 +48,6 @@ const gamepadMapping = {
     7: "c"
 };
 
-// Joystick settings
-const joystickDeadzone = 0.2;
-const joystickThreshold = 0.4;
-
-// Track previous joystick state
-let joystickPressed = {
-    left: false,
-    right: false,
-    up: false,
-    down: false,
-    r_left: false,
-    r_right: false,
-    r_up: false,
-    r_down: false
-};
-
 // Detect gamepad connection
 window.addEventListener("gamepadconnected", (event) => {
     gamepadIndex = event.gamepad.index;
@@ -105,59 +89,6 @@ function pollGamepad() {
         }
     });
 
-   // Handle joystick movement
-const leftStickX = gamepad.axes[0];
-const leftStickY = gamepad.axes[1];
-const rightStickX = gamepad.axes[2];
-const rightStickY = gamepad.axes[3];
-
-// Left Stick movement
-if (leftStickX < -joystickThreshold && !joystickPressed.left) {
-    joystickPressed.left = true;
-    document.getElementById("p1moins").click();
-} else if (leftStickX > joystickThreshold && !joystickPressed.right) {
-    joystickPressed.right = true;
-    document.getElementById("p1plus").click();
-} else if (leftStickY < -joystickThreshold && !joystickPressed.up) {
-    joystickPressed.up = true;
-    addTime('addButton');
-} else if (leftStickY > joystickThreshold && !joystickPressed.down) {
-    joystickPressed.down = true;
-    resetScores();
-}
-
-// Right Stick movement
-if (rightStickX < -joystickThreshold && !joystickPressed.r_left) {
-    joystickPressed.r_left = true;
-    document.getElementById("p2moins").click();
-} else if (rightStickX > joystickThreshold && !joystickPressed.r_right) {
-    joystickPressed.r_right = true;
-    document.getElementById("p2plus").click();
-} else if (rightStickY < -joystickThreshold && !joystickPressed.r_up) {
-    joystickPressed.r_up = true;
-    addTime('addButton2');
-} else if (rightStickY > joystickThreshold && !joystickPressed.r_down) {
-    joystickPressed.r_down = true;
-    resetScores();
-}
-
-// Reset joystick state when returning to the deadzone
-if (Math.abs(leftStickX) < joystickDeadzone) {
-    joystickPressed.left = false;
-    joystickPressed.right = false;
-}
-if (Math.abs(leftStickY) < joystickDeadzone) {
-    joystickPressed.up = false;
-    joystickPressed.down = false;
-}
-if (Math.abs(rightStickX) < joystickDeadzone) {
-    joystickPressed.r_left = false;
-    joystickPressed.r_right = false;
-}
-if (Math.abs(rightStickY) < joystickDeadzone) {
-    joystickPressed.r_up = false;
-    joystickPressed.r_down = false;
-}
     requestAnimationFrame(pollGamepad);
 }
 
