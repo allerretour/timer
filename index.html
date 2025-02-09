@@ -46,18 +46,17 @@
 
 
 <div class="boutonsronds">
-<button id="settings-button" onclick="openSettings()"><i class="fas fa-cog"></i></button>
+
 <button id="p1plus" ><i class="fa-solid fa-plus"></i></button>
 <button id="p1moins" ><i class="fa-solid fa-minus"></i></button>
 <button id="p2plus" ><i class="fa-solid fa-plus"></i></button>
 <button id="p2moins" ><i class="fa-solid fa-minus"></i></button>
-
 <button id="toggleButtons" onclick="toggleVisibility()"><i class="fas fa-eye-slash"></i></button>
 </div>
 
+<button id="settings-button" onclick="openSettings()"><i class="fas fa-cog"></i></button>
 
 
-<button id="touchbtn" onclick="toggleBoutonsRonds()"><i class="fa-regular fa-hand-point-up"></i></button>
 
 
     
@@ -69,6 +68,8 @@
         <button class="close-button" onclick="closeSettings()">×</button>
 
        <button id="btninfo" onclick="openInstructions()"><i class="fas fa-info"></i></button> 
+
+
        <h3 style="text-align: center;">Paramètres du chronomètre</h3>
 
        
@@ -101,15 +102,20 @@
 
         
         
-        <div class="presets-container">
-            <button onclick="saveSettings()"><i class="fas fa-save fa-lg"></i></button> 
-            <button id="fullscreen-btn" onclick="toggleFullscreen()"><i class="fa-solid fa-maximize"></i></button>           
-           <button id="reload-btn" onclick="reloadPage()"><i class="fa-solid fa-rotate-right"></i></button>
-            <button class="preset-button" onclick="setPreset(60, 30, 30, this)">30s</button>
-            <button class="preset-button" onclick="setPreset(70, 35, 35, this)">35s</button>
-            <button class="preset-button" onclick="setPreset(80, 40, 40, this)">40s</button>
-            
-        </div>
+    <div class="presets-container">
+        <button class="save-btn" onclick="saveSettings()"><i class="fas fa-save fa-lg"></i></button> 
+        <button class="fullscreen-btn" id="fullscreen-btn" onclick="toggleFullscreen()"><i class="fa-solid fa-maximize"></i></button>           
+        <button class="reload-btn" id="reload-btn" onclick="reloadPage()"><i class="fa-solid fa-rotate-right"></i></button>
+    
+        <button class="zoom-in-btn" id="zoomp-btn" onclick="zoomIn()"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
+        <button class="zoom-out-btn" id="zoomm-btn" onclick="zoomOut()"><i class="fa-solid fa-magnifying-glass-minus"></i></button>
+        <button class="touch-btn" id="touch-btn" onclick="toggleBoutonsRonds()"><i class="fa-regular fa-hand-point-up"></i></button>
+    
+        <button class="preset-30s preset-button" onclick="setPreset(60, 30, 30, this)">30s</button>
+        <button class="preset-35s preset-button" onclick="setPreset(70, 35, 35, this)">35s</button>
+        <button class="preset-40s preset-button" onclick="setPreset(80, 40, 40, this)">40s</button>
+    </div>
+    
         
         
     </div>

@@ -271,7 +271,6 @@ beepSound.pause();
 buzzSound.play();
 buzzSound.pause();
 
-
     }
 
     function saveSettings() {
@@ -360,25 +359,29 @@ const fullscreenButton = document.getElementById('fullscreen-btn');
     // Function to toggle fullscreen
     function toggleFullscreen() {
         const elem = document.documentElement;
-        
+    
         if (isFullscreen()) {
-
-            document.exitFullscreen?.() ||
-            document.mozCancelFullScreen?.() ||
-            document.webkitExitFullscreen?.() ||
-            document.msExitFullscreen?.();
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.mozCancelFullScreen) {
+                document.mozCancelFullScreen();
+            } else if (document.webkitExitFullscreen) {
+                document.webkitExitFullscreen();
+            } else if (document.msExitFullscreen) {
+                document.msExitFullscreen();
+            }
         } else {
-
-            elem.requestFullscreen?.() ||
-            elem.mozRequestFullScreen?.() ||
-            elem.webkitRequestFullscreen?.() ||
-            elem.msRequestFullscreen?.();
-            
-            elem.focus(); // Ensure focus is maintained
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+            } else if (elem.mozRequestFullScreen) {
+                elem.mozRequestFullScreen();
+            } else if (elem.webkitRequestFullscreen) {
+                elem.webkitRequestFullscreen();
+            } else if (elem.msRequestFullscreen) {
+                elem.msRequestFullscreen();
+            }
         }
     }
-    
-
     
     
 
