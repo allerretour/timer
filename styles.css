@@ -98,8 +98,8 @@
     
     font-size: 60px;
     font-weight: bold;
-    color: #fff; /* White text */
-    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.7); /* Strong shadow */
+    color: rgb(0, 0, 0); /* White text */
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.5); /* Strong shadow */
     
     padding: 5px;
     border-radius: 8px;
@@ -108,7 +108,7 @@
     .container {
         text-align: center;
         width: 90%;
-        max-width: 800px;
+        max-width: 900px;
         background-color: rgba(255, 255, 255, 0.8); /* Set the rectangle to semi-transparent */
         padding: 20px;
         border-radius: 20px;
@@ -117,6 +117,24 @@
         top: 270px; /* Move the container down to give space */
         left: 50%; /* Centrer horizontalement */
         transform: translateX(-50%); /* Centrer parfaitement */
+    }
+    .container button {
+        font-size: 60px;
+        height: 100%;
+        width: 49%;
+        padding: 5px 5px;
+        cursor: pointer;
+        border: none;
+        border-radius: 12px;
+        transition: background-color 0.3s;
+        color: rgb(255, 255, 255);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .container button:disabled {
+        background-color: #888;
+        opacity: 0.2;
+        cursor: not-allowed;
     }
 
     .countdown {
@@ -159,26 +177,6 @@
     color: rgb(255, 255, 255);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
 }
-.container button {
-    font-size: 60px;
-    height: 100%;
-    width: 49%;
-    padding: 5px 5px;
-    cursor: pointer;
-    border: none;
-    border-radius: 12px;
-    transition: background-color 0.3s;
-    color: rgb(255, 255, 255);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-}
-
-.container button:disabled {
-    background-color: #888;
-    opacity: 0.2;
-    cursor: not-allowed;
-}
-
-
     .progress-bar {
         width: 100%;
         height: 30px;
