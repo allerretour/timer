@@ -1,29 +1,38 @@
-const keyActions = {
-    "1": () => addTime('addButton'),
-    "2": () => addTime('addButton2'),
-    "3": zoomOut,
-    "4": zoomIn,
-    "6": openSettings,
-    "b": resetToNextValue,
-    "r": resetTimer,
-    "t": toggleBoutonsRonds,
-    "o": reloadPage,
-    "w": resetScores,
-    "v": resetTextVariables,
-    " ": pauseTimer,
-    "q": toggleFullscreen,
-    "z": toggleVisibility,
-    "s": () => document.getElementById("p1plus").click(),
-    "x": () => document.getElementById("p1moins").click(),
-    "d": () => document.getElementById("p2plus").click(),
-    "c": () => document.getElementById("p2moins").click()
+// Combined key and gamepad mappings
+const controlMappings = {
+    "1": { action: () => addTime('addButton'), gamepadButton: 2 },
+    "2": { action: () => addTime('addButton2'), gamepadButton: 1 },
+    "3": { action: zoomOut, gamepadButton: 15 },
+    "4": { action: zoomIn, gamepadButton: 14 },
+    "6": { action: openSettings, gamepadButton: 8 },
+    "b": { action: resetToNextValue, gamepadButton: 0 },
+    "r": { action: resetTimer, gamepadButton: 3 },
+    "t": { action: toggleBoutonsRonds },
+    "o": { action: reloadPage },
+    "w": { action: resetScores },
+    "v": { action: resetTextVariables },
+    " ": { action: pauseTimer, gamepadButton: 9 },
+    "q": { action: toggleFullscreen, gamepadButton: 12 },
+    "z": { action: toggleVisibility, gamepadButton: 13 },
+    "s": { action: () => document.getElementById("p1plus").click(), gamepadButton: 4 },
+    "x": { action: () => document.getElementById("p1moins").click(), gamepadButton: 6 },
+    "d": { action: () => document.getElementById("p2plus").click(), gamepadButton: 5 },
+    "c": { action: () => document.getElementById("p2moins").click(), gamepadButton: 7 }
 };
 
-// Keydown Event Listener
+// Centralized event handler for both keyboard and gamepad input
+function handleInput(keyOrButton) {
+    const control = controlMappings[keyOrButton];
+    if (control) {
+        control.action();
+    }
+}
+
+// Keydown Event Listener for keyboard input
 document.addEventListener("keydown", (event) => {
-    if (keyActions[event.key] && !document.activeElement.matches('input, textarea')) {
+    if (!document.activeElement.matches('input, textarea')) {
         event.preventDefault();
-        keyActions[event.key]();
+        handleInput(event.key);
     }
 });
 
@@ -31,24 +40,8 @@ document.addEventListener("keydown", (event) => {
 let gamepadIndex = null;
 let gamepadButtonsPressed = new Set();
 let gamepadPolling = false;
-
-// Button mappings
-const gamepadMapping = {
-    2: "1",
-    1: "2",
-    0: "b",
-    3: "r",
-    8: "6",
-    9: " ",
-    12: "q",
-    13: "z",
-    4: "s",
-    6: "x",
-    5: "d",
-    14: "4",
-    15: "3",
-    7: "c"
-};
+let lastPollTime = 0;
+const pollInterval = 100; // milliseconds
 
 // Detect gamepad connection
 window.addEventListener("gamepadconnected", (event) => {
@@ -56,42 +49,45 @@ window.addEventListener("gamepadconnected", (event) => {
     console.log("Gamepad connected:", event.gamepad.id);
     if (!gamepadPolling) {
         gamepadPolling = true;
-        pollGamepad();
+        requestAnimationFrame(pollGamepad);
     }
 });
 
+// Detect gamepad disconnection
 window.addEventListener("gamepaddisconnected", () => {
     console.log("Gamepad disconnected");
     gamepadIndex = null;
     gamepadPolling = false;
 });
 
-// Polling function
-function pollGamepad() {
-    if (gamepadIndex === null) {
+// Polling function for gamepad input
+function pollGamepad(timestamp) {
+    if (!gamepadIndex) {
+        requestAnimationFrame(pollGamepad);
+        return;
+    }
+
+    // Skip polling if the interval has not passed
+    if (timestamp - lastPollTime < pollInterval) {
         requestAnimationFrame(pollGamepad);
         return;
     }
 
     const gamepad = navigator.getGamepads()[gamepadIndex];
-    if (!gamepad) {
-        requestAnimationFrame(pollGamepad);
-        return;
+    if (gamepad) {
+        gamepad.buttons.forEach((button, index) => {
+            if (button.pressed && !gamepadButtonsPressed.has(index)) {
+                gamepadButtonsPressed.add(index);
+                const key = Object.keys(controlMappings).find(key => controlMappings[key].gamepadButton === index);
+                if (key) {
+                    handleInput(key);
+                }
+            } else if (!button.pressed) {
+                gamepadButtonsPressed.delete(index);
+            }
+        });
     }
 
-    // Handle button presses
-    gamepad.buttons.forEach((button, index) => {
-        if (button.pressed && !gamepadButtonsPressed.has(index)) {
-            gamepadButtonsPressed.add(index);
-            if (gamepadMapping[index]) {
-                keyActions[gamepadMapping[index]]?.();
-            }
-        } else if (!button.pressed) {
-            gamepadButtonsPressed.delete(index);
-        }
-    });
-
+    lastPollTime = timestamp;
     requestAnimationFrame(pollGamepad);
 }
-
-requestAnimationFrame(pollGamepad);
