@@ -75,14 +75,18 @@
        
     
        <div class="form-group">
-        <label for="textVariable1Input">Nom du joueur gauche :</label>
-        <input type="text" id="textVariable1Input" value="Joueur 1" oninput="updateTextVariable('textVariable1', this.value)">
-    </div>
-    
-    <div class="form-group">
-        <label for="textVariable2Input">Nom du joueur droite :</label>
-        <input type="text" id="textVariable2Input" value="Joueur 2" oninput="updateTextVariable('textVariable2', this.value)">
-    </div>
+            <label for="textVariable1Input">Nom du joueur gauche :</label>
+            <input type="text" id="textVariable1Input" value="Joueur 1" oninput="updateTextVariable('textVariable1', this.value)">
+            <!-- Button for speech recognition to fill textVariable1 -->
+            <button onclick="startSpeechRecognition('textVariable1')"><i class="fa-solid fa-microphone"></i></button>
+        </div>
+        
+        <div class="form-group">
+            <label for="textVariable2Input">Nom du joueur droite :</label>
+            <input type="text" id="textVariable2Input" value="Joueur 2" oninput="updateTextVariable('textVariable2', this.value)">
+            <!-- Button for speech recognition to fill textVariable2 -->
+            <button onclick="startSpeechRecognition('textVariable2')"><i class="fa-solid fa-microphone"></i></button>
+        </div>
     
     <div class="form-group">
         <label for="initialTime"><i class="fas fa-refresh fa-lg" style="color: red;"></i> Temps après la casse :</label>

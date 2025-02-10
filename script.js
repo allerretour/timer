@@ -38,9 +38,34 @@ function checkViewport() {
   // Run the check on page load
   checkViewport();
 
-  // Listen for resize events to trigger the check
-  window.addEventListener("resize", checkViewport);
+ // Speech recognition function for filling the text fields
+function startSpeechRecognition(fieldId) {
+    if ('webkitSpeechRecognition' in window) {
+        var recognition = new webkitSpeechRecognition();
+        recognition.lang = 'fr-FR';  // Use French language for recognition
+        recognition.continuous = false;
+        recognition.interimResults = false;
 
+        recognition.onresult = function(event) {
+            var transcript = event.results[0][0].transcript;
+            
+            // Remove any trailing period (or unwanted characters)
+            transcript = transcript.replace(/[.,!?;]$/, '').trim();
+
+            // Update both the span and input field with the cleaned-up recognized text
+            document.getElementById(fieldId).innerText = transcript;
+            document.getElementById(fieldId + 'Input').value = transcript;
+        };
+
+        recognition.onerror = function(event) {
+            alert('Erreur dans la reconnaissance vocale: ' + event.error);
+        };
+
+        recognition.start();
+    } else {
+        alert("La reconnaissance vocale n'est pas supportée par votre navigateur.");
+    }
+}
 
 
 // Function to open the image when any button is clicked
