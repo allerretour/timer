@@ -20,6 +20,7 @@ function hideSplashScreen() {
         beepSound.pause();
         buzzSound.play();
         buzzSound.pause();
+        toggleFullscreen();
 }
 
 
