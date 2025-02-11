@@ -266,18 +266,16 @@ function openSettings() {
     const modal = document.getElementById('settingsModal');
     const modalContent = document.querySelector('.modal-content');
 
-    beepSound.play();
-    beepSound.pause();
-    buzzSound.play();
-    buzzSound.pause();
+    
 
 
     // Check if the modal is already open
     if (modal.classList.contains('show')) {
         // If it's open, close it
-        modal.classList.remove('show');
-        modalContent.classList.remove('show');
-        modal.style.display = 'none';
+        // modal.classList.remove('show');
+        // modalContent.classList.remove('show');
+        // modal.style.display = 'none';
+        closeSettings();
     } else {
         // Otherwise, open it
         modal.style.display = 'flex';
@@ -297,7 +295,10 @@ function openSettings() {
             modal.style.display = 'none';
         }, 300);
 
-
+        beepSound.play();
+        beepSound.pause();
+        buzzSound.play();
+        buzzSound.pause();
 
     }
 
