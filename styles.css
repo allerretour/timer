@@ -164,7 +164,7 @@
     .container {
         text-align: center;
         width: 90%;
-        max-width: 900px;
+        max-width: 1000px;
         background-color: rgba(255, 255, 255, 0.8); /* Set the rectangle to semi-transparent */
         padding: 20px;
         border-radius: 20px;

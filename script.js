@@ -440,50 +440,63 @@ const fullscreenButton = document.getElementById('fullscreen-btn');
         document.getElementById(elementId).textContent = value;
     }
     
+    let p1Score = 0; // Initial score for Player 1
+    let p2Score = 0; // Initial score for Player 2
     
-let p1Score = 0; // Initial score for Player 1
-let p2Score = 0; // Initial score for Player 2
-
-document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("DOMContentLoaded", function () {
+        const p1scr = document.getElementById("p1scr");
+        const p1plus = document.getElementById("p1plus");
+        const p1moins = document.getElementById("p1moins");
     
-    const p1scr = document.getElementById("p1scr");
-    const p1plus = document.getElementById("p1plus");
-    const p1moins = document.getElementById("p1moins");
-
-    const p2scr = document.getElementById("p2scr");
-    const p2plus = document.getElementById("p2plus");
-    const p2moins = document.getElementById("p2moins");
-
-    // Initialize score display
-    p1scr.innerHTML = p1Score;
-    p2scr.innerHTML = p2Score;
-
-    // Player 1 controls
-    p1plus.addEventListener("click", function () {
-        p1Score++;
+        const p2scr = document.getElementById("p2scr");
+        const p2plus = document.getElementById("p2plus");
+        const p2moins = document.getElementById("p2moins");
+    
+        const textVariable1 = document.getElementById("textVariable1");
+        const textVariable2 = document.getElementById("textVariable2");
+    
+        // Initialize score display
         p1scr.innerHTML = p1Score;
-    });
-
-    p1moins.addEventListener("click", function () {
-        if (p1Score > 0) {
-            p1Score--;
-        }
-        p1scr.innerHTML = p1Score;
-    });
-
-    // Player 2 controls
-    p2plus.addEventListener("click", function () {
-        p2Score++;
         p2scr.innerHTML = p2Score;
+    
+        // Player 1 controls
+        p1plus.addEventListener("click", function () {
+            p1Score++;
+            p1scr.innerHTML = p1Score;
+        });
+    
+        p1moins.addEventListener("click", function () {
+            if (p1Score > 0) {
+                p1Score--;
+            }
+            p1scr.innerHTML = p1Score;
+        });
+    
+        // Player 2 controls
+        p2plus.addEventListener("click", function () {
+            p2Score++;
+            p2scr.innerHTML = p2Score;
+        });
+    
+        p2moins.addEventListener("click", function () {
+            if (p2Score > 0) {
+                p2Score--;
+            }
+            p2scr.innerHTML = p2Score;
+        });
+    
+        // Clicking on player names increases score
+        textVariable1.addEventListener("click", function () {
+            p1Score++;
+            p1scr.innerHTML = p1Score;
+        });
+    
+        textVariable2.addEventListener("click", function () {
+            p2Score++;
+            p2scr.innerHTML = p2Score;
+        });
     });
-
-    p2moins.addEventListener("click", function () {
-        if (p2Score > 0) {
-            p2Score--;
-        }
-        p2scr.innerHTML = p2Score;
-    });
-});
+       
 
 
 // Function to reset scores
@@ -508,7 +521,7 @@ window.onload = function() {
     isPaused = true;
     pauseTimer();
     requestAnimationFrame(pollGamepad); // Start listening for gamepad input
-    openSettings()
+    // openSettings()
 
 // Select the first preset button
         const firstPresetButton = document.querySelector('.preset-button');
