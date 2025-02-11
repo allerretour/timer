@@ -36,7 +36,7 @@ let gamepadPolling = false;
 // Button mappings
 const gamepadMapping = {
     0: " ",     // B
-    1: "Ctrl",  // A
+    1: "Control",  // A
     2: "Alt",   // Y
     3: "m",     // X
     4: "a",     // 
