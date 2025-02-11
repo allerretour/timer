@@ -8,6 +8,9 @@ const keyActions = {
     "i": openInstructions,
     "Alt": resetToNextValue,
     "Control": resetTimer,
+    "b": resetToNextValue,  // pour firestick
+    "n": resetTimer,        // pour firestick
+    "x": toggleVisibility,  // pour firestick
     "1": reloadPage,
     "9": resetScores,
     "8": resetTextVariables,
@@ -17,11 +20,7 @@ const keyActions = {
     "a": () => document.getElementById("p1plus").click(),
     "q": () => document.getElementById("p1moins").click(),
     "k": () => document.getElementById("p2plus").click(),
-    "o": () => document.getElementById("p2moins").click(),
-   
-    "b": resetToNextValue,  // pour firestick
-    "n": resetTimer,        // pour firestick
-    "x": toggleVisibility  // pour firestick
+    "o": () => document.getElementById("p2moins").click()
 };
 
 // Keydown Event Listener
