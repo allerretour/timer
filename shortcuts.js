@@ -8,9 +8,6 @@ const keyActions = {
     "i": openInstructions,
     "Alt": resetToNextValue,
     "Control": resetTimer,
-    "b": resetToNextValue,  // pour firestick
-    "n": resetTimer,        // pour firestick
-    "x": toggleVisibility,  // pour firestick
     "1": reloadPage,
     "9": resetScores,
     "8": resetTextVariables,
