@@ -8,13 +8,12 @@ const keyActions = {
     "i": openInstructions,
     "Alt": resetToNextValue,
     "Control": resetTimer,
-    "v": toggleBoutonsRonds,
     "1": reloadPage,
     "9": resetScores,
     "8": resetTextVariables,
     " ": pauseTimer,
-    "Shift": toggleFullscreen,
-    "v": toggleVisibility,
+    "v": toggleFullscreen,
+    "Shift": toggleVisibility,
     "a": () => document.getElementById("p1plus").click(),
     "q": () => document.getElementById("p1moins").click(),
     "k": () => document.getElementById("p2plus").click(),
@@ -49,7 +48,7 @@ const gamepadMapping = {
     10: "9",    //
     11: "1",    //
     12: "z",    //
-    13: "v",    //
+    13: "Shift", //
     14: "t",    //
     15: "y",    //
     16: "d"     //
