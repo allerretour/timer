@@ -306,25 +306,31 @@ buzzSound.pause();
         closeSettings();
     }
 
-function openInstructions() {
-    const modal = document.getElementById('instructionsModal');
-    const modalContent = document.querySelector('#instructionsModal .modal-content');
-    modal.style.display = 'flex';
-    setTimeout(() => {
-        modal.classList.add('show');
-        modalContent.classList.add('show');
-    }, 10);
-}
-
-function closeInstructions(event) {
-    const modal = document.getElementById('instructionsModal');
-    const modalContent = document.querySelector('#instructionsModal .modal-content');
-    modal.classList.remove('show');
-    modalContent.classList.remove('show');
-    setTimeout(() => {
-        modal.style.display = 'none';
-    }, 300);
-}
+    function openInstructions() {
+        const modal = document.getElementById('instructionsModal');
+        const modalContent = document.querySelector('#instructionsModal .modal-content');
+    
+        if (modal.style.display === 'flex' && modal.classList.contains('show')) {
+            closeInstructions(); // Close the modal if it's already open
+        } else {
+            modal.style.display = 'flex';
+            setTimeout(() => {
+                modal.classList.add('show');
+                modalContent.classList.add('show');
+            }, 10);
+        }
+    }
+    
+    function closeInstructions(event) {
+        const modal = document.getElementById('instructionsModal');
+        const modalContent = document.querySelector('#instructionsModal .modal-content');
+        modal.classList.remove('show');
+        modalContent.classList.remove('show');
+        setTimeout(() => {
+            modal.style.display = 'none';
+        }, 300);
+    }
+    
 
 function toggleVisibility() {
     const bottomButtons = document.querySelector('.bottom-buttons');
