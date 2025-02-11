@@ -13,7 +13,7 @@ const keyActions = {
     "8": resetTextVariables,
     " ": pauseTimer,
     "v": toggleFullscreen,
-    "Shift": toggleVisibility,
+    "Shift": toggleVisibility,    
     "a": () => document.getElementById("p1plus").click(),
     "q": () => document.getElementById("p1moins").click(),
     "k": () => document.getElementById("p2plus").click(),
