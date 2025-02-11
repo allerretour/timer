@@ -10,6 +10,21 @@ document.getElementById("countdown").addEventListener("click", pauseTimer);
 const beepSound = new Audio('beep-01.mp3');
 const buzzSound = new Audio('beep-04.mp3');
 
+function hideSplashScreen() {
+    const splashScreen = document.getElementById('splashScreen');
+    splashScreen.style.opacity = '0';
+    setTimeout(() => {
+        splashScreen.style.display = 'none';
+    }, 500); // Smooth transition
+    beepSound.play();
+        beepSound.pause();
+        buzzSound.play();
+        buzzSound.pause();
+}
+
+
+
+
 function checkViewport() {
     if (window.innerWidth < 960) {
       // Save in session that the page was blocked
@@ -272,9 +287,9 @@ function openSettings() {
     // Check if the modal is already open
     if (modal.classList.contains('show')) {
         // If it's open, close it
-        // modal.classList.remove('show');
-        // modalContent.classList.remove('show');
-        // modal.style.display = 'none';
+        modal.classList.remove('show');
+        modalContent.classList.remove('show');
+        modal.style.display = 'none';
         closeSettings();
     } else {
         // Otherwise, open it
@@ -295,10 +310,7 @@ function openSettings() {
             modal.style.display = 'none';
         }, 300);
 
-        beepSound.play();
-        beepSound.pause();
-        buzzSound.play();
-        buzzSound.pause();
+        
 
     }
 
