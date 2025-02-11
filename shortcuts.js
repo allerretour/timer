@@ -7,7 +7,7 @@ const keyActions = {
     "d": toggleBoutonsRonds,
     "i": openInstructions,
     "Alt": resetToNextValue,
-    "Ctrl": resetTimer,
+    "Control": resetTimer,
     "v": toggleBoutonsRonds,
     "1": reloadPage,
     "9": resetScores,
