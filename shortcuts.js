@@ -17,7 +17,11 @@ const keyActions = {
     "a": () => document.getElementById("p1plus").click(),
     "q": () => document.getElementById("p1moins").click(),
     "k": () => document.getElementById("p2plus").click(),
-    "o": () => document.getElementById("p2moins").click()
+    "o": () => document.getElementById("p2moins").click(),
+   
+    "b": resetToNextValue,  // pour firestick
+    "n": resetTimer,        // pour firestick
+    "x": toggleVisibility  // pour firestick
 };
 
 // Keydown Event Listener
