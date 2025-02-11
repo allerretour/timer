@@ -1,22 +1,24 @@
 const keyActions = {
-    "1": () => addTime('addButton'),
-    "2": () => addTime('addButton2'),
-    "3": zoomOut,
-    "4": zoomIn,
-    "6": openSettings,
-    "b": resetToNextValue,
-    "r": resetTimer,
-    "t": toggleBoutonsRonds,
-    "o": reloadPage,
-    "w": resetScores,
-    "v": resetTextVariables,
+    "z": () => addTime('addButton'),
+    "m": () => addTime('addButton2'),
+    "t": zoomIn,
+    "y": zoomOut,
+    "r": openSettings,
+    "d": toggleBoutonsRonds,
+    "i": openInstructions,
+    "Alt": resetToNextValue,
+    "Ctrl": resetTimer,
+    "v": toggleBoutonsRonds,
+    "1": reloadPage,
+    "9": resetScores,
+    "8": resetTextVariables,
     " ": pauseTimer,
-    "q": toggleFullscreen,
-    "z": toggleVisibility,
-    "s": () => document.getElementById("p1plus").click(),
-    "x": () => document.getElementById("p1moins").click(),
-    "d": () => document.getElementById("p2plus").click(),
-    "c": () => document.getElementById("p2moins").click()
+    "Shift": toggleFullscreen,
+    "v": toggleVisibility,
+    "a": () => document.getElementById("p1plus").click(),
+    "q": () => document.getElementById("p1moins").click(),
+    "k": () => document.getElementById("p2plus").click(),
+    "o": () => document.getElementById("p2moins").click()
 };
 
 // Keydown Event Listener
@@ -34,20 +36,23 @@ let gamepadPolling = false;
 
 // Button mappings
 const gamepadMapping = {
-    2: "1",
-    1: "2",
-    0: "b",
-    3: "r",
-    8: "6",
-    9: " ",
-    12: "q",
-    13: "z",
-    4: "s",
-    6: "x",
-    5: "d",
-    14: "4",
-    15: "3",
-    7: "c"
+    0: " ",     // B
+    1: "Ctrl",  // A
+    2: "Alt",   // Y
+    3: "m",     // X
+    4: "a",     // 
+    5: "k",
+    6: "q",
+    7: "o",
+    8: "i",
+    9: "r",
+    10: "9",
+    11: "1",
+    12: "z",
+    13: "v",
+    14: "t",
+    15: "y",
+    16: "d"
 };
 
 // Detect gamepad connection
