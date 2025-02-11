@@ -266,6 +266,12 @@ function openSettings() {
     const modal = document.getElementById('settingsModal');
     const modalContent = document.querySelector('.modal-content');
 
+    beepSound.play();
+    beepSound.pause();
+    buzzSound.play();
+    buzzSound.pause();
+
+
     // Check if the modal is already open
     if (modal.classList.contains('show')) {
         // If it's open, close it
@@ -291,10 +297,7 @@ function openSettings() {
             modal.style.display = 'none';
         }, 300);
 
-beepSound.play();
-beepSound.pause();
-buzzSound.play();
-buzzSound.pause();
+
 
     }
 
