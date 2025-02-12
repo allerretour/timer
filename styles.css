@@ -48,9 +48,9 @@
  /* Adjust the size of the color input */
     #backgroundColor, #textColor,#showMiddleImage, #darkMode{
         width: 40px;  /* Width of the color picker input */
-        height: 30px; /* Height of the color picker input */
-        padding: 20;   /* Remove any default padding */
-       padding-right: 10px; /* Add right padding */
+        height: 40px; /* Height of the color picker input */
+        padding: 10;   /* Remove any default padding */
+       padding-right: 5px; /* Add right padding */
     }
 
 
