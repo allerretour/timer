@@ -83,7 +83,7 @@
     transform: translateX(-50%); /* Centrer parfaitement */
     width: auto; /* Adjust this value as needed */
     height: 100px; /* Maintain aspect ratio */
-    
+    background-color: rgba(255, 255, 255, 0.2); /* Semi-opaque black background */
     z-index: 1000;
 }
 .presets-container {
