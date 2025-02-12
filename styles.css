@@ -44,6 +44,14 @@
     }
     
 
+ /* Adjust the size of the color input */
+    #backgroundColor {
+        width: 60px;  /* Width of the color picker input */
+        height: 40px; /* Height of the color picker input */
+        padding: 20;   /* Remove any default padding */
+       padding-right: 10px; /* Add right padding */
+    }
+
 
 
 /* Center and fix the image on the screen */

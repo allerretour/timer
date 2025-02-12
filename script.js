@@ -23,6 +23,14 @@ function hideSplashScreen() {
         toggleFullscreen();
 }
 
+// Function to change the background color
+function changeBackgroundColor() {
+    // Get the selected color from the color picker
+    const selectedColor = document.getElementById("backgroundColor").value;
+
+    // Apply the selected color to the page background
+    document.body.style.backgroundColor = selectedColor;
+}
 
 
 
