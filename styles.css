@@ -54,7 +54,7 @@
 
 
 
-/* Center and fix the image on the screen */
+/* instruction Center and fix the image on the screen */
 #image-container {
     position: fixed;
     top: 0;
@@ -163,7 +163,7 @@
     font-size: 60px;
     font-weight: bold;
     color: rgb(0, 0, 0); /* White text */
-    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.5); /* Strong shadow */
+    // text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.5); /* Strong shadow */
     
     padding: 5px;
     border-radius: 8px;
