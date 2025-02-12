@@ -35,7 +35,26 @@ function toggleMiddleImageVisibility(isVisible) {
 
 }
 
+function toggleDarkMode() {
+    const darkModeCheckbox = document.getElementById('darkMode');
+    
+    // Target the body, textVariable1, and textVariable2
+    const body = document.body;
+    const textVariable1 = document.getElementById('textVariable1');
+    const textVariable2 = document.getElementById('textVariable2');
 
+    if (darkModeCheckbox.checked) {
+        // Set dark mode: black background, white text for specific elements
+        body.style.backgroundColor = 'black';
+        textVariable1.style.color = 'white';
+        textVariable2.style.color = 'white';
+    } else {
+        // Revert to the default: light background, black text
+        body.style.backgroundColor = '';
+        textVariable1.style.color = '';
+        textVariable2.style.color = '';
+    }
+}
 
 // Function to change the background color
 function changeBackgroundColor() {

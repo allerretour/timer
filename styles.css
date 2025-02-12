@@ -11,6 +11,7 @@
         position: relative; /* Ajoutez cette ligne pour permettre l'alignement absolu des éléments enfants */
     }
 
+
     #splashScreen {
         position: fixed;
         top: 0;
@@ -45,9 +46,9 @@
     
 
  /* Adjust the size of the color input */
-    #backgroundColor, #textColor,#showMiddleImage {
-        width: 60px;  /* Width of the color picker input */
-        height: 40px; /* Height of the color picker input */
+    #backgroundColor, #textColor,#showMiddleImage, #darkMode{
+        width: 40px;  /* Width of the color picker input */
+        height: 30px; /* Height of the color picker input */
         padding: 20;   /* Remove any default padding */
        padding-right: 10px; /* Add right padding */
     }
@@ -73,8 +74,6 @@
     max-height: 90%; /* Limit image size */
     object-fit: contain; /* Ensure the image maintains its aspect ratio */
 }
-
-
 
 
 #middle-image {
@@ -124,7 +123,6 @@
 .presets-container button:active {
     background-color: hsl(246, 100%, 50%);
 }
-
 
 /* Highlighted button */
 .active-preset {

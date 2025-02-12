@@ -36,7 +36,6 @@
 <div class="extension-buttons-group">
     
     <button id="p1scr" onclick="zoomIn()"><i class="fa-regular fa-9"></i></button>
-    
     <button id="p2scr" onclick="zoomOut()"><i class="fa-regular fa-9"></i></button>
 
 </div>
@@ -78,6 +77,11 @@
 
        <h3 style="text-align: center;">Paramètres du chronomètre</h3>
     
+<div class="form-group">
+    <label for="darkMode">Activer le mode sombre :</label>
+    <input type="checkbox" id="darkMode" onchange="toggleDarkMode()">
+</div>
+
        <div class="form-group">
             <label for="textVariable1Input">Nom du joueur gauche :</label>
             <input type="text" id="textVariable1Input" value="Joueur 1" oninput="updateTextVariable('textVariable1', this.value)">
