@@ -23,6 +23,20 @@ function hideSplashScreen() {
         toggleFullscreen();
 }
 
+// Function to toggle the visibility of the middle image
+function toggleMiddleImageVisibility(isVisible) {
+    const middleImage = document.getElementById('middle-image');
+    // Show or hide the middle image based on the checkbox state
+    if (isVisible) {
+        middleImage.style.display = 'block'; // Show the image
+    } else {
+        middleImage.style.display = 'none'; // Hide the image
+    }
+
+}
+
+
+
 // Function to change the background color
 function changeBackgroundColor() {
     // Get the selected color from the color picker
@@ -32,7 +46,15 @@ function changeBackgroundColor() {
     document.body.style.backgroundColor = selectedColor;
 }
 
+// Update the text color for both text variables
+function updateTextColorForBoth(color) {
+    // Set the color for both players
+    document.getElementById('textVariable1').style.color = color;
+    document.getElementById('textVariable2').style.color = color;
 
+    // Optionally, save the color to localStorage so it persists
+    localStorage.setItem('textColor', color);
+}
 
 function checkViewport() {
     if (window.innerWidth < 960) {

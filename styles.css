@@ -45,7 +45,7 @@
     
 
  /* Adjust the size of the color input */
-    #backgroundColor {
+    #backgroundColor, #textColor,#showMiddleImage {
         width: 60px;  /* Width of the color picker input */
         height: 40px; /* Height of the color picker input */
         padding: 20;   /* Remove any default padding */
