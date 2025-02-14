@@ -10,6 +10,8 @@ const keyActions = {
     "Control": resetTimer,
     "1": reloadPage,
     "2": hideSplashScreen,
+    "5": () => startSpeechRecognition('textVariable1'),
+    "6": () => startSpeechRecognition('textVariable2'),
     "9": resetScores,
     "8": resetTextVariables,
     " ": pauseTimer,
