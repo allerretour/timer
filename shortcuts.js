@@ -36,23 +36,23 @@ let gamepadPolling = false;
 
 // Button mappings (individual buttons)
 const gamepadMapping = {
-    0: " ",     
-    1: "Control",  
-    2: "Alt",   
-    3: "m",     
-    4: "a",     
-    5: "k",     
-    6: "q",     
-    7: "o",     
-    8: "i",     
-    9: "r",     
-    10: "9",    
-    11: "1",    
-    12: "z",    
-    13: "Shift", 
-    14: "t",    
-    15: "y",    
-    16: "d"     
+    0: " ",        // Button 0 (usually 'A' on Xbox/standard gamepad)
+    1: "Control",  // Button 1 (usually 'B' on Xbox/standard gamepad)
+    2: "Alt",      // Button 2 (usually 'X' on Xbox/standard gamepad)
+    3: "m",        // Button 3 (usually 'Y' on Xbox/standard gamepad)
+    4: "a",        // Button 4 (Left Bumper - 'LB')
+    5: "k",        // Button 5 (Right Bumper - 'RB')
+    6: "q",        // Button 6 (Left Trigger - 'LT')
+    7: "o",        // Button 7 (Right Trigger - 'RT')
+    8: "i",        // Button 8 (Back button - 'Select')
+    9: "r",        // Button 9 (Start button - 'Start')
+    10: "9",       // Button 10 (Left Stick Button - L3)
+    11: "1",       // Button 11 (Right Stick Button - R3)
+    12: "z",       // Button 12 (D-Pad Up)
+    13: "Shift",   // Button 13 (D-Pad Down)
+    14: "t",       // Button 14 (D-Pad Left)
+    15: "y",       // Button 15 (D-Pad Right)
+    16: "d"        // Button 16 (custom or additional button)
 };
 
 // Define multiple button combinations and their corresponding actions
