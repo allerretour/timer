@@ -34,7 +34,7 @@ function playBeep(silent = false) {
 
     setTimeout(() => {
         oscillator.stop();
-    }, 500); // Beep duration
+    }, 300); // Beep duration
 }
 
 
@@ -366,9 +366,9 @@ function updateCountdown() {
         progressBar.style.backgroundColor = '#4caf50';
     }
 
-    if (countdownTime === 10 || countdownTime === 5) {
-        playBeep();
-        
+    // Play beep at 10, 5, 4, 3, 2, and 1
+    if (countdownTime === 10 || countdownTime === 5 || countdownTime === 4 || countdownTime === 3 || countdownTime === 2 || countdownTime === 1) {
+        playBeep();  // Play beep sound
     }
 
     countdownTime--;
