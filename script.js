@@ -18,14 +18,20 @@ function setupAudioContexts() {
 }
 
 // Create and start a new beep immediately
-function playBeep() {
+function playBeep(silent = false) {
     if (!beepCtx) setupAudioContexts();
 
     const oscillator = beepCtx.createOscillator();
+    const gainNode = beepCtx.createGain(); // Create a gain node for volume control
     oscillator.type = "sine";
     oscillator.frequency.setValueAtTime(1000, beepCtx.currentTime);
 
-    oscillator.connect(beepCtx.destination);
+    // Set the gain to 0 if silent is true
+    gainNode.gain.setValueAtTime(silent ? 0 : 1, beepCtx.currentTime);
+
+    oscillator.connect(gainNode);
+    gainNode.connect(beepCtx.destination);
+
     oscillator.start();
 
     setTimeout(() => {
@@ -34,21 +40,26 @@ function playBeep() {
 }
 
 // Create and start a new buzz immediately
-function playBuzz() {
+function playBuzz(silent = false) {
     if (!buzzCtx) setupAudioContexts();
 
     const oscillator = buzzCtx.createOscillator();
+    const gainNode = buzzCtx.createGain(); // Create a gain node for volume control
     oscillator.type = "square";
     oscillator.frequency.setValueAtTime(200, buzzCtx.currentTime);
 
-    oscillator.connect(buzzCtx.destination);
+    // Set the gain to 0 if silent is true
+    gainNode.gain.setValueAtTime(silent ? 0 : 1, buzzCtx.currentTime);
+
+    oscillator.connect(gainNode);
+    gainNode.connect(buzzCtx.destination);
+
     oscillator.start();
 
     setTimeout(() => {
         oscillator.stop();
     }, 500); // Buzz duration
 }
-
 function hideSplashScreen() {
     const splashScreen = document.getElementById('splashScreen');
     splashScreen.style.opacity = '0';
@@ -60,7 +71,8 @@ function hideSplashScreen() {
        // buzzSound.play();
        // buzzSound.pause();
        setupAudioContexts();
-       playBeep();
+       playBeep(true);
+       playBuzz(true);
         toggleFullscreen();
 }
 
