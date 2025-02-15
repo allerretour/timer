@@ -36,7 +36,7 @@ let gamepadIndex = null;
 let previousGamepadState = new Set();
 let gamepadPolling = false;
 
-let test = 123;
+
 
 // Button mappings (individual buttons)
 const gamepadMapping = {
