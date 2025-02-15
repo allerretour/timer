@@ -7,8 +7,6 @@
 
 document.getElementById("countdown").addEventListener("click", pauseTimer);
 
-const beepSound = new Audio('beep-01.mp3');
-const buzzSound = new Audio('beep-04.mp3');
 
 let beepCtx, buzzCtx;
 
@@ -17,7 +15,7 @@ function setupAudioContexts() {
     buzzCtx = new (window.AudioContext || window.webkitAudioContext)();
 }
 
-// Create and start a new beep immediately
+
 function playBeep(silent = false) {
     if (!beepCtx) setupAudioContexts();
 
@@ -36,10 +34,10 @@ function playBeep(silent = false) {
 
     setTimeout(() => {
         oscillator.stop();
-    }, 200); // Beep duration
+    }, 500); // Beep duration
 }
 
-// Create and start a new buzz immediately
+
 function playBuzz(silent = false) {
     if (!buzzCtx) setupAudioContexts();
 
@@ -58,7 +56,7 @@ function playBuzz(silent = false) {
 
     setTimeout(() => {
         oscillator.stop();
-    }, 500); // Buzz duration
+    }, 700); // Buzz duration
 }
 function hideSplashScreen() {
     const splashScreen = document.getElementById('splashScreen');
@@ -66,14 +64,11 @@ function hideSplashScreen() {
     setTimeout(() => {
         splashScreen.style.display = 'none';
     }, 500); // Smooth transition
-    // beepSound.play();
-       // beepSound.pause();
-       // buzzSound.play();
-       // buzzSound.pause();
-       setupAudioContexts();
-       playBeep(true);
-       playBuzz(true);
-        toggleFullscreen();
+    
+    setupAudioContexts();
+    playBeep(true);
+    playBuzz(true);
+    toggleFullscreen();
 }
 
 // Function to toggle the visibility of the middle image
@@ -347,8 +342,8 @@ function updateCountdown() {
         document.getElementById('countdown').textContent = "FIN !"; // Affiche "FAUTE"
         document.getElementById('countdown').style.color = 'red'; // Change la couleur en rouge
         document.getElementById('progress').style.backgroundColor = 'red'; // Change la couleur de la barre de progression en rouge
-        playBuzz();
-        //buzzSound.play(); // Son de fin
+        playBuzz(); // Son de fin
+         
         
         return;
     }
@@ -373,7 +368,7 @@ function updateCountdown() {
 
     if (countdownTime === 10 || countdownTime === 5) {
         playBeep();
-        //beepSound.play();
+        
     }
 
     countdownTime--;
