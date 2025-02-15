@@ -10,27 +10,43 @@ document.getElementById("countdown").addEventListener("click", pauseTimer);
 const beepSound = new Audio('beep-01.mp3');
 const buzzSound = new Audio('beep-04.mp3');
 
-function beep() {
-    const ctx = new (window.AudioContext || window.webkitAudioContext)();
-    const oscillator = ctx.createOscillator();
-    oscillator.type = "sine"; // Sound wave type
-    oscillator.frequency.setValueAtTime(1000, ctx.currentTime); // Frequency in Hz
-    oscillator.connect(ctx.destination);
-    oscillator.start();
-    setTimeout(() => {
-        oscillator.stop();
-    }, 200); // Beep duration in milliseconds
+let beepCtx, buzzCtx;
+
+function setupAudioContexts() {
+    beepCtx = new (window.AudioContext || window.webkitAudioContext)();
+    buzzCtx = new (window.AudioContext || window.webkitAudioContext)();
 }
-function buzz() {
-    const ctx = new (window.AudioContext || window.webkitAudioContext)();
-    const oscillator = ctx.createOscillator();
-    oscillator.type = "square"; // Square wave produces a buzzing sound
-    oscillator.frequency.setValueAtTime(200, ctx.currentTime); // Lower frequency for a buzz effect
-    oscillator.connect(ctx.destination);
+
+// Create and start a new beep immediately
+function playBeep() {
+    if (!beepCtx) setupAudioContexts();
+
+    const oscillator = beepCtx.createOscillator();
+    oscillator.type = "sine";
+    oscillator.frequency.setValueAtTime(1000, beepCtx.currentTime);
+
+    oscillator.connect(beepCtx.destination);
     oscillator.start();
+
     setTimeout(() => {
         oscillator.stop();
-    }, 500); // Buzz duration in milliseconds
+    }, 200); // Beep duration
+}
+
+// Create and start a new buzz immediately
+function playBuzz() {
+    if (!buzzCtx) setupAudioContexts();
+
+    const oscillator = buzzCtx.createOscillator();
+    oscillator.type = "square";
+    oscillator.frequency.setValueAtTime(200, buzzCtx.currentTime);
+
+    oscillator.connect(buzzCtx.destination);
+    oscillator.start();
+
+    setTimeout(() => {
+        oscillator.stop();
+    }, 500); // Buzz duration
 }
 
 function hideSplashScreen() {
@@ -43,8 +59,7 @@ function hideSplashScreen() {
        // beepSound.pause();
        // buzzSound.play();
        // buzzSound.pause();
-       beep();
-       buzz();
+       setupAudioContexts();
         toggleFullscreen();
 }
 
@@ -319,7 +334,7 @@ function updateCountdown() {
         document.getElementById('countdown').textContent = "FIN !"; // Affiche "FAUTE"
         document.getElementById('countdown').style.color = 'red'; // Change la couleur en rouge
         document.getElementById('progress').style.backgroundColor = 'red'; // Change la couleur de la barre de progression en rouge
-        buzz();
+        playBuzz();
         //buzzSound.play(); // Son de fin
         
         return;
@@ -344,7 +359,7 @@ function updateCountdown() {
     }
 
     if (countdownTime === 10 || countdownTime === 5) {
-        beep();
+        playBeep();
         //beepSound.play();
     }
 
