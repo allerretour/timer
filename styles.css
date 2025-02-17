@@ -77,7 +77,8 @@
 
 
 #middle-image {
-    position: fixed;
+  
+position: fixed;
     bottom: 45px; /* Adjust this value as needed */
     left: 50%; /* Centrer horizontalement */
     transform: translateX(-50%); /* Centrer parfaitement */
