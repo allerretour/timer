@@ -10,8 +10,6 @@ const keyActions = {
     "Control": resetTimer,
     "1": reloadPage,
     "2": hideSplashScreen,
-    "5": () => startSpeechRecognition('textVariable1'),
-    "6": () => startSpeechRecognition('textVariable2'),
     "9": resetScores,
     "8": resetTextVariables,
     " ": pauseTimer,
@@ -20,7 +18,12 @@ const keyActions = {
     "a": () => document.getElementById("p1plus").click(),
     "q": () => document.getElementById("p1moins").click(),
     "k": () => document.getElementById("p2plus").click(),
-    "o": () => document.getElementById("p2moins").click()
+    "o": () => document.getElementById("p2moins").click(),
+
+    "3": toggleVisibility,
+    "4": resetToNextValue,
+    "5": pauseTimer,
+    "6": resetTimer
 };
 
 // Keydown Event Listener
