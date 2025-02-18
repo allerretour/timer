@@ -11,7 +11,6 @@ const keyActions = {
     "1": reloadPage,
     "2": hideSplashScreen,
     "9": resetScores,
-    "8": resetTextVariables,
     " ": pauseTimer,
     "v": toggleFullscreen,
     "Shift": toggleVisibility,    
@@ -23,7 +22,10 @@ const keyActions = {
     "3": toggleVisibility,
     "4": resetToNextValue,
     "5": pauseTimer,
-    "6": resetTimer
+    "6": resetTimer,
+    "7": () => document.getElementById("p1plus").click(),
+    "8": () => document.getElementById("p2plus").click(),
+    "0": zoomOut
 };
 
 // Keydown Event Listener
