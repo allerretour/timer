@@ -366,7 +366,7 @@ function updateCountdown() {
         progressBar.style.backgroundColor = '#4caf50';
     }
 
-    if (countdownTime === 10 || countdownTime === 5) {
+    if (countdownTime === 10 || countdownTime === 5 || countdownTime === 4 || countdownTime === 3 || countdownTime === 2 || countdownTime === 1) {
         playBeep();
         
     }
