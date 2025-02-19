@@ -1,3 +1,9 @@
+const longPressThreshold = 1000; // Milliseconds threshold for long press
+let keyTimers = {}; // To store the timers for key presses
+let gamepadTimers = {}; // To store the timers for gamepad button presses
+let keyPressed = {}; // Track if a key is being held down
+let gamepadPressed = {}; // Track if a gamepad button is being held down
+
 const keyActions = {
     "z": () => addTime('addButton'),
     "m": () => addTime('addButton2'),
@@ -18,7 +24,6 @@ const keyActions = {
     "q": () => document.getElementById("p1moins").click(),
     "k": () => document.getElementById("p2plus").click(),
     "o": () => document.getElementById("p2moins").click(),
-
    "0": reloadPage,                        // Reloads the page
     "1": () => document.getElementById("p1plus").click(), // Increment player 1 score
     "2": resetScores,                        // Resets the scores
@@ -31,11 +36,45 @@ const keyActions = {
     "9": resetTimer                        // Resets the timer
 };
 
-// Keydown Event Listener
+// Long press action definitions
+const longPressActions = {
+    "a": resetScores,
+    "c": resetTimer,
+     "5": zoomOut,
+    "9": hideSplashScreen,
+    "r": () => console.log("Long press: Open settings with delay!"), 
+    // You can add other long press actions for different keys here
+};
+
+// Keydown Event Listener (keyboard)
 document.addEventListener("keydown", (event) => {
-    if (keyActions[event.key] && !document.activeElement.matches('input, textarea')) {
+    if (keyActions[event.key] && !document.activeElement.matches('input, textarea') && !keyPressed[event.key]) {
         event.preventDefault();
+
+        // Mark the key as pressed
+        keyPressed[event.key] = true;
+
+        // Start the timer if the key is pressed for the first time
+        if (!keyTimers[event.key]) {
+            keyTimers[event.key] = setTimeout(() => {
+                // Trigger long press action if key held for long enough
+                if (longPressActions[event.key]) {
+                    longPressActions[event.key]();
+                }
+            }, longPressThreshold);
+        }
+        
+        // Perform regular action
         keyActions[event.key]();
+    }
+});
+
+// Keyup Event Listener (keyboard)
+document.addEventListener("keyup", (event) => {
+    if (keyPressed[event.key]) {
+        clearTimeout(keyTimers[event.key]); // Clear the long press timer
+        delete keyTimers[event.key]; // Remove it from the timer object
+        keyPressed[event.key] = false; // Mark the key as released
     }
 });
 
@@ -43,8 +82,6 @@ document.addEventListener("keydown", (event) => {
 let gamepadIndex = null;
 let previousGamepadState = new Set();
 let gamepadPolling = false;
-
-
 
 // Button mappings (individual buttons)
 const gamepadMapping = {
@@ -67,30 +104,14 @@ const gamepadMapping = {
     16: "d"        // Button 16 (custom or additional button)
 };
 
-// Define multiple button combinations and their corresponding actions
-const comboMappings = {
-    "6+7": "e",     // Buttons 4 and 5 together trigger key "2"
-    "0+3": "m",     // Buttons 0 and 3 together trigger key "m"
-    "1+2+3": "Alt"  // Buttons 1, 2, and 3 together trigger key "Alt"
+// Define long press actions for gamepad buttons
+const longPressGamepadActions = {
+    13: "u",
+    11: "e"
+    // You can add other long press actions for gamepad buttons here
 };
 
-// Detect gamepad connection
-window.addEventListener("gamepadconnected", (event) => {
-    gamepadIndex = event.gamepad.index;
-    console.log("Gamepad connected:", event.gamepad.id);
-    if (!gamepadPolling) {
-        gamepadPolling = true;
-        pollGamepad();
-    }
-});
-
-window.addEventListener("gamepaddisconnected", () => {
-    console.log("Gamepad disconnected");
-    gamepadIndex = null;
-    gamepadPolling = false;
-});
-
-// Polling function
+// Polling function for gamepad (detects button presses and long presses)
 function pollGamepad() {
     if (gamepadIndex === null) {
         requestAnimationFrame(pollGamepad);
@@ -107,20 +128,45 @@ function pollGamepad() {
 
     // Store all currently pressed buttons
     gamepad.buttons.forEach((button, index) => {
-        if (button.pressed) {
+        if (button.pressed && !gamepadPressed[index]) {
             currentlyPressed.add(index);
+
+            // Mark the button as pressed
+            gamepadPressed[index] = true;
+
+            // Start long press detection for each button
+            if (!gamepadTimers[index]) {
+                gamepadTimers[index] = setTimeout(() => {
+                    // Trigger long press action if button held for long enough
+                    if (longPressGamepadActions[index]) {
+                        longPressGamepadActions[index]();
+                    }
+                }, longPressThreshold);
+            }
+
+            // Perform the regular action for the button
+            if (gamepadMapping[index]) {
+                keyActions[gamepadMapping[index]]?.();
+            }
+        } else if (!button.pressed && gamepadPressed[index]) {
+            // Clear the long press timer if the button is released
+            if (gamepadTimers[index]) {
+                clearTimeout(gamepadTimers[index]);
+                delete gamepadTimers[index];
+            }
+
+            // Mark the button as released
+            gamepadPressed[index] = false;
         }
     });
 
-    let comboTriggered = false;
-
     // Check for defined combo mappings
+    let comboTriggered = false;
     Object.keys(comboMappings).forEach(combo => {
         const buttonIndexes = combo.split("+").map(Number);
-        
-        // If all buttons in a combo are pressed
+
         if (buttonIndexes.every(button => currentlyPressed.has(button))) {
-            if (!previousGamepadState.has(combo)) { // Ensure combo triggers only once
+            if (!previousGamepadState.has(combo)) {
                 keyActions[comboMappings[combo]]?.();
                 previousGamepadState.add(combo);
             }
@@ -130,7 +176,7 @@ function pollGamepad() {
         }
     });
 
-    // If no combo was triggered, process single button presses
+    // Process normal button presses
     if (!comboTriggered) {
         currentlyPressed.forEach(index => {
             if (!previousGamepadState.has(index) && gamepadMapping[index]) {
@@ -140,7 +186,7 @@ function pollGamepad() {
         });
     }
 
-    // Reset released buttons
+    // Clear released buttons
     previousGamepadState.forEach(index => {
         if (!currentlyPressed.has(index)) {
             previousGamepadState.delete(index);
@@ -149,5 +195,21 @@ function pollGamepad() {
 
     requestAnimationFrame(pollGamepad);
 }
+
+// Detect gamepad connection
+window.addEventListener("gamepadconnected", (event) => {
+    gamepadIndex = event.gamepad.index;
+    console.log("Gamepad connected:", event.gamepad.id);
+    if (!gamepadPolling) {
+        gamepadPolling = true;
+        pollGamepad();
+    }
+});
+
+window.addEventListener("gamepaddisconnected", () => {
+    console.log("Gamepad disconnected");
+    gamepadIndex = null;
+    gamepadPolling = false;
+});
 
 requestAnimationFrame(pollGamepad);
