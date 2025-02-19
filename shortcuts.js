@@ -110,19 +110,21 @@ const gamepadMapping = {
 
 // Define long press actions for gamepad buttons
 const longPressGamepadActions = {
-    13: "u",
-    11: "e"
+    4 : resetScores,
+    13: toggleFullscreen,
+    11: hideSplashScreen
     // You can add other long press actions for gamepad buttons here
 };
 
 // Polling function for gamepad (detects button presses and long presses)
 function pollGamepad() {
-    if (gamepadIndex === null) {
+    const gamepads = navigator.getGamepads();
+    if (!gamepads) {
         requestAnimationFrame(pollGamepad);
         return;
     }
 
-    const gamepad = navigator.getGamepads()[gamepadIndex];
+    const gamepad = gamepads[gamepadIndex];
     if (!gamepad) {
         requestAnimationFrame(pollGamepad);
         return;
@@ -164,31 +166,9 @@ function pollGamepad() {
         }
     });
 
-    // Check for defined combo mappings
-    let comboTriggered = false;
-    Object.keys(comboMappings).forEach(combo => {
-        const buttonIndexes = combo.split("+").map(Number);
+    
 
-        if (buttonIndexes.every(button => currentlyPressed.has(button))) {
-            if (!previousGamepadState.has(combo)) {
-                keyActions[comboMappings[combo]]?.();
-                previousGamepadState.add(combo);
-            }
-            comboTriggered = true;
-        } else {
-            previousGamepadState.delete(combo);
-        }
-    });
-
-    // Process normal button presses
-    if (!comboTriggered) {
-        currentlyPressed.forEach(index => {
-            if (!previousGamepadState.has(index) && gamepadMapping[index]) {
-                keyActions[gamepadMapping[index]]?.();
-            }
-            previousGamepadState.add(index);
-        });
-    }
+    
 
     // Clear released buttons
     previousGamepadState.forEach(index => {
