@@ -24,7 +24,7 @@ const keyActions = {
     "q": () => document.getElementById("p1moins").click(),
     "k": () => document.getElementById("p2plus").click(),
     "o": () => document.getElementById("p2moins").click(),
-   "0": reloadPage,                        // Reloads the page
+   "0": openInstructions,
     "1": () => document.getElementById("p1plus").click(), // Increment player 1 score
     "2": resetScores,                        // Resets the scores
     "3": () => document.getElementById("p2plus").click(), // Increment player 2 score
@@ -40,7 +40,10 @@ const keyActions = {
 const longPressActions = {
     "a": resetScores,
     "c": resetTimer,
-     "5": zoomOut,
+    "0": openSettings,
+   "2" : reloadPage,
+    "5": zoomOut,
+   "8": zoomIn,
     "9": hideSplashScreen,
     "r": () => console.log("Long press: Open settings with delay!"), 
     // You can add other long press actions for different keys here
