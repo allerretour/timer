@@ -19,16 +19,16 @@ const keyActions = {
     "k": () => document.getElementById("p2plus").click(),
     "o": () => document.getElementById("p2moins").click(),
 
-    "5": toggleVisibility,
-    "7": resetToNextValue,
-    "8": pauseTimer,
-    "9": resetTimer,
-    "1": () => document.getElementById("p1plus").click(),
-    "3": () => document.getElementById("p2plus").click(),
-     "2": resetScores,
-     "4": () => addTime('addButton'),
-      "6": () => addTime('addButton2'),
-     "0": reloadPage
+   "0": reloadPage,                        // Reloads the page
+    "1": () => document.getElementById("p1plus").click(), // Increment player 1 score
+    "2": resetScores,                        // Resets the scores
+    "3": () => document.getElementById("p2plus").click(), // Increment player 2 score
+    "4": () => addTime('addButton'),        // Adds time via 'addButton'
+    "5": toggleVisibility,                  // Toggles visibility
+    "6": () => addTime('addButton2'),       // Adds time via 'addButton2'
+    "7": resetToNextValue,                  // Resets to next value
+    "8": pauseTimer,                        // Pauses the timer
+    "9": resetTimer                        // Resets the timer
 };
 
 // Keydown Event Listener
