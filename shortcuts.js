@@ -43,6 +43,7 @@ const longPressActions = {
     "0": openSettings,
    "2" : reloadPage,
     "5": zoomOut,
+    "7": toggleBoutonsRonds,
    "8": zoomIn,
     "9": hideSplashScreen,
     "r": () => console.log("Long press: Open settings with delay!"), 
