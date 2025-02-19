@@ -60,7 +60,7 @@ const gamepadMapping = {
     9: "r",        // Button 9 (Start button - 'Start')
     10: "p",       // Button 10 (Left Stick Button - L3)
     11: "w",       // Button 11 (Right Stick Button - R3)
-    12: "d",       // Button 12 (D-Pad Up)
+    12: "z",       // Button 12 (D-Pad Up)
     13: "f",   // Button 13 (D-Pad Down)
     14: "t",       // Button 14 (D-Pad Left)
     15: "y",       // Button 15 (D-Pad Right)
