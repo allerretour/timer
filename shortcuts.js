@@ -89,9 +89,9 @@ let gamepadPolling = false;
 
 // Button mappings (individual buttons)
 const gamepadMapping = {
-    0: "c",        // Button 0 (usually 'A' on Xbox/standard gamepad)
-    1: "v",  // Button 1 (usually 'B' on Xbox/standard gamepad)
-    2: "b",      // Button 2 (usually 'X' on Xbox/standard gamepad)
+    0: "v",        // Button 0 (usually 'A' on Xbox/standard gamepad)
+    1: "b",  // Button 1 (usually 'B' on Xbox/standard gamepad)
+    2: "c",      // Button 2 (usually 'X' on Xbox/standard gamepad)
     3: "m",        // Button 3 (usually 'Y' on Xbox/standard gamepad)
     4: "a",        // Button 4 (Left Bumper - 'LB')
     5: "k",        // Button 5 (Right Bumper - 'RB')
@@ -102,7 +102,7 @@ const gamepadMapping = {
     10: "p",       // Button 10 (Left Stick Button - L3)
     11: "w",       // Button 11 (Right Stick Button - R3)
     12: "z",       // Button 12 (D-Pad Up)
-    13: "f",   // Button 13 (D-Pad Down)
+    13: "f",        // Button 13 (D-Pad Down)
     14: "t",       // Button 14 (D-Pad Left)
     15: "y",       // Button 15 (D-Pad Right)
     16: "d"        // Button 16 (custom or additional button)
