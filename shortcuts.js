@@ -24,16 +24,16 @@ const keyActions = {
     "q": () => document.getElementById("p1moins").click(),
     "k": () => document.getElementById("p2plus").click(),
     "o": () => document.getElementById("p2moins").click(),
-   "0": openInstructions,
-    "1": () => document.getElementById("p1plus").click(), // Increment player 1 score
-    "2": resetScores,                        // Resets the scores
-    "3": () => document.getElementById("p2plus").click(), // Increment player 2 score
-    "4": () => addTime('addButton'),        // Adds time via 'addButton'
-    "5": toggleVisibility,                  // Toggles visibility
-    "6": () => addTime('addButton2'),       // Adds time via 'addButton2'
-    "7": resetToNextValue,                  // Resets to next value
-    "8": pauseTimer,                        // Pauses the timer
-    "9": resetTimer                        // Resets the timer
+    "0": openInstructions,
+    "1": () => document.getElementById("p1plus").click(),   // Increment player 1 score
+    "2": resetScores,                                       // Resets the scores
+    "3": () => document.getElementById("p2plus").click(),   // Increment player 2 score
+    "4": () => addTime('addButton'),                        // Adds time via 'addButton'
+    "5": toggleVisibility,                                  // Toggles visibility
+    "6": () => addTime('addButton2'),                       // Adds time via 'addButton2'
+    "7": resetToNextValue,                                  // Resets to next value
+    "8": pauseTimer,                                        // Pauses the timer
+    "9": resetTimer                                         // Resets the timer
 };
 
 // Long press action definitions
@@ -41,10 +41,10 @@ const longPressActions = {
     "a": resetScores,
     "c": resetTimer,
     "0": openSettings,
-   "2" : reloadPage,
+    "2" : reloadPage,
     "5": zoomOut,
     "7": toggleBoutonsRonds,
-   "8": zoomIn,
+    "8": zoomIn,
     "9": hideSplashScreen,
     "r": () => console.log("Long press: Open settings with delay!"), 
     // You can add other long press actions for different keys here
@@ -112,7 +112,7 @@ const gamepadMapping = {
 const longPressGamepadActions = {
     4 : resetScores,
     13: toggleFullscreen,
-    11: hideSplashScreen
+    10: hideSplashScreen
     // You can add other long press actions for gamepad buttons here
 };
 
