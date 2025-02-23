@@ -11,7 +11,7 @@ const keyActions = {
     "y": zoomOut,
     "r": openSettings,
     "d": toggleBoutonsRonds,
-    "i": openInstructions,
+    "i": () => openImage('logops4.jpg'),
     "c": resetToNextValue,
     "b": resetTimer,
     "w": reloadPage,
@@ -24,7 +24,8 @@ const keyActions = {
     "q": () => document.getElementById("p1moins").click(),
     "k": () => document.getElementById("p2plus").click(),
     "o": () => document.getElementById("p2moins").click(),
-    "0": openInstructions,
+
+    "0": () => openImage('logops4.jpg'),
     "1": () => document.getElementById("p1plus").click(),   // Increment player 1 score
     "2": resetScores,                                       // Resets the scores
     "3": () => document.getElementById("p2plus").click(),   // Increment player 2 score

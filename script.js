@@ -186,9 +186,17 @@ function openImage(imageSrc) {
     var imageContainer = document.getElementById("image-container");
     var instructionImage = document.getElementById("instruction-image");
 
-    instructionImage.src = imageSrc; // Set the image source
-    imageContainer.style.display = "flex"; // Show the image container
+    // Check if the image container is currently visible
+    if (imageContainer.style.display === "flex") {
+        // If it's visible, hide it (close the image)
+        imageContainer.style.display = "none";
+    } else {
+        // Otherwise, open the image and set the source
+        instructionImage.src = imageSrc; // Set the image source
+        imageContainer.style.display = "flex"; // Show the image container
+    }
 }
+
 
 // Function to close the image when the image itself is clicked
 function closeImage(event) {
