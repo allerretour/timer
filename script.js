@@ -474,12 +474,12 @@ function toggleVisibility() {
         bottomButtons.style.opacity  = "0.3";;  // Show the bottom buttons
         container.classList.remove('hidden');
         logoimg.style.height = "0px";
-        nomjoueurs.style.top = "15px";
-        nomjoueurs.style.fontSize = "50px";
+        nomjoueurs.style.top = "10px";
+        nomjoueurs.style.fontSize = "55px";
         secbtnscore.style.top = "55px"; 
         btnscore.forEach(button => {
         button.style.height = "180px"; 
-        button.style.fontSize = "120px"; 
+        button.style.fontSize = "140px"; 
         });
 
         
@@ -489,12 +489,12 @@ function toggleVisibility() {
         bottomButtons.style.opacity  = "0";  // Hide the bottom buttons
         container.classList.add('hidden');
         logoimg.style.height = "100px";
-        nomjoueurs.style.top = "30px";
-        nomjoueurs.style.fontSize = "80px";
+        nomjoueurs.style.top = "20px";
+        nomjoueurs.style.fontSize = "90px";
         secbtnscore.style.top = "120px";
         btnscore.forEach(button => {
         button.style.height = "500px"; 
-        button.style.fontSize = "320px"; 
+        button.style.fontSize = "340px"; 
         });  
 
         

@@ -91,15 +91,17 @@
 .presets-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: 60px; /* Slightly taller buttons */
+    grid-auto-rows: 50px;
     gap: 12px;
-    justify-content: center;
-    align-items: center;
+    justify-items: stretch; /* This ensures the grid items stretch to fill the columns */
     width: 100%;
-    max-width: 400px;
+    max-width: 350px;
+    border-radius: 12px;
     margin: auto;
-    padding: 15px;
+    padding: 20px;
+    background-color: rgb(208, 208, 208);
 }
+
 
 .presets-container button {
     background: linear-gradient(135deg, #646464, #4a4a4a); /* Subtle gradient */
@@ -295,8 +297,8 @@
             bottom: 10px; /* Adjust the bottom spacing */
             left: 50%;
             transform: translateX(-50%); /* Perfectly center */
-            width: 90%; /* Adjust width if necessary */
-            max-width: 800px;
+            width: 100%; /* Adjust width if necessary */
+            max-width: 900px;
             gap: 45px; /* Space between buttons */
         }
         
@@ -501,21 +503,29 @@
         
         .form-group {
             display: flex;
+            justify-content: space-between; /* Ensures label is on the left, checkbox on the right */
             align-items: center;
-            justify-content: space-between;
-            margin-bottom: 5px;
+            margin: 10px 0;
+            font-size: 18px; /* Adjust the font size */
         }
         
         .form-group label {
             flex: 1;
             text-align: left;
-            font-size: 18px;
-            margin-right: 10px;
+            margin-right: 15px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .form-group input[type="checkbox"] {
+            transform: scale(1.5); /* Increases the size of the checkbox */
+            cursor: pointer;
+            margin: 0; /* Removes any extra space around the checkbox */
         }
         
         .form-group input {
-            width: 120px; /* Set a fixed width */
-            max-width: 100%; /* Ensure it doesn't exceed the container */
+            width: 120px;
+            max-width: 100%;
             color: #aaa;
             padding: 5px;
             font-size: 16px;
@@ -523,16 +533,36 @@
         }
         
         .form-group button {
-            width: 40px; /* Reduce button width */
-            height: 40px; /* Reduce button height */
-            font-size: 18px; /* Reduce icon size */
-            margin-right: 10px; /* Adds space on the right */
+            width: 40px;
+            height: 40px;
+            font-size: 18px;
+            margin-right: 10px;
             border-radius: 50%;
-            border: none; 
+            border: none;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
+        }
+        .form-group input[type="color"] {
+            width: 40px; /* Size of the color input */
+            height: 40px;
+            padding: 0;
+            cursor: pointer;
+            border-radius: 8px; /* Rounded corners */
+            border: 2px solid #ddd; /* Light border for color input */
+            transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+        }
+        
+        .form-group input[type="color"]:hover {
+            border-color: #888; /* Darker border on hover */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow on hover */
+        }
+        
+        .form-group input[type="color"]:focus {
+            border-color: #4CAF50; /* Green border when focused */
+            outline: none; /* Remove default outline */
+            box-shadow: 0 0 10px rgba(76, 175, 80, 0.5); /* Green glow on focus */
         }
 /* Reuse existing styles for modal and modal-content */
 
