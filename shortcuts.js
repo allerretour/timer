@@ -11,7 +11,7 @@ const keyActions = {
     "y": zoomOut,
     "r": openSettings,
     "d": toggleBoutonsRonds,
-    "i": () => openImage('logops4.jpg'),
+    "i": () => openImage('logops4.png'),
     "c": resetToNextValue,
     "b": resetTimer,
     "w": reloadPage,
