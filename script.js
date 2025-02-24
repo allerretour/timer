@@ -347,7 +347,7 @@ function updateCountdown() {
     // Si le temps est écoulé
     if (countdownTime <= 0) {
         clearInterval(countdownInterval);
-        document.getElementById('countdown').textContent = "FIN !"; // Affiche "FAUTE"
+        document.getElementById('countdown').textContent = "FAUTE"; // Affiche "FAUTE"
         document.getElementById('countdown').style.color = 'red'; // Change la couleur en rouge
         document.getElementById('progress').style.backgroundColor = 'red'; // Change la couleur de la barre de progression en rouge
         playBuzz(); // Son de fin
