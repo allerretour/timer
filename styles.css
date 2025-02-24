@@ -47,10 +47,9 @@
 
  /* Adjust the size of the color input */
     #backgroundColor, #textColor,#showMiddleImage, #darkMode{
-        width: 40px;  /* Width of the color picker input */
-        height: 40px; /* Height of the color picker input */
-        padding: 10;   /* Remove any default padding */
-       padding-right: 5px; /* Add right padding */
+        width: 30px;  /* Width of the color picker input */
+        height: 30px; /* Height of the color picker input */
+        
     }
 
 
@@ -80,7 +79,7 @@
 #middle-image {
     position: fixed;
     display :none;
-    bottom: 45px; /* Adjust this value as needed */
+    bottom: 30px; /* Adjust this value as needed */
     left: 50%; /* Centrer horizontalement */
     transform: translateX(-50%); /* Centrer parfaitement */
     width: auto; /* Adjust this value as needed */
@@ -160,6 +159,7 @@
 
 .text-variable-section {
     display: flex;
+    
     justify-content: space-between;
     text-align: center;
     left: 50%; /* Centrer horizontalement */
@@ -292,6 +292,7 @@
            
         .bottom-buttons {
             display: none;
+            
             justify-content: center; /* Center the buttons horizontally */
             position: fixed; /* Keep them fixed at the bottom */
             bottom: 10px; /* Adjust the bottom spacing */
@@ -415,8 +416,9 @@
         .modal-title {
             text-align: center;
             font-size: 30px;
+            color: rgb(4, 0, 255);
             font-weight: bold;
-            margin-top: 25px;
+            margin-top: 10px;
         }
         
         .modal-content {
@@ -518,7 +520,7 @@
         }
         
        .form-group input[type="checkbox"] {
-            transform: scale(0.5); /* Increases the size of the checkbox */
+            transform: scale(1); /* Increases the size of the checkbox */
             cursor:  pointer;
             margin: 0; /* Removes any extra space around the checkbox */
         }
